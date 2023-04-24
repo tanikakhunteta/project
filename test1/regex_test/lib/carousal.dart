@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:regex_test/login.dart';
-import 'package:regex_test/network_api.dart';
 
 class CarousalScreen extends StatefulWidget {
   const CarousalScreen({super.key});
@@ -51,7 +50,7 @@ class _CarousalScreenState extends State<CarousalScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Row(
@@ -62,7 +61,7 @@ class _CarousalScreenState extends State<CarousalScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => LoginScreen(),
+                                      builder: (context) => const LoginScreen(),
                                     ));
                               },
                               child: Text(
@@ -73,7 +72,7 @@ class _CarousalScreenState extends State<CarousalScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 60,
                         ),
                         CarouselSlider(
@@ -87,7 +86,7 @@ class _CarousalScreenState extends State<CarousalScreen> {
                                             carousal[_current]["images"],
                                             fit: BoxFit.cover,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 30,
                                           ),
                                           Text(
@@ -134,28 +133,29 @@ class _CarousalScreenState extends State<CarousalScreen> {
                                 child: Container(
                                   width: _current == entry.key ? 12 : 10,
                                   height: _current == entry.key ? 12 : 10,
-                                  margin: EdgeInsets.symmetric(horizontal: 3.0),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 3.0),
                                   decoration: BoxDecoration(
                                       border: _current == entry.key
                                           ? Border.all(color: Colors.white)
                                           : Border.all(
-                                              color: Color(0xff59B8BE)),
+                                              color: const Color(0xff59B8BE)),
                                       shape: BoxShape.circle,
                                       color: _current == entry.key
-                                          ? Color(0xff59B8BE)
+                                          ? const Color(0xff59B8BE)
                                           : Colors.white),
                                 ));
                           }).toList(),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 60,
                         ),
                         Container(
                           height: 60,
                           width: 60,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Color(0xff59B8BE)),
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_forward,
                             size: 41,
                             color: Colors.white,

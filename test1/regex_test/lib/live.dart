@@ -15,10 +15,10 @@ class _MessageScreenState extends State<LiveScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Provider Use"),
-        actions: [
+        title: const Text("Provider Use"),
+        actions: const [
           Padding(
-            padding: const EdgeInsets.only(right: 20),
+            padding: EdgeInsets.only(right: 20),
             child: Icon(Icons.favorite_outline),
           )
         ],
@@ -39,7 +39,7 @@ class _MessageScreenState extends State<LiveScreen> {
                 trailing: Icon(value.selectedItem.contains(index)
                     ? Icons.favorite
                     : Icons.favorite_outline),
-                title: Text("Item No " + index.toString()),
+                title: Text("Item No $index"),
               );
             },
           );

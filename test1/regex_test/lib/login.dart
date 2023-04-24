@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back,
                 color: Color(0xff111111),
               ),
@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: GoogleFonts.hind(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xff111111)),
+                  color: const Color(0xff111111)),
             ),
             elevation: 0,
             backgroundColor: Colors.white,
@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Center(
@@ -61,53 +61,53 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 248,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 33,
                   ),
                   Text(
                     "Please enter your phone number",
                     style: GoogleFonts.hind(
-                        fontSize: 17, color: Color(0xff636363)),
+                        fontSize: 17, color: const Color(0xff636363)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   Material(
-                    shadowColor: Color.fromARGB(255, 236, 236, 236),
+                    shadowColor: const Color.fromARGB(255, 236, 236, 236),
                     child: TextFormField(
                       controller: phoneController,
                       maxLength: 10,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 20),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.white,
                               ),
                               borderRadius: BorderRadius.circular(10)),
                           enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.white,
                               ),
                               borderRadius: BorderRadius.circular(10)),
                           hintText: "Phone number",
                           hintStyle: GoogleFonts.hind(
-                              fontSize: 16, color: Color(0xffA4A4A4))),
+                              fontSize: 16, color: const Color(0xffA4A4A4))),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
                     children: [
                       Checkbox(
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                               side: BorderSide(color: Color(0xff59B8BE)),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(2))),
                           value: ischecked,
-                          activeColor: Color(0xff59B8BE),
+                          activeColor: const Color(0xff59B8BE),
                           tristate: false,
                           onChanged: (value) {
                             setState(() {
@@ -119,20 +119,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextSpan(
                             text: "I agree to the",
                             style: GoogleFonts.hind(
-                                color: Color(0xff636363),
+                                color: const Color(0xff636363),
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500)),
                         TextSpan(
                             text: " Terms and Condition",
                             style: GoogleFonts.hind(
                                 decoration: TextDecoration.underline,
-                                color: Color(0xff59B8BE),
+                                color: const Color(0xff59B8BE),
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500))
                       ])),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   ConstrainedBox(
@@ -142,12 +142,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            backgroundColor: Color(0xff59B8BE)),
+                            backgroundColor: const Color(0xff59B8BE)),
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => VerificationScreen(),
+                                builder: (context) =>
+                                    const VerificationScreen(),
                               ));
                         },
                         child: Text(
@@ -155,16 +156,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: GoogleFonts.hind(fontSize: 17),
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   Center(
                       child: Text(
                     "OR",
                     style: GoogleFonts.hind(
-                        fontSize: 16, color: Color(0xff59B8BE)),
+                        fontSize: 16, color: const Color(0xff59B8BE)),
                   )),
-                  SizedBox(
+                  const SizedBox(
                     height: 19,
                   ),
                   Row(
@@ -173,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                         height: 50,
                         width: 50,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle, color: Colors.white),
                         child: Center(
                           child: Image.asset(
@@ -185,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                           height: 50,
                           width: 50,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Color(0xff1B74E4)),
                           child: Center(
                             child: Image.asset(
@@ -196,23 +197,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                           height: 50,
                           width: 50,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Colors.black),
-                          child: Icon(
+                          child: const Icon(
                             Icons.apple,
                             color: Colors.white,
                             size: 28,
                           ))
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 17,
                   ),
                   Center(
                     child: Text(
                       "I am an astrologer",
                       style: GoogleFonts.hind(
-                          fontSize: 19, color: Color(0xff59B8BE)),
+                          fontSize: 19, color: const Color(0xff59B8BE)),
                     ),
                   )
                 ],

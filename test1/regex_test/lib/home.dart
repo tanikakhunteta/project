@@ -123,13 +123,13 @@ class _HomeScreenState extends State<HomeScreen> {
       "name": "Numero"
     },
     {
-      "color": Color.fromARGB(255, 219, 219, 219),
+      "color": const Color.fromARGB(255, 219, 219, 219),
       "icon": Icons.videogame_asset_outlined,
       "name": "Vastu"
     },
     {"color": Colors.blue, "icon": Icons.face, "name": "Face Reading"},
     {
-      "color": Color.fromARGB(255, 186, 206, 187),
+      "color": const Color.fromARGB(255, 186, 206, 187),
       "icon": Icons.handshake_rounded,
       "name": "Kundli"
     },
@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
     },
     {"icon": Icons.question_mark, "text": "FAQ"},
   ];
-  List screens = [
+  List screens = const [
     MyOrderScreen(),
     EditProfileScreen(),
     ClaimCashbackScreen(),
@@ -227,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
     TermsScreen(),
     FaqScreen(),
   ];
-  final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -312,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 32,
                     ),
                     ListView.separated(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           return InkWell(
@@ -341,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: Color(0xff59B8BE),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 12,
                                     ),
                                     Text(
@@ -356,32 +356,92 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                         separatorBuilder: (context, index) =>
-                            Divider(color: Colors.white, thickness: 1),
+                            const Divider(color: Colors.white, thickness: 1),
                         itemCount: drawer.length),
-                    SizedBox(
+                    const SizedBox(
                       height: 70,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: ConstrainedBox(
-                        constraints:
-                            BoxConstraints.tightFor(height: 50, width: 254),
+                        constraints: const BoxConstraints.tightFor(
+                            height: 50, width: 254),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                                 backgroundColor: Colors.white),
-                            onPressed: () {},
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return ClipRRect(
+                                    child: AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8)),
+                                      buttonPadding: const EdgeInsets.all(0),
+                                      actionsPadding: const EdgeInsets.all(0),
+                                      actions: [
+                                        ConstrainedBox(
+                                          constraints:
+                                              const BoxConstraints.tightFor(
+                                                  height: 40, width: 140),
+                                          child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Color(0xff59B8BE),
+                                                  shape:
+                                                      ContinuousRectangleBorder()),
+                                              onPressed: () {},
+                                              child: Text(
+                                                "Yes",
+                                                style: GoogleFonts.hind(
+                                                    fontSize: 15),
+                                              )),
+                                        ),
+                                        ConstrainedBox(
+                                          constraints:
+                                              const BoxConstraints.tightFor(
+                                                  height: 40, width: 140),
+                                          child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                  backgroundColor:
+                                                      Color(0xff59B8BE),
+                                                  shape:
+                                                      ContinuousRectangleBorder()),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                "No",
+                                                style: GoogleFonts.hind(
+                                                    fontSize: 15),
+                                              )),
+                                        )
+                                      ],
+                                      content: Text(
+                                        "Do you want to logout?",
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.hind(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                             child: Text(
                               "Log Out",
                               style: GoogleFonts.hind(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff59B8BE)),
+                                  color: const Color(0xff59B8BE)),
                             )),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 6,
                     ),
                     Center(
@@ -390,7 +450,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
+                                builder: (context) => const LoginScreen(),
                               ));
                         },
                         child: Text(
@@ -402,7 +462,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 14,
                     ),
                   ],
@@ -467,7 +527,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => PaymentScreen(),
+                                          builder: (context) =>
+                                              const PaymentScreen(),
                                         ));
                                   },
                                   child: Container(
@@ -504,7 +565,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                NotificationScreen(),
+                                                const NotificationScreen(),
                                           ));
                                     },
                                     child: const Icon(Icons.notification_add)),
@@ -517,7 +578,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                LanguageScreen(),
+                                                const LanguageScreen(),
                                           ));
                                     },
                                     child: const Icon(Icons.language))
@@ -570,7 +631,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Container(
                                       height: 53,
                                       width: 102,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
                                                   "assets/bresh-shape@2x.png"))),
@@ -607,7 +668,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => AstrologerProfile(),
+                                  builder: (context) =>
+                                      const AstrologerProfile(),
                                 ));
                           },
                           child: SizedBox(
@@ -1427,7 +1489,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: <Widget>[
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 15,
                                         ),
                                         Row(
@@ -1440,16 +1502,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   fontSize: 22,
                                                   fontWeight: FontWeight.w500),
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             InkWell(
                                                 onTap: () {
                                                   Navigator.pop(context);
                                                 },
-                                                child: Icon(Icons.close))
+                                                child: const Icon(Icons.close))
                                           ],
                                         ),
-                                        Divider(),
-                                        SizedBox(
+                                        const Divider(),
+                                        const SizedBox(
                                           height: 20,
                                         ),
                                         Text(
@@ -1460,30 +1522,34 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         TextFormField(
                                           decoration: InputDecoration(
-                                              contentPadding: EdgeInsets.only(
-                                                  top: 8, left: 10, bottom: 74),
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                      top: 8,
+                                                      left: 10,
+                                                      bottom: 74),
                                               focusedBorder: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                       color:
                                                           Color(0xff59B8BE))),
                                               enabledBorder: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                       color:
                                                           Color(0xff59B8BE))),
                                               hintText: "Massage",
                                               hintStyle: GoogleFonts.hind(
                                                   fontSize: 17,
-                                                  color: Color(0xffA2A2A2))),
+                                                  color:
+                                                      const Color(0xffA2A2A2))),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
-                                        Divider(),
-                                        SizedBox(
+                                        const Divider(),
+                                        const SizedBox(
                                           height: 10,
                                         ),
                                         ConstrainedBox(
@@ -1495,13 +1561,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                   backgroundColor:
-                                                      Color(0xff59B8BE),
+                                                      const Color(0xff59B8BE),
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10))),
                                               onPressed: () {},
-                                              child: Text("Submit")),
+                                              child: const Text("Submit")),
                                         )
                                       ],
                                     ),
@@ -1550,7 +1616,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => ReviewScreen(),
+                                        builder: (context) =>
+                                            const ReviewScreen(),
                                       ));
                                 },
                                 child: Text("View All",

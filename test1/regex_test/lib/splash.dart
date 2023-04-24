@@ -12,12 +12,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 3),
+      const Duration(seconds: 3),
       () {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => CarousalScreen(),
+              builder: (context) => const CarousalScreen(),
             ));
       },
     );
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff59B8BE),
+      backgroundColor: const Color(0xff59B8BE),
       body: Center(
           child: Image.asset(
         "assets/1mantra@2x.png",

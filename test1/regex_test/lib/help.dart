@@ -36,18 +36,18 @@ class _HelpScreenState extends State<HelpScreen> {
           backgroundColor: Colors.white,
         ),
         body: TabBar(
-            indicatorColor: Color(0xff000000),
+            indicatorColor: const Color(0xff000000),
             labelColor: Colors.black,
-            unselectedLabelColor: Color(0xff9D9D9D),
+            unselectedLabelColor: const Color(0xff9D9D9D),
             unselectedLabelStyle: GoogleFonts.hind(
                 fontSize: 17,
                 fontWeight: FontWeight.w300,
-                color: Color(0xff000000)),
+                color: const Color(0xff000000)),
             labelStyle: GoogleFonts.hind(
                 fontSize: 17,
                 fontWeight: FontWeight.w500,
-                color: Color(0xff000000)),
-            tabs: [
+                color: const Color(0xff000000)),
+            tabs: const [
               Tab(
                 text: "Customer Support",
               ),
@@ -58,32 +58,32 @@ class _HelpScreenState extends State<HelpScreen> {
         bottomNavigationBar: Container(
           height: 80,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 284,
+                  width: 280,
                   child: TextFormField(
                     decoration: InputDecoration(
                         contentPadding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 13),
+                            const EdgeInsets.symmetric(vertical: 15, horizontal: 13),
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xff707070)),
+                            borderSide: const BorderSide(color: Color(0xff707070)),
                             borderRadius: BorderRadius.circular(8)),
                         hintText: "Type a message",
                         hintStyle: GoogleFonts.montserrat(
-                            fontSize: 13, color: Color(0xff707070))),
+                            fontSize: 13, color: const Color(0xff707070))),
                   ),
                 ),
                 Container(
                   height: 50,
                   width: 80,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Color(0xff59B8BE)),
-                  child: Icon(
+                  child: const Icon(
                     Icons.send,
                     color: Colors.white,
                   ),

@@ -29,7 +29,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back,
                 color: Color(0xff111111),
               ),
@@ -40,7 +40,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
               style: GoogleFonts.hind(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xff111111)),
+                  color: const Color(0xff111111)),
             ),
             elevation: 0,
             backgroundColor: Colors.white,
@@ -56,7 +56,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     height: 249,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Container(
@@ -65,12 +65,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
-                      boxShadow: [BoxShadow()]),
+                      boxShadow: const [BoxShadow()]),
                   child: Row(
                     children: [
                       Checkbox(
-                        activeColor: Color(0xff59B8BE),
-                        shape: CircleBorder(
+                        activeColor: const Color(0xff59B8BE),
+                        shape: const CircleBorder(
                             side: BorderSide(color: Color(0xff59B8BE))),
                         value: ischecked,
                         tristate: false,
@@ -87,7 +87,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 18,
                 ),
                 Container(
@@ -96,12 +96,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
-                      boxShadow: [BoxShadow()]),
+                      boxShadow: const [BoxShadow()]),
                   child: Row(
                     children: [
                       Checkbox(
-                        activeColor: Color(0xff59B8BE),
-                        shape: CircleBorder(
+                        activeColor: const Color(0xff59B8BE),
+                        shape: const CircleBorder(
                             side: BorderSide(color: Color(0xff59B8BE))),
                         value: ischecked,
                         tristate: false,
@@ -118,7 +118,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 54,
                 ),
                 ConstrainedBox(
@@ -128,12 +128,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
-                          backgroundColor: Color(0xff59B8BE)),
+                          backgroundColor: const Color(0xff59B8BE)),
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomePageScreen(),
+                              builder: (context) => const HomePageScreen(),
                             ));
                       },
                       child: Text(

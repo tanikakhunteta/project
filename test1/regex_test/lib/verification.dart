@@ -29,7 +29,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back,
                 color: Color(0xff111111),
               ),
@@ -40,7 +40,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               style: GoogleFonts.hind(
                   fontSize: 24,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xff111111)),
+                  color: const Color(0xff111111)),
             ),
             elevation: 0,
             backgroundColor: Colors.white,
@@ -53,7 +53,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Center(
@@ -62,7 +62,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         height: 244,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 34,
                     ),
                     RichText(
@@ -71,22 +71,22 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         text:
                             "OTP has been sent on your registered\nPhone Number ",
                         style: GoogleFonts.cabin(
-                            fontSize: 18, color: Color(0xff636363)),
+                            fontSize: 18, color: const Color(0xff636363)),
                       ),
                       TextSpan(
                         text: "xxxxxxxx89",
                         style: GoogleFonts.cabin(
-                            fontSize: 18, color: Color(0xff59B8BE)),
+                            fontSize: 18, color: const Color(0xff59B8BE)),
                       )
                     ])),
-                    SizedBox(
+                    const SizedBox(
                       height: 21,
                     ),
                     OtpTextField(
-                      focusedBorderColor: Color(0xFF59B8BE),
+                      focusedBorderColor: const Color(0xFF59B8BE),
                       fieldWidth: 75,
                       numberOfFields: 4,
-                      borderColor: Color(0xFF59B8BE),
+                      borderColor: const Color(0xFF59B8BE),
                       showFieldAsBox: true,
                       onCodeChanged: (String code) {},
                       onSubmit: (String verificationCode) {
@@ -94,14 +94,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: Text("Verification Code"),
+                                title: const Text("Verification Code"),
                                 content:
                                     Text('Code entered is $verificationCode'),
                               );
                             });
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     Row(
@@ -114,19 +114,19 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             style: GoogleFonts.cabin(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16,
-                                color: Color(0xff636363)),
+                                color: const Color(0xff636363)),
                           ),
                           TextSpan(
                             text: " Resend Now",
                             style: GoogleFonts.cabin(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16,
-                                color: Color(0xff59B8BE)),
+                                color: const Color(0xff59B8BE)),
                           )
                         ])),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 34,
                     ),
                     ConstrainedBox(
@@ -136,12 +136,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              backgroundColor: Color(0xff59B8BE)),
+                              backgroundColor: const Color(0xff59B8BE)),
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => LanguageScreen(),
+                                  builder: (context) => const LanguageScreen(),
                                 ));
                           },
                           child: Text(

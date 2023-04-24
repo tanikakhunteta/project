@@ -28,7 +28,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
     return Scaffold(
       bottomNavigationBar: FloatingNavbar(
         elevation: 40,
-        selectedItemColor: Color(0xff59B8BE),
+        selectedItemColor: const Color(0xff59B8BE),
         unselectedItemColor: Colors.black,
         backgroundColor: Colors.white,
         onTap: (int val) {

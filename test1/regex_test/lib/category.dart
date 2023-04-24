@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:regex_test/network_api.dart';
-import 'package:regex_test/user_details.dart';
+
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -33,7 +32,7 @@ class _AccountScreenState extends State<CategoryScreen> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back,
               color: Color(0xff111111),
             ),
@@ -44,7 +43,7 @@ class _AccountScreenState extends State<CategoryScreen> {
             style: GoogleFonts.hind(
                 fontSize: 22,
                 fontWeight: FontWeight.w500,
-                color: Color(0xff111111)),
+                color: const Color(0xff111111)),
           ),
           elevation: 1,
           backgroundColor: Colors.white,
@@ -54,10 +53,10 @@ class _AccountScreenState extends State<CategoryScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              TabBar(
+              const TabBar(
                   indicatorColor: Color(0xff59B8BE),
                   labelColor: Colors.black,
                   indicatorWeight: 4,
@@ -74,14 +73,14 @@ class _AccountScreenState extends State<CategoryScreen> {
                       text: 'Tab 3',
                     )
                   ]),
-              SizedBox(
+              const SizedBox(
                 height: 23,
               ),
               Text(
                 'Astrology can be defined in many ways but we would\nwant to explain this as science which helps people in\nguiding them through their good/bad times of life\nand this is done based on various & different\nplanetary positions and calculations through the …',
                 style: GoogleFonts.hind(fontSize: 15),
               ),
-              Align(
+              const Align(
                 alignment: Alignment.topRight,
                 child: Text(
                   'See More',
@@ -92,7 +91,7 @@ class _AccountScreenState extends State<CategoryScreen> {
                       color: Color(0xff59B8BE)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 27,
               ),
               Card(
@@ -110,7 +109,7 @@ class _AccountScreenState extends State<CategoryScreen> {
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 image: AssetImage('assets/Group 1626@2x.png'),
                                 fit: BoxFit.cover)),
                         child: Padding(
@@ -123,7 +122,7 @@ class _AccountScreenState extends State<CategoryScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 23,
                       ),
                       Padding(
@@ -133,10 +132,10 @@ class _AccountScreenState extends State<CategoryScreen> {
                           style: GoogleFonts.hind(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xff59B8BE)),
+                              color: const Color(0xff59B8BE)),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 6,
                       ),
                       Padding(

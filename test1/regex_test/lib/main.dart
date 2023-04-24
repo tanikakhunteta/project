@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:regex_test/home.dart';
-import 'package:regex_test/homepage.dart';
+
 import 'package:regex_test/provider/live_provider.dart';
 import 'package:regex_test/splash.dart';
 
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
