@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509251587695",
+    "project_id": "gkmt-institute",
+    "storage_bucket": "gkmt-institute.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509251587695:android:63d87297c862407a76c79a",
+        "android_client_info": {
+          "package_name": "com.example.gkmt_institute"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509251587695-21g4jrcdlq2qorhj0996gapt64kscjae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2iCTFl9V1sXr1H2cUQuXPj_2n0vQ6JTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509251587695-21g4jrcdlq2qorhj0996gapt64kscjae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
