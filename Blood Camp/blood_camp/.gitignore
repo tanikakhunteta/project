@@ -31,6 +31,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+/github-govind1615
+/github-govind1615.pub
 
 # Symbolication related
 app.*.symbols
