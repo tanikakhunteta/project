@@ -1,4 +1,5 @@
 import 'package:blood_camp/all_sreen.dart';
+import 'package:blood_camp/config/shared_pref.dart';
 import 'package:blood_camp/create_account.dart';
 import 'package:blood_camp/forgot_password.dart';
 import 'package:blood_camp/model/login_response_model.dart';
@@ -148,13 +149,17 @@ class _LoginPageState extends State<LoginPage> {
                             await ApiService.login(
                                 phoneController.text, passwordController.text);
                         if (loginAPIResponseModel?.success ?? false) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AllScreen()));
-                        } else {
-                          
-                        }
+                          bool valueSet = await SharedPref.setToken(
+                              loginAPIResponseModel!.data!.token!);
+                          if (valueSet) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AllScreen()));
+                          } else {
+                            
+                          }
+                        } else {}
                       },
                       child: Text(
                         "LOGIN",

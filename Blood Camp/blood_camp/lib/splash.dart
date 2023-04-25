@@ -1,3 +1,6 @@
+import 'package:blood_camp/all_sreen.dart';
+import 'package:blood_camp/config/shared_pref.dart';
+import 'package:blood_camp/home.dart';
 import 'package:blood_camp/signuplogin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,12 +15,22 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SignUpLoginScreen(),
-          ));
+    SharedPref.getToken().then((sharedPref) {
+      Future.delayed(Duration(seconds: 2), () {
+        if (sharedPref.isNotEmpty) {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AllScreen(),
+              ));
+        } else {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SignUpLoginScreen(),
+              ));
+        }
+      });
     });
 
     super.initState();
