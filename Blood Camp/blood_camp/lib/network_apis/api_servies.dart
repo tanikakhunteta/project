@@ -67,8 +67,6 @@ class ApiService {
       } else {
         return null;
       }
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
   }
 }
