@@ -9,4 +9,5 @@ class ApisEndPoint {
   static String getUserData = "$baseUrl/user/get-user-data";
   static String updateUserData = "$baseUrl/user/update-user-profile";
   static String bloodAvailDetails = "$baseUrl/ngoProgram/blood-avail-details";
+  
 }
