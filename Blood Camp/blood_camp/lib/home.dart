@@ -1,5 +1,7 @@
 import 'package:blood_camp/become_a_volunteer.dart';
 import 'package:blood_camp/blood_availability_search.dart';
+import 'package:blood_camp/model/profile_model.dart';
+import 'package:blood_camp/network_apis/api_servies.dart';
 import 'package:blood_camp/ngo_activity.dart';
 import 'package:blood_camp/ngo_program.dart';
 import 'package:blood_camp/ui_utils.dart';
@@ -17,6 +19,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  UserProfileModel? userProfileModel;
+  @override
+  void initState() {
+    ApiService.getProfileDetails().then((value) {
+      setState(() {
+        userProfileModel = value;
+      });
+    });
+    // TODO: implement initState
+    super.initState();
+  }
+
   List screens = [
     BloodAvailabilitySearch(),
 
@@ -53,8 +67,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         key: key,
-        drawer: UiUtilsScreen.drawer(key, context),
-        appBar: UiUtilsScreen.appBar(key, context),
+        drawer: UiUtilsScreen.drawer(
+            key,
+            context,
+            userProfileModel?.userProfileData?.username ?? "",
+            userProfileModel?.userProfileData?.phone ?? ""),
+        appBar: UiUtilsScreen.appBar(
+            key, context, userProfileModel?.userProfileData?.username ?? ""),
         body: SingleChildScrollView(
           child: Column(children: [
             Container(
@@ -180,6 +199,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
+                              if (index == 1) {
+                                return;
+                              }
                               Navigator.push(context, MaterialPageRoute(
                                 builder: (context) {
                                   return screens[index];

@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UiUtilsScreen {
-  static Widget drawer(key, BuildContext context) {
+  static Widget drawer(
+      key, BuildContext context, String name, String mobileNo) {
     return SizedBox(
       width: 238,
       child: SafeArea(
@@ -32,14 +33,14 @@ class UiUtilsScreen {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Vikash Sharma',
+                          name,
                           style: GoogleFonts.roboto(
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
                               color: Color(0xff303030)),
                         ),
                         Text(
-                          '963258740',
+                          mobileNo,
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -189,11 +190,11 @@ class UiUtilsScreen {
     );
   }
 
-  static PreferredSizeWidget appBar(key, BuildContext context) {
+  static PreferredSizeWidget appBar(key, BuildContext context, String name) {
     return AppBar(
       elevation: 0,
       title: Text(
-        'Hello, Vikash Sharma',
+        'Hello, $name',
         style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
       ),
       backgroundColor: Color(0xffBF222B),

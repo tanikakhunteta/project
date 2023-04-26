@@ -1,4 +1,6 @@
+import 'package:blood_camp/model/profile_model.dart';
 import 'package:blood_camp/network_apis/api_end_points.dart';
+import 'package:blood_camp/shared_pref.dart';
 import 'package:dio/dio.dart';
 
 import '../model/login_response_model.dart';
@@ -22,5 +24,46 @@ class ApiService {
     } else {
       return null;
     }
+  }
+
+  static Future<UserProfileModel?> getProfileDetails() async {
+    Dio dio = Dio();
+    String token = await SharedPref.getToken();
+    Map<String, String> headers = {"authorization": "Bearer $token"};
+
+    Response response = await dio.get(ApisEndPoint.getUserData,
+        options: Options(headers: headers));
+    if (response.data['success']) {
+      return UserProfileModel.fromJson(response.data);
+    } else {
+      return null;
+    }
+  }
+
+  static Future<UserProfileModel?> updateProfileDetails(
+      {String? name,
+      String? email,
+      String? city,
+      String? state,
+      String? bloodgroup}) async {
+    Dio dio = Dio();
+    String token = await SharedPref.getToken();
+    Map<String, String> headers = {"authorization": "Bearer $token"};
+
+    Response response = await dio.put(ApisEndPoint.updateUserData,
+        options: Options(headers: headers),
+        data: {
+          "username": name,
+          "password": 'dixit1234',
+          "email": email,
+          "city": city,
+          "state": state,
+          "blood_group": bloodgroup,
+        });
+    print(response.data);
+    if (response.data['success']) {
+      return UserProfileModel.fromJson(response.data);
+    }
+    return null;
   }
 }
