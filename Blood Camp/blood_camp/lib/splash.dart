@@ -3,7 +3,7 @@ import 'package:blood_camp/shared_pref.dart';
 import 'package:blood_camp/signuplogin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

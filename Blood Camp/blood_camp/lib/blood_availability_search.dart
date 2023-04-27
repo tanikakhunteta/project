@@ -1,4 +1,6 @@
 import 'package:blood_camp/blood_availability.dart';
+import 'package:blood_camp/model/blood_avail_details_model.dart';
+import 'package:blood_camp/network_apis/api_servies.dart';
 import 'package:blood_camp/ui_utils.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
@@ -229,12 +231,26 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
           constraints: BoxConstraints.tightFor(
               height: 50, width: MediaQuery.of(context).size.width),
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BloodAvailabilityScreen(),
-                  ));
+            onPressed: () async {
+              if (stateController.dropDownValue != null &&
+                  bloodGroupController.dropDownValue != null &&
+                  districtController.text.isNotEmpty) {
+                BloodAvailDetailsModel? bloodAvailDetailsModel =
+                  await ApiService.getBloodAvailDetails(
+                        state: stateController.dropDownValue!.name,
+                        bloodGroup: bloodGroupController.dropDownValue!.name,
+                        district: districtController.text,
+                        pincode: pinCodeController.text);
+                if (bloodAvailDetailsModel != null) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BloodAvailabilityScreen(
+                          bloodAvailDetailsModel: bloodAvailDetailsModel,
+                        ),
+                      ));
+                }
+              }
             },
             child: Text(
               'SEARCH',

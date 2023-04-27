@@ -1,7 +1,7 @@
 import 'package:blood_camp/become_a_volunteer.dart';
 import 'package:blood_camp/blood_availability_search.dart';
 import 'package:blood_camp/blood_donation_camp.dart';
-import 'package:blood_camp/donation.dart';
+
 import 'package:blood_camp/ngo_activity.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -70,6 +70,9 @@ class _NgoProgramScreenState extends State<NgoProgramScreen> {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
+                        if (index == 1) {
+                          return;
+                        }
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
                             return screens[index];

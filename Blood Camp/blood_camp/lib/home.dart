@@ -8,8 +8,9 @@ import 'package:blood_camp/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
+import 'package:super_banners/super_banners.dart';
 import 'blood_donation_camp.dart';
-import 'donation.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -212,18 +213,41 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 100,
                               width: 128,
                               decoration: BoxDecoration(color: Colors.white),
-                              child: Column(
+                              child: Stack(
                                 children: [
-                                  Icon(text_icon[index]["icon"],
-                                      color: Color(0xffBF222B)),
-                                  Text(
-                                    text_icon[index]["text"],
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.roboto(
-                                        height: 1.2,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w700),
-                                  )
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(text_icon[index]["icon"],
+                                            color: Color(0xffBF222B)),
+                                        Text(
+                                          text_icon[index]["text"],
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.roboto(
+                                              height: 1.2,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w700),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  if (index == 1)
+                                    Positioned(
+                                      left: 10,
+                                      child: CornerBanner(
+                                        bannerPosition:
+                                            CornerBannerPosition.topLeft,
+                                        bannerColor: Color(0xffBF222B),
+                                        child: Text(
+                                          "Coming Soon",
+                                          style: GoogleFonts.roboto(
+                                              color: Colors.white, fontSize: 8),
+                                        ),
+                                      ),
+                                    ),
                                 ],
                               ),
                             ),

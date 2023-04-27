@@ -1,3 +1,6 @@
+
+
+import 'package:blood_camp/model/blood_avail_details_model.dart';
 import 'package:blood_camp/model/profile_model.dart';
 import 'package:blood_camp/network_apis/api_end_points.dart';
 import 'package:blood_camp/shared_pref.dart';
@@ -63,6 +66,35 @@ class ApiService {
     print(response.data);
     if (response.data['success']) {
       return UserProfileModel.fromJson(response.data);
+    }
+    return null;
+  }
+
+  static Future<BloodAvailDetailsModel?> getBloodAvailDetails({
+    required String state,
+    required String district,
+    String? pincode,
+    required String bloodGroup,
+  }) async {
+    Dio dio = Dio();
+    String token = await SharedPref.getToken();
+    Map<String, String> headers = {"authorization": "Bearer $token"};
+
+    Response response = await dio.post(ApisEndPoint.bloodAvailDetails,
+        options: Options(headers: headers),
+        data: {
+          "state": state.toLowerCase(),
+          "district": district.toLowerCase(),
+          "pincode": pincode,
+          "blood_group": bloodGroup.toLowerCase(),
+          "limit": "20",
+          "offset": "0"
+        });
+    print(response.data);
+    if (response.data['success']) {
+      BloodAvailDetailsModel bloodAvailDetailsModel =
+          BloodAvailDetailsModel.fromJson(response.data);
+      return bloodAvailDetailsModel;
     }
     return null;
   }

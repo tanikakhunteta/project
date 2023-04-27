@@ -1,8 +1,15 @@
+import 'package:blood_camp/model/blood_avail_details_model.dart';
+import 'package:blood_camp/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AvailableBloodScreen extends StatefulWidget {
-  const AvailableBloodScreen({super.key});
+  final BloodAvailDetailsData bloodAvailDetailsData;
+
+  const AvailableBloodScreen(
+      {super.key,
+      required this.bloodAvailDetailsData,
+     });
 
   @override
   State<AvailableBloodScreen> createState() => _AvailableBloodScreenState();
@@ -48,7 +55,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Trust Blood Hospital",
+                          widget.bloodAvailDetailsData.srcName ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
@@ -77,7 +84,8 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                               color: Color(0xff706464)),
                         ),
                         Text(
-                          "Blood Group O+",
+                          UiUtilsScreen.listConversion(
+                              widget.bloodAvailDetailsData.availBloods ?? []),
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -93,7 +101,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                         Icon(Icons.location_on_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
-                          "Village -Khichan, Phalodi, Jodhpur, Rajasthan",
+                          widget.bloodAvailDetailsData.address ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
@@ -109,7 +117,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                         Icon(Icons.phone_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
-                          "+91 91667120102",
+                          "+91 ${widget.bloodAvailDetailsData.srcContact ?? ''}",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
@@ -125,7 +133,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                         Icon(Icons.mail_outline,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
-                          "trustblood@gmail.com",
+                          widget.bloodAvailDetailsData.srcEmail ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
@@ -147,7 +155,8 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
               height: 54, width: MediaQuery.of(context).size.width),
           child: ElevatedButton(
             onPressed: () {
-            print('forTesting');},
+              print("for testing");
+            },
             child: Text(
               'CALL NOW',
               style:

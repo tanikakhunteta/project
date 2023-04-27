@@ -1,5 +1,5 @@
 import 'package:blood_camp/loginpage.dart';
-import 'package:blood_camp/notification.dart';
+
 import 'package:blood_camp/profile.dart';
 
 import 'package:dropdown_textfield/dropdown_textfield.dart';
@@ -244,7 +244,7 @@ class UiUtilsScreen {
       clearOption: false,
 
       // searchAutofocus: true,
-      dropDownItemCount: dataList.length,
+      dropDownItemCount: 10,
       // state.length,
       searchShowCursor: true,
       enableSearch: true,
@@ -253,5 +253,10 @@ class UiUtilsScreen {
       //  state,
       onChanged: (val) {},
     );
+  }
+
+  static String listConversion(List data) {
+    return data.toString().split("[").last.split("]").first;
+   
   }
 }

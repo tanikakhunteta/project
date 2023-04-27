@@ -1,10 +1,17 @@
 import 'package:blood_camp/available_blood.dart';
-import 'package:blood_camp/not_available_blood.dart';
+import 'package:blood_camp/model/blood_avail_details_model.dart';
+
+import 'package:blood_camp/ui_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BloodAvailabilityScreen extends StatefulWidget {
-  const BloodAvailabilityScreen({super.key});
+  final BloodAvailDetailsModel bloodAvailDetailsModel;
+  
+  const BloodAvailabilityScreen(
+      {super.key,
+      required this.bloodAvailDetailsModel,
+      });
 
   @override
   State<BloodAvailabilityScreen> createState() =>
@@ -12,24 +19,6 @@ class BloodAvailabilityScreen extends StatefulWidget {
 }
 
 class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
-  List screens = [
-    AvailableBloodScreen(),
-    AvailableBloodScreen(),
-  ];
-  List blood_availability = [
-    {
-      "Name": "Trust Blood Hospital",
-      "Availability": "Available",
-      "Type": "Charitable",
-      "Blood Group": "Blood Group O+"
-    },
-    {
-      "Name": "Govt. Blood Centre",
-      "Availability": "Available",
-      "Type": "Govt.",
-      "Blood Group": "Blood Group O+"
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,18 +43,22 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
               height: 16,
             ),
             ListView.builder(
-              itemCount: blood_availability.length,
+              itemCount: widget.bloodAvailDetailsModel.data!.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
+                BloodAvailDetailsData bloodAvailDetailsData =
+                    widget.bloodAvailDetailsModel.data![index];
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return screens[index];
-                        },
-                      ));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AvailableBloodScreen(
+                                
+                                bloodAvailDetailsData: bloodAvailDetailsData),
+                          ));
                     },
                     child: Container(
                       height: 69,
@@ -83,46 +76,34 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  blood_availability[index]["Name"],
+                                  bloodAvailDetailsData.srcName ?? "",
                                   style: GoogleFonts.roboto(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff473D3D)),
                                 ),
-                                Builder(builder: (context) {
-                                  if (blood_availability[index]
-                                          ["Availability"] ==
-                                      "Available") {
-                                    return Text(
-                                      blood_availability[index]["Availability"],
-                                      style: GoogleFonts.roboto(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w700,
-                                          color: Color(0xff76AF3E)),
-                                    );
-                                  } else
-                                    return Text(
-                                      blood_availability[index]["Availability"],
-                                      style: GoogleFonts.roboto(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w700,
-                                          color: Color(0xffBF1D42)),
-                                    );
-                                }),
+                                Text(
+                                  "Available",
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xff76AF3E)),
+                                ),
                               ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  blood_availability[index]["Type"],
+                                  bloodAvailDetailsData.category ?? "",
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff706464)),
                                 ),
                                 Text(
-                                  blood_availability[index]["Blood Group"],
+                                  UiUtilsScreen.listConversion(
+                                      bloodAvailDetailsData.availBloods ?? []),
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,

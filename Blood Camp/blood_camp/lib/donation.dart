@@ -1,5 +1,5 @@
 import 'package:blood_camp/all_sreen.dart';
-import 'package:blood_camp/blood_availability.dart';
+
 import 'package:blood_camp/blood_donation.dart';
 
 import 'package:blood_camp/ui_utils.dart';
@@ -339,12 +339,12 @@ class _DonationScreenState extends State<DonationScreen>
                                   width: MediaQuery.of(context).size.width),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            BloodAvailabilityScreen(),
-                                      ));
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //       builder: (context) =>
+                                  //           BloodAvailabilityScreen(),
+                                  //     ));
                                 },
                                 child: Text(
                                   'CONTINUE',

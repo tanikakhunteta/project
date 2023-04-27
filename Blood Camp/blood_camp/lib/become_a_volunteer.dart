@@ -1,4 +1,4 @@
-import 'package:blood_camp/blood_availability.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -317,11 +317,11 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                           height: 50, width: MediaQuery.of(context).size.width),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BloodAvailabilityScreen(),
-                              ));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => BloodAvailabilityScreen(),
+                          //     ));
                         },
                         child: Text(
                           'SUBMIT',
