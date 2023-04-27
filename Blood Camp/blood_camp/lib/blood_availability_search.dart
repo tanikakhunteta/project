@@ -236,7 +236,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                   bloodGroupController.dropDownValue != null &&
                   districtController.text.isNotEmpty) {
                 BloodAvailDetailsModel? bloodAvailDetailsModel =
-                  await ApiService.getBloodAvailDetails(
+                    await ApiService.getBloodAvailDetails(
                         state: stateController.dropDownValue!.name,
                         bloodGroup: bloodGroupController.dropDownValue!.name,
                         district: districtController.text,
@@ -246,6 +246,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => BloodAvailabilityScreen(
+                          bloodGroup: bloodGroupController.dropDownValue!.name,
                           bloodAvailDetailsModel: bloodAvailDetailsModel,
                         ),
                       ));

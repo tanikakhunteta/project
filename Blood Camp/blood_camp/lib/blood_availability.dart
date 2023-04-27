@@ -7,11 +7,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BloodAvailabilityScreen extends StatefulWidget {
   final BloodAvailDetailsModel bloodAvailDetailsModel;
-  
-  const BloodAvailabilityScreen(
-      {super.key,
-      required this.bloodAvailDetailsModel,
-      });
+  final String bloodGroup;
+  const BloodAvailabilityScreen({
+    super.key,
+    required this.bloodAvailDetailsModel,
+    required this.bloodGroup,
+  });
 
   @override
   State<BloodAvailabilityScreen> createState() =>
@@ -55,8 +56,7 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AvailableBloodScreen(
-                                
+                            builder: (context) => AvailableBloodScreen(bloodGroup: widget.bloodGroup,
                                 bloodAvailDetailsData: bloodAvailDetailsData),
                           ));
                     },
@@ -102,8 +102,7 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
                                       color: Color(0xff706464)),
                                 ),
                                 Text(
-                                  UiUtilsScreen.listConversion(
-                                      bloodAvailDetailsData.availBloods ?? []),
+                                  widget.bloodGroup,
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
