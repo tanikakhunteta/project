@@ -8,6 +8,6 @@ class ApisEndPoint {
   static String loginApi = "$baseUrl/auth/login";
   static String getUserData = "$baseUrl/user/get-user-data";
   static String updateUserData = "$baseUrl/user/update-user-profile";
-
   static String bloodAvailDetails = "$baseUrl/ngoProgram/blood-avail-details";
+  static String bloodCampDetails = "$baseUrl/ngoProgram/blood-camp-details";
 }

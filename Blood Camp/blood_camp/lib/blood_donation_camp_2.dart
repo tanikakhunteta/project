@@ -1,8 +1,10 @@
+import 'package:blood_camp/model/blood_camp_details_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BloodDonationCamp2 extends StatefulWidget {
-  const BloodDonationCamp2({super.key});
+  final BloodCampDetailsData bloodCampDetailsData;
+  const BloodDonationCamp2({super.key, required this.bloodCampDetailsData});
 
   @override
   State<BloodDonationCamp2> createState() => _BloodDonationCamp2State();
@@ -54,7 +56,7 @@ class _BloodDonationCamp2State extends State<BloodDonationCamp2> {
                               color: Color(0xff473D3D)),
                         ),
                         Text(
-                          "Jodhpur",
+                          widget.bloodCampDetailsData.campDistrict ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
@@ -69,14 +71,14 @@ class _BloodDonationCamp2State extends State<BloodDonationCamp2> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Organized By Youth Samiti",
+                          widget.bloodCampDetailsData.organizedBy ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: Color(0xff706464)),
                         ),
                         Text(
-                          "08 AM - 04 PM",
+                          widget.bloodCampDetailsData.time ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -92,7 +94,7 @@ class _BloodDonationCamp2State extends State<BloodDonationCamp2> {
                         Icon(Icons.location_on_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
-                          "Village -Khichan, Phalodi, Jodhpur, Rajasthan",
+                          widget.bloodCampDetailsData.campAddress ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
@@ -108,7 +110,7 @@ class _BloodDonationCamp2State extends State<BloodDonationCamp2> {
                         Icon(Icons.phone_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
-                          "+91 91667120102",
+                          "+91 ${widget.bloodCampDetailsData.contact ?? ""}",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,

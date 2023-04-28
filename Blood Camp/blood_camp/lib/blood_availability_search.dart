@@ -250,7 +250,31 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                           bloodAvailDetailsModel: bloodAvailDetailsModel,
                         ),
                       ));
-                }
+                } else
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        actions: [
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xffBF222B)),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("OK"))
+                        ],
+                        content: Text(
+                          "Blood Not Available",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.roboto(
+                              color: Color(0xffBF222B),
+                              fontSize: 23,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      );
+                    },
+                  );
               }
             },
             child: Text(

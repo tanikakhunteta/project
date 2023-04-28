@@ -1,5 +1,9 @@
 import 'package:blood_camp/blood_donation_camp1.dart';
+import 'package:blood_camp/model/blood_camp_details_model.dart';
+import 'package:blood_camp/network_apis/api_servies.dart';
 import 'package:blood_camp/ui_utils.dart';
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+import 'package:custom_date_range_picker/custom_date_range_picker.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +17,9 @@ class BloodDonationCampScreen extends StatefulWidget {
 }
 
 class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
+  List<DateTime?> _dates = [
+    DateTime.now(),
+  ];
   final List<DropDownValueModel> state = <DropDownValueModel>[
     DropDownValueModel(
         name: 'Andaman and Nicobar', value: 'Andaman and Nicobar'),
@@ -106,7 +113,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                 controller: districtController,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(16),
-                  hintStyle: GoogleFonts.roboto(
+                  labelStyle: GoogleFonts.roboto(
                       color: Color(0xFF706464),
                       fontSize: 13,
                       fontWeight: FontWeight.w400),
@@ -116,7 +123,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xFF706464)),
                       borderRadius: BorderRadius.circular(41)),
-                  hintText: "Select District",
+                  labelText: "Select District",
                 ),
               ),
               SizedBox(
@@ -126,7 +133,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                 controller: pinCodeController,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(16),
-                  hintStyle: GoogleFonts.roboto(
+                  labelStyle: GoogleFonts.roboto(
                       color: Color(0xFF706464),
                       fontSize: 13,
                       fontWeight: FontWeight.w400),
@@ -136,7 +143,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xFF706464)),
                       borderRadius: BorderRadius.circular(41)),
-                  hintText: "Enter Pin Code",
+                  labelText: "Enter Pin Code",
                 ),
               ),
               // SizedBox(
@@ -162,21 +169,75 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
               SizedBox(
                 height: 16,
               ),
-              TextFormField(
-                controller: dateController,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(16),
-                  hintStyle: GoogleFonts.roboto(
-                      color: Color(0xFF706464),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF706464)),
+              InkWell(
+                onTap: () {
+                  showCalendarDatePicker2Dialog(
+                    context: context,
+                    config: CalendarDatePicker2WithActionButtonsConfig(
+                        okButtonTextStyle: GoogleFonts.roboto(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffBF222B)),
+                        cancelButtonTextStyle: GoogleFonts.roboto(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffBF222B))),
+                    dialogSize: const Size(325, 400),
+                    value: _dates,
+                    borderRadius: BorderRadius.circular(15),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFF706464)),
                       borderRadius: BorderRadius.circular(41)),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF706464)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15, top: 15),
+                    child: Text(
+                      "Select Start Date",
+                      style: GoogleFonts.roboto(
+                          color: Color(0xFF706464),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              InkWell(
+                onTap: () {
+                  showCalendarDatePicker2Dialog(
+                    context: context,
+                    config: CalendarDatePicker2WithActionButtonsConfig(
+                        okButtonTextStyle: GoogleFonts.roboto(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffBF222B)),
+                        cancelButtonTextStyle: GoogleFonts.roboto(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xffBF222B))),
+                    dialogSize: const Size(325, 400),
+                    value: _dates,
+                    borderRadius: BorderRadius.circular(15),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFF706464)),
                       borderRadius: BorderRadius.circular(41)),
-                  hintText: "Select Date",
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15, top: 15),
+                    child: Text(
+                      "Select Last Date",
+                      style: GoogleFonts.roboto(
+                          color: Color(0xFF706464),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -189,12 +250,23 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
           constraints: BoxConstraints.tightFor(
               height: 50, width: MediaQuery.of(context).size.width),
           child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BloodDonationCamp1(),
-                  ));
+            onPressed: () async {
+              if (stateController.dropDownValue != null &&
+                  districtController.text.isNotEmpty) {
+                BloodCampDetailsModel? bloodCampDetailsModel =
+                    await ApiService.getBloodCampDetails(
+                        pincode: pinCodeController.text,
+                        state: stateController.dropDownValue!.name,
+                        district: districtController.text);
+                if (bloodCampDetailsModel != null) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BloodDonationCamp1(
+                            bloodCampDetailsModel: bloodCampDetailsModel),
+                      ));
+                }
+              }
             },
             child: Text(
               'SEARCH',

@@ -1,9 +1,11 @@
 import 'package:blood_camp/blood_donation_camp_2.dart';
+import 'package:blood_camp/model/blood_camp_details_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BloodDonationCamp1 extends StatefulWidget {
-  const BloodDonationCamp1({super.key});
+  final BloodCampDetailsModel bloodCampDetailsModel;
+  const BloodDonationCamp1({super.key, required this.bloodCampDetailsModel});
 
   @override
   State<BloodDonationCamp1> createState() => _BloodDonationCamp1State();
@@ -33,151 +35,81 @@ class _BloodDonationCamp1State extends State<BloodDonationCamp1> {
             SizedBox(
               height: 16,
             ),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BloodDonationCamp2(),
-                    ));
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 75,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 16,
+            ListView.builder(
+              itemCount: widget.bloodCampDetailsModel.data!.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                BloodCampDetailsData bloodCampDetailsData =
+                    widget.bloodCampDetailsModel.data![index];
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BloodDonationCamp2(
+                                    bloodCampDetailsData: bloodCampDetailsData,
+                                  )));
+                    },
+                    child: Container(
+                      height: 69,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  bloodCampDetailsData.campName ?? "",
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xff473D3D)),
+                                ),
+                                Text(
+                                  bloodCampDetailsData.campAddress ?? "",
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xff76AF3E)),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  bloodCampDetailsData.organizedBy ?? "",
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff706464)),
+                                ),
+                                Text(
+                                  bloodCampDetailsData.time ?? "",
+                                  style: GoogleFonts.roboto(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff706464)),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Blood Donation Camp",
-                            style: GoogleFonts.roboto(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff473D3D)),
-                          ),
-                          Text(
-                            "Jodhpur",
-                            style: GoogleFonts.roboto(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff473D3D)),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Varun Hospital",
-                            style: GoogleFonts.roboto(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff706464)),
-                          ),
-                          Text(
-                            "08 AM - 04 PM",
-                            style: GoogleFonts.roboto(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff706464)),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BloodDonationCamp2(),
-                    ));
+                );
               },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 75,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 16,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Blood Donation Camp",
-                            style: GoogleFonts.roboto(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff473D3D)),
-                          ),
-                          Text(
-                            "Jodhpur",
-                            style: GoogleFonts.roboto(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff473D3D)),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Varun Hospital",
-                            style: GoogleFonts.roboto(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff706464)),
-                          ),
-                          Text(
-                            "08 AM - 04 PM",
-                            style: GoogleFonts.roboto(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff706464)),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            )
           ],
         ),
       ),

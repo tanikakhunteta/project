@@ -1,6 +1,5 @@
-
-
 import 'package:blood_camp/model/blood_avail_details_model.dart';
+import 'package:blood_camp/model/blood_camp_details_model.dart';
 import 'package:blood_camp/model/profile_model.dart';
 import 'package:blood_camp/network_apis/api_end_points.dart';
 import 'package:blood_camp/shared_pref.dart';
@@ -95,6 +94,35 @@ class ApiService {
       BloodAvailDetailsModel bloodAvailDetailsModel =
           BloodAvailDetailsModel.fromJson(response.data);
       return bloodAvailDetailsModel;
+    }
+    return null;
+  }
+
+  static Future<BloodCampDetailsModel?> getBloodCampDetails(
+      {required String state,
+      required String district,
+      String? pincode}) async {
+    Dio dio = Dio();
+    String token = await SharedPref.getToken();
+    Map<String, String> headers = {"authorization": "Bearer $token"};
+
+    Response response = await dio.post(ApisEndPoint.bloodCampDetails,
+        options: Options(headers: headers),
+        data: {
+          "state": state.toLowerCase(),
+          "district": district.toLowerCase(),
+          "pincode": pincode,
+          "start_date": "2023-01-21 23:58:58.280491",
+          "end_date": "2023-04-30 23:58:58.280491",
+          "limit": "20",
+          "offset": "0"
+        });
+    print(response.data);
+    if (response.data['success']) {
+      BloodCampDetailsModel bloodCampDetailsModel =
+          BloodCampDetailsModel.fromJson(response.data);
+
+      return bloodCampDetailsModel;
     }
     return null;
   }
