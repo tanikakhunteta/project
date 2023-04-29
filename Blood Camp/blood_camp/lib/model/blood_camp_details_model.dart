@@ -1,18 +1,13 @@
 class BloodCampDetailsModel {
   bool? success;
-  List<BloodCampDetailsData>? data;
+  Data? data;
   String? message;
 
   BloodCampDetailsModel({this.success, this.data, this.message});
 
   BloodCampDetailsModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-    if (json['data'] != null) {
-      data = <BloodCampDetailsData>[];
-      json['data'].forEach((v) {
-        data!.add(new BloodCampDetailsData.fromJson(v));
-      });
-    }
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     message = json['message'];
   }
 
@@ -20,14 +15,37 @@ class BloodCampDetailsModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['success'] = this.success;
     if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.toJson();
     }
     data['message'] = this.message;
     return data;
   }
 }
 
-class BloodCampDetailsData {
+class Data {
+  List<CampData>? campData;
+
+  Data({this.campData});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    if (json['campData'] != null) {
+      campData = <CampData>[];
+      json['campData'].forEach((v) {
+        campData!.add(new CampData.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.campData != null) {
+      data['campData'] = this.campData!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class CampData {
   int? campId;
   String? campName;
   String? campAddress;
@@ -43,7 +61,7 @@ class BloodCampDetailsData {
   String? createdAt;
   String? updatedAt;
 
-  BloodCampDetailsData(
+  CampData(
       {this.campId,
       this.campName,
       this.campAddress,
@@ -59,7 +77,7 @@ class BloodCampDetailsData {
       this.createdAt,
       this.updatedAt});
 
-  BloodCampDetailsData.fromJson(Map<String, dynamic> json) {
+  CampData.fromJson(Map<String, dynamic> json) {
     campId = json['camp_id'];
     campName = json['camp_name'];
     campAddress = json['camp_address'];

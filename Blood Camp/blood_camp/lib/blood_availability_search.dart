@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:blood_camp/blood_availability.dart';
 import 'package:blood_camp/model/blood_avail_details_model.dart';
 import 'package:blood_camp/network_apis/api_servies.dart';
@@ -15,6 +17,7 @@ class BloodAvailabilitySearch extends StatefulWidget {
 }
 
 class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
+  bool apiLoading = false;
   final List<DropDownValueModel> state = <DropDownValueModel>[
     DropDownValueModel(
         name: 'Andaman and Nicobar', value: 'Andaman and Nicobar'),
@@ -235,12 +238,19 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
               if (stateController.dropDownValue != null &&
                   bloodGroupController.dropDownValue != null &&
                   districtController.text.isNotEmpty) {
+                setState(() {
+                  apiLoading = true;
+                });
+                log(pinCodeController.text.toString());
                 BloodAvailDetailsModel? bloodAvailDetailsModel =
                     await ApiService.getBloodAvailDetails(
                         state: stateController.dropDownValue!.name,
                         bloodGroup: bloodGroupController.dropDownValue!.name,
                         district: districtController.text,
                         pincode: pinCodeController.text);
+                setState(() {
+                  apiLoading = false;
+                });
                 if (bloodAvailDetailsModel != null) {
                   Navigator.push(
                       context,
@@ -277,11 +287,19 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                   );
               }
             },
-            child: Text(
-              'SEARCH',
-              style:
-                  GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
-            ),
+            child: apiLoading
+                ? SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : Text(
+                    'SEARCH',
+                    style: GoogleFonts.roboto(
+                        fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
             style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFBF222B),
                 shape: RoundedRectangleBorder(

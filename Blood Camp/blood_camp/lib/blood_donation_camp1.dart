@@ -36,11 +36,11 @@ class _BloodDonationCamp1State extends State<BloodDonationCamp1> {
               height: 16,
             ),
             ListView.builder(
-              itemCount: widget.bloodCampDetailsModel.data!.length,
+              itemCount: widget.bloodCampDetailsModel.data!.campData!.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                BloodCampDetailsData bloodCampDetailsData =
-                    widget.bloodCampDetailsModel.data![index];
+                CampData bloodCampDetailsData =
+                    widget.bloodCampDetailsModel.data!.campData![index];
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: InkWell(

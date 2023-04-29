@@ -1,0 +1,366 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class AstroLiveScreen extends StatefulWidget {
+  const AstroLiveScreen({super.key});
+
+  @override
+  State<AstroLiveScreen> createState() => _AstroLiveScreenState();
+}
+
+class _AstroLiveScreenState extends State<AstroLiveScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          height: double.maxFinite,
+          width: double.maxFinite,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage('assets/Group 1389@2x.png'))),
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: Color(0xff59B8BE),
+            onPressed: () {},
+            child: Icon(
+              Icons.phone_in_talk_outlined,
+              size: 32,
+            ),
+          ),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: SizedBox(
+              height: 65,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 129,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white.withOpacity(0.43)),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 13),
+                          child: Icon(
+                            Icons.chat_bubble,
+                            color: Colors.white,
+                            size: 13,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        Text(
+                          "Say hi",
+                          style: GoogleFonts.hind(
+                              fontSize: 14, color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 39,
+                    width: 39,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white.withOpacity(0.43)),
+                    child: Icon(
+                      Icons.forward,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Container(
+                    height: 39,
+                    width: 39,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white.withOpacity(0.43)),
+                    child: Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Container(
+                    height: 39,
+                    width: 39,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white.withOpacity(0.43)),
+                    child: Icon(
+                      Icons.card_giftcard,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Container(
+                    height: 39,
+                    width: 39,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white.withOpacity(0.43)),
+                    child: Icon(
+                      Icons.more_vert,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 44,
+                ),
+                Row(
+                  children: [
+                    Container(
+                      height: 47,
+                      width: 162,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.43),
+                        borderRadius: BorderRadius.circular(26),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/NoPath - Copy (12)@2x.png"))),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Astro Dinesh",
+                                style: GoogleFonts.hind(
+                                    fontSize: 12, color: Colors.white),
+                              ),
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/Icon awesome-fire@2x.png",
+                                    height: 10,
+                                  ),
+                                  Text(" 148",
+                                      style: GoogleFonts.hind(
+                                          fontSize: 12, color: Colors.white))
+                                ],
+                              )
+                            ],
+                          ),
+                          Container(
+                            height: 28,
+                            width: 28,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(255, 63, 63, 63)),
+                            child: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    SizedBox(
+                      width: 98,
+                      child: Stack(children: [
+                        Container(
+                          height: 28,
+                          width: 28,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.white,
+                                  strokeAlign: BorderSide.strokeAlignOutside),
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage("assets/5@2x.png"))),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 23),
+                          child: Container(
+                            height: 28,
+                            width: 28,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.white,
+                                    strokeAlign: BorderSide.strokeAlignOutside),
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: AssetImage("assets/5@2x.png"))),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 46),
+                          child: Container(
+                            height: 28,
+                            width: 28,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.white,
+                                    strokeAlign: BorderSide.strokeAlignOutside),
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: AssetImage("assets/5@2x.png"))),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            height: 28,
+                            width: 28,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.white,
+                                    strokeAlign: BorderSide.strokeAlignOutside),
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: AssetImage("assets/5@2x.png"))),
+                          ),
+                        ),
+                      ]),
+                    ),
+                    Spacer(),
+                    Container(
+                      height: 32,
+                      width: 32,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 170, 170, 170)),
+                      child: Icon(
+                        Icons.close_rounded,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    height: 32,
+                    width: 32,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromARGB(255, 170, 170, 170)),
+                    child: Icon(
+                      Icons.hourglass_bottom,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Spacer(),
+                Column(mainAxisSize: MainAxisSize.min, children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 28,
+                        width: 28,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.white,
+                                strokeAlign: BorderSide.strokeAlignOutside),
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage("assets/5@2x.png"))),
+                      ),
+                      SizedBox(
+                        width: 9,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Raghu Sharma",
+                            style: GoogleFonts.hind(
+                                fontSize: 12, color: Color(0xffD7D7D7)),
+                          ),
+                          Text(
+                            "Join the Live",
+                            style: GoogleFonts.hind(
+                                fontSize: 14, color: Colors.white),
+                          ),
+                          Text(
+                            "Neha",
+                            style: GoogleFonts.hind(
+                                fontSize: 12, color: Colors.white),
+                          ),
+                          Text(
+                            "Neha mandloi 7/11/95\nAngel guidance for today",
+                            style: GoogleFonts.hind(
+                                fontSize: 14, color: Colors.white),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 13,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 28,
+                        width: 28,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.white,
+                                strokeAlign: BorderSide.strokeAlignOutside),
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage("assets/5@2x.png"))),
+                      ),
+                      SizedBox(
+                        width: 9,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Priyanka Shahi",
+                            style: GoogleFonts.hind(
+                                fontSize: 12, color: Color(0xffD7D7D7)),
+                          ),
+                          Text(
+                            "Hello ji",
+                            style: GoogleFonts.hind(
+                                fontSize: 14, color: Colors.white),
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                ]),
+
+                // SizedBox(
+                //   height: 341,
+                // ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

@@ -1,7 +1,6 @@
 import 'package:blood_camp/available_blood.dart';
 import 'package:blood_camp/model/blood_avail_details_model.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -44,11 +43,12 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
               height: 16,
             ),
             ListView.builder(
-              itemCount: widget.bloodAvailDetailsModel.data!.length,
+              itemCount:
+                  widget.bloodAvailDetailsModel.data!.bloodAvailData!.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                BloodAvailDetailsData bloodAvailDetailsData =
-                    widget.bloodAvailDetailsModel.data![index];
+                BloodAvailData bloodAvailDetailsData =
+                    widget.bloodAvailDetailsModel.data!.bloodAvailData![index];
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: InkWell(
@@ -56,7 +56,8 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AvailableBloodScreen(bloodGroup: widget.bloodGroup,
+                            builder: (context) => AvailableBloodScreen(
+                                bloodGroup: widget.bloodGroup,
                                 bloodAvailDetailsData: bloodAvailDetailsData),
                           ));
                     },

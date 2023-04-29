@@ -7,6 +7,7 @@ import 'package:custom_date_range_picker/custom_date_range_picker.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class BloodDonationCampScreen extends StatefulWidget {
   const BloodDonationCampScreen({super.key});
@@ -17,7 +18,13 @@ class BloodDonationCampScreen extends StatefulWidget {
 }
 
 class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
-  List<DateTime?> _dates = [
+  String? startDate;
+  String? lastDate;
+  bool apiLoading = false;
+  List<DateTime?> _endDate = [
+    DateTime.now(),
+  ];
+  List<DateTime?> _startDate = [
     DateTime.now(),
   ];
   final List<DropDownValueModel> state = <DropDownValueModel>[
@@ -181,9 +188,18 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                             fontWeight: FontWeight.bold,
                             color: Color(0xffBF222B))),
                     dialogSize: const Size(325, 400),
-                    value: _dates,
+                    value: _startDate,
                     borderRadius: BorderRadius.circular(15),
-                  );
+                  ).then((value) {
+                    setState(() {
+                      if (value != null) {
+                        print(value);
+                        _startDate = value;
+                        startDate =
+                            DateFormat('MMMM dd, yyyy').format(_startDate[0]!);
+                      }
+                    });
+                  });
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -194,7 +210,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 15, top: 15),
                     child: Text(
-                      "Select Start Date",
+                      startDate != null ? startDate! : "Select Start Date",
                       style: GoogleFonts.roboto(
                           color: Color(0xFF706464),
                           fontSize: 13,
@@ -218,9 +234,18 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                             fontWeight: FontWeight.bold,
                             color: Color(0xffBF222B))),
                     dialogSize: const Size(325, 400),
-                    value: _dates,
+                    value: _endDate,
                     borderRadius: BorderRadius.circular(15),
-                  );
+                  ).then((value) {
+                    setState(() {
+                      if (value != null) {
+                        print(value);
+                        _endDate = value;
+                        lastDate =
+                            DateFormat('MMMM dd, yyyy').format(_endDate[0]!);
+                      }
+                    });
+                  });
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -231,7 +256,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 15, top: 15),
                     child: Text(
-                      "Select Last Date",
+                      lastDate != null ? lastDate! : "Select Last Date",
                       style: GoogleFonts.roboto(
                           color: Color(0xFF706464),
                           fontSize: 13,
@@ -252,12 +277,22 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
           child: ElevatedButton(
             onPressed: () async {
               if (stateController.dropDownValue != null &&
-                  districtController.text.isNotEmpty) {
+                  districtController.text.isNotEmpty &&
+                  startDate != null) {
+                setState(() {
+                  apiLoading = true;
+                });
                 BloodCampDetailsModel? bloodCampDetailsModel =
                     await ApiService.getBloodCampDetails(
                         pincode: pinCodeController.text,
                         state: stateController.dropDownValue!.name,
+                        startDate: _startDate[0].toString(),
+                        endDate:
+                            lastDate != null ? _endDate[0].toString() : null,
                         district: districtController.text);
+                setState(() {
+                  apiLoading = false;
+                });
                 if (bloodCampDetailsModel != null) {
                   Navigator.push(
                       context,
@@ -265,14 +300,46 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                         builder: (context) => BloodDonationCamp1(
                             bloodCampDetailsModel: bloodCampDetailsModel),
                       ));
-                }
+                } else
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        actions: [
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xffBF222B)),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("OK"))
+                        ],
+                        content: Text(
+                          "Blood Camp Not Available",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.roboto(
+                              color: Color(0xffBF222B),
+                              fontSize: 23,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      );
+                    },
+                  );
               }
             },
-            child: Text(
-              'SEARCH',
-              style:
-                  GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
-            ),
+            child: apiLoading
+                ? SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : Text(
+                    'SEARCH',
+                    style: GoogleFonts.roboto(
+                        fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
             style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFBF222B),
                 shape: RoundedRectangleBorder(

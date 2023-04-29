@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:blood_camp/become_a_volunteer.dart';
 import 'package:blood_camp/blood_availability_search.dart';
 import 'package:blood_camp/model/profile_model.dart';
@@ -11,7 +13,6 @@ import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.da
 import 'package:super_banners/super_banners.dart';
 import 'blood_donation_camp.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -23,7 +24,10 @@ class _HomeScreenState extends State<HomeScreen> {
   UserProfileModel? userProfileModel;
   @override
   void initState() {
+    log('initState');
+
     ApiService.getProfileDetails().then((value) {
+      print(value);
       setState(() {
         userProfileModel = value;
       });
@@ -71,10 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
         drawer: UiUtilsScreen.drawer(
             key,
             context,
-            userProfileModel?.userProfileData?.username ?? "",
-            userProfileModel?.userProfileData?.phone ?? ""),
-        appBar: UiUtilsScreen.appBar(
-            key, context, userProfileModel?.userProfileData?.username ?? ""),
+            userProfileModel?.userProfileData?.userDetails?.username ?? "",
+            userProfileModel?.userProfileData?.userDetails?.phone ?? ""),
+        appBar: UiUtilsScreen.appBar(key, context,
+            userProfileModel?.userProfileData?.userDetails?.username ?? ""),
         body: SingleChildScrollView(
           child: Column(children: [
             Container(

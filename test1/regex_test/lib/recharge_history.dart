@@ -62,7 +62,7 @@ class _RechargeHistoryScreenState extends State<RechargeHistoryScreen> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: const Icon(
+          child: const Icon( 
             Icons.arrow_back,
             color: Color(0xff111111),
           ),

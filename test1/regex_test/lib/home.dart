@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:regex_test/about.dart';
+import 'package:regex_test/astro_live.dart';
 import 'package:regex_test/astrologer_profile.dart';
 import 'package:regex_test/blog.dart';
 import 'package:regex_test/chat.dart';
@@ -853,103 +854,99 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.w500))))),
               Padding(
                   padding: const EdgeInsets.only(left: 15),
-                  child: SizedBox(
-                      height: 126,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text("Live Astrologer",
-                                style: GoogleFonts.hind(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xff333333))),
-                            Expanded(
-                                child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    shrinkWrap: true,
-                                    itemCount: live_astrologer.length,
-                                    itemBuilder: (context, index) {
-                                      return Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 15),
-                                          child: SizedBox(
-                                              width: 61,
-                                              height: 72,
-                                              child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    SizedBox(
-                                                        height: 59,
-                                                        child: Stack(children: [
-                                                          Center(
-                                                              child: Container(
-                                                                  height: 49,
-                                                                  width: 49,
-                                                                  decoration: BoxDecoration(
-                                                                      border: Border.all(
-                                                                          color: const Color(
-                                                                              0xff59B8BE)),
-                                                                      shape: BoxShape
-                                                                          .circle,
-                                                                      color: Colors
-                                                                          .white))),
-                                                          Center(
-                                                              child: Container(
-                                                                  height: 41,
-                                                                  width: 41,
-                                                                  decoration: BoxDecoration(
-                                                                      image: DecorationImage(
-                                                                          image: AssetImage(live_astrologer[index]
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AstroLiveScreen(),
+                          ));
+                    },
+                    child: SizedBox(
+                        height: 126,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text("Live Astrologer",
+                                  style: GoogleFonts.hind(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff333333))),
+                              Expanded(
+                                  child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      shrinkWrap: true,
+                                      itemCount: live_astrologer.length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 15),
+                                            child: SizedBox(
+                                                width: 61,
+                                                height: 72,
+                                                child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      SizedBox(
+                                                          height: 59,
+                                                          child: Stack(
+                                                              children: [
+                                                                Center(
+                                                                    child: Container(
+                                                                        height:
+                                                                            49,
+                                                                        width:
+                                                                            49,
+                                                                        decoration: BoxDecoration(
+                                                                            border:
+                                                                                Border.all(color: const Color(0xff59B8BE)),
+                                                                            shape: BoxShape.circle,
+                                                                            color: Colors.white))),
+                                                                Center(
+                                                                    child: Container(
+                                                                        height:
+                                                                            41,
+                                                                        width:
+                                                                            41,
+                                                                        decoration: BoxDecoration(
+                                                                            image:
+                                                                                DecorationImage(image: AssetImage(live_astrologer[index]["image"]), fit: BoxFit.cover),
+                                                                            border: Border.all(color: const Color(0xff59B8BE)),
+                                                                            shape: BoxShape.circle,
+                                                                            color: const Color(0xffD9ECED)))),
+                                                                Align(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .bottomCenter,
+                                                                    child: Container(
+                                                                        height: 14,
+                                                                        width: 41,
+                                                                        decoration: BoxDecoration(color: const Color(0xff59B8BE), borderRadius: BorderRadius.circular(4)),
+                                                                        child: Center(
+                                                                            child: Text(
+                                                                          live_astrologer[index]
                                                                               [
-                                                                              "image"]),
-                                                                          fit: BoxFit
-                                                                              .cover),
-                                                                      border: Border.all(
-                                                                          color: const Color(
-                                                                              0xff59B8BE)),
-                                                                      shape: BoxShape
-                                                                          .circle,
-                                                                      color: const Color(
-                                                                          0xffD9ECED)))),
-                                                          Align(
-                                                              alignment: Alignment
-                                                                  .bottomCenter,
-                                                              child: Container(
-                                                                  height: 14,
-                                                                  width: 41,
-                                                                  decoration: BoxDecoration(
-                                                                      color: const Color(
-                                                                          0xff59B8BE),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              4)),
-                                                                  child: Center(
-                                                                      child:
-                                                                          Text(
-                                                                    live_astrologer[
-                                                                            index]
-                                                                        [
-                                                                        "text"],
-                                                                    style: GoogleFonts.hind(
-                                                                        fontSize:
-                                                                            10,
-                                                                        color: Colors
-                                                                            .white),
-                                                                  ))))
-                                                        ])),
-                                                    Text(
-                                                      live_astrologer[index]
-                                                          ["name"],
-                                                      style: GoogleFonts.hind(
-                                                          fontSize: 12),
-                                                    )
-                                                  ])));
-                                    }))
-                          ]))),
+                                                                              "text"],
+                                                                          style: GoogleFonts.hind(
+                                                                              fontSize: 10,
+                                                                              color: Colors.white),
+                                                                        ))))
+                                                              ])),
+                                                      Text(
+                                                        live_astrologer[index]
+                                                            ["name"],
+                                                        style: GoogleFonts.hind(
+                                                            fontSize: 12),
+                                                      )
+                                                    ])));
+                                      }))
+                            ])),
+                  )),
               Container(
                   color: const Color(0xffF2F2F2),
                   height: 126,

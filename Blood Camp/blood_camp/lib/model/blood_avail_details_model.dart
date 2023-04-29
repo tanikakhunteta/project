@@ -1,18 +1,13 @@
 class BloodAvailDetailsModel {
   bool? success;
-  List<BloodAvailDetailsData>? data;
+  Data? data;
   String? message;
 
   BloodAvailDetailsModel({this.success, this.data, this.message});
 
   BloodAvailDetailsModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-    if (json['data'] != null) {
-      data = <BloodAvailDetailsData>[];
-      json['data'].forEach((v) {
-        data!.add(new BloodAvailDetailsData.fromJson(v));
-      });
-    }
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     message = json['message'];
   }
 
@@ -20,14 +15,38 @@ class BloodAvailDetailsModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['success'] = this.success;
     if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.toJson();
     }
     data['message'] = this.message;
     return data;
   }
 }
 
-class BloodAvailDetailsData {
+class Data {
+  List<BloodAvailData>? bloodAvailData;
+
+  Data({this.bloodAvailData});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    if (json['blood_avail_data'] != null) {
+      bloodAvailData = <BloodAvailData>[];
+      json['blood_avail_data'].forEach((v) {
+        bloodAvailData!.add(new BloodAvailData.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.bloodAvailData != null) {
+      data['blood_avail_data'] =
+          this.bloodAvailData!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class BloodAvailData {
   int? srcId;
   String? srcType;
   String? srcName;
@@ -40,11 +59,11 @@ class BloodAvailDetailsData {
   String? pincode;
   List<String>? availBloods;
   String? createdAt;
-  String? updatedAt;
+  String ? updatedAt;
   String? address;
   bool? isActive;
 
-  BloodAvailDetailsData(
+  BloodAvailData(
       {this.srcId,
       this.srcType,
       this.srcName,
@@ -61,7 +80,7 @@ class BloodAvailDetailsData {
       this.address,
       this.isActive});
 
-  BloodAvailDetailsData.fromJson(Map<String, dynamic> json) {
+  BloodAvailData.fromJson(Map<String, dynamic> json) {
     srcId = json['src_id'];
     srcType = json['src_type'];
     srcName = json['src_name'];

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class UserProfileModel {
   bool? success;
   UserProfileData? userProfileData;
@@ -9,24 +7,43 @@ class UserProfileModel {
 
   UserProfileModel.fromJson(Map<String, dynamic> json) {
     success = json['success'];
-    userProfileData = json['data'] != null
-        ? new UserProfileData.fromJson(json['data'])
-        : null;
+    userProfileData =
+        json['data'] != null ? new UserProfileData.fromJson(json['data']) : null;
     message = json['message'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['success'] = this.success;
+    final Map<String, dynamic> userProfileData = new Map<String, dynamic>();
+    userProfileData['success'] = this.success;
     if (this.userProfileData != null) {
-      data['data'] = this.userProfileData!.toJson();
+      userProfileData['data'] = this.userProfileData!.toJson();
     }
-    data['message'] = this.message;
-    return data;
+    userProfileData['message'] = this.message;
+    return userProfileData;
   }
 }
 
 class UserProfileData {
+  UserDetails? userDetails;
+
+  UserProfileData({this.userDetails});
+
+  UserProfileData.fromJson(Map<String, dynamic> json) {
+    userDetails = json['user_details'] != null
+        ? new UserDetails.fromJson(json['user_details'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> userProfileData = new Map<String, dynamic>();
+    if (this.userDetails != null) {
+      userProfileData['user_details'] = this.userDetails!.toJson();
+    }
+    return userProfileData;
+  }
+}
+
+class UserDetails {
   int? id;
   String? username;
   String? password;
@@ -36,13 +53,13 @@ class UserProfileData {
   String? state;
   String? bloodGroup;
   String? address;
-  Bool? isVolunteer;
+  bool? isVolunteer;
   String? accType;
   String? createdAt;
   String? updatedAt;
   bool? isActive;
 
-  UserProfileData(
+  UserDetails(
       {this.id,
       this.username,
       this.password,
@@ -58,7 +75,7 @@ class UserProfileData {
       this.updatedAt,
       this.isActive});
 
-  UserProfileData.fromJson(Map<String, dynamic> json) {
+  UserDetails.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     username = json['username'];
     password = json['password'];
@@ -76,21 +93,21 @@ class UserProfileData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['username'] = this.username;
-    data['password'] = this.password;
-    data['phone'] = this.phone;
-    data['email'] = this.email;
-    data['city'] = this.city;
-    data['state'] = this.state;
-    data['blood_group'] = this.bloodGroup;
-    data['address'] = this.address;
-    data['is_volunteer'] = this.isVolunteer;
-    data['acc_type'] = this.accType;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['is_active'] = this.isActive;
-    return data;
+    final Map<String, dynamic> userProfileData = new Map<String, dynamic>();
+    userProfileData['id'] = this.id;
+    userProfileData['username'] = this.username;
+    userProfileData['password'] = this.password;
+    userProfileData['phone'] = this.phone;
+    userProfileData['email'] = this.email;
+    userProfileData['city'] = this.city;
+    userProfileData['state'] = this.state;
+    userProfileData['blood_group'] = this.bloodGroup;
+    userProfileData['address'] = this.address;
+    userProfileData['is_volunteer'] = this.isVolunteer;
+    userProfileData['acc_type'] = this.accType;
+    userProfileData['created_at'] = this.createdAt;
+    userProfileData['updated_at'] = this.updatedAt;
+    userProfileData['is_active'] = this.isActive;
+    return userProfileData;
   }
 }

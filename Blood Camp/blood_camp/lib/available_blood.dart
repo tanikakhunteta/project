@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AvailableBloodScreen extends StatefulWidget {
-  final BloodAvailDetailsData bloodAvailDetailsData;
+  final BloodAvailData bloodAvailDetailsData;
   final String bloodGroup;
 
   const AvailableBloodScreen({

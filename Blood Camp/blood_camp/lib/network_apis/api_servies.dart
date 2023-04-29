@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:blood_camp/model/all_post_details_model.dart';
 import 'package:blood_camp/model/blood_avail_details_model.dart';
 import 'package:blood_camp/model/blood_camp_details_model.dart';
 import 'package:blood_camp/model/profile_model.dart';
@@ -33,12 +36,18 @@ class ApiService {
     String token = await SharedPref.getToken();
     Map<String, String> headers = {"authorization": "Bearer $token"};
 
-    Response response = await dio.get(ApisEndPoint.getUserData,
-        options: Options(headers: headers));
-    if (response.data['success']) {
-      return UserProfileModel.fromJson(response.data);
-    } else {
-      return null;
+    try {
+      Response response = await dio.get(ApisEndPoint.getUserData,
+          options: Options(headers: headers));
+      log(response.data.toString());
+      if (response.data['success']) {
+        log(response.data['data'].toString());
+        return UserProfileModel.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      log(e.toString());
     }
   }
 
@@ -79,28 +88,35 @@ class ApiService {
     String token = await SharedPref.getToken();
     Map<String, String> headers = {"authorization": "Bearer $token"};
 
-    Response response = await dio.post(ApisEndPoint.bloodAvailDetails,
-        options: Options(headers: headers),
-        data: {
-          "state": state.toLowerCase(),
-          "district": district.toLowerCase(),
-          "pincode": pincode,
-          "blood_group": bloodGroup.toLowerCase(),
-          "limit": "20",
-          "offset": "0"
-        });
-    print(response.data);
-    if (response.data['success']) {
-      BloodAvailDetailsModel bloodAvailDetailsModel =
-          BloodAvailDetailsModel.fromJson(response.data);
-      return bloodAvailDetailsModel;
+    try {
+      Response response = await dio.post(ApisEndPoint.bloodAvailDetails,
+          options: Options(headers: headers),
+          data: {
+            "state": state.toLowerCase(),
+            "district": district.toLowerCase(),
+            if (pincode != null && pincode.isNotEmpty) "pincode": pincode,
+            "blood_group": bloodGroup.toLowerCase(),
+            "limit": "20",
+            "offset": "0"
+          });
+      log(response.data.toString());
+      if (response.data['success']) {
+        BloodAvailDetailsModel bloodAvailDetailsModel =
+            BloodAvailDetailsModel.fromJson(response.data);
+        return bloodAvailDetailsModel;
+      }
+      return null;
+    } catch (e) {
+      log(e.toString());
+      return null;
     }
-    return null;
   }
 
   static Future<BloodCampDetailsModel?> getBloodCampDetails(
       {required String state,
       required String district,
+      required String startDate,
+      String? endDate,
       String? pincode}) async {
     Dio dio = Dio();
     String token = await SharedPref.getToken();
@@ -111,9 +127,9 @@ class ApiService {
         data: {
           "state": state.toLowerCase(),
           "district": district.toLowerCase(),
-          "pincode": pincode,
-          "start_date": "2023-01-21 23:58:58.280491",
-          "end_date": "2023-04-30 23:58:58.280491",
+          if (pincode != null && pincode.isNotEmpty) "pincode": pincode,
+          "start_date": startDate,
+          if (endDate != null && endDate.isNotEmpty) "end_date": endDate,
           "limit": "20",
           "offset": "0"
         });
@@ -123,6 +139,23 @@ class ApiService {
           BloodCampDetailsModel.fromJson(response.data);
 
       return bloodCampDetailsModel;
+    }
+    return null;
+  }
+
+  static Future<AllPostDetailsModel?> getAllPostDetails() async {
+    Dio dio = Dio();
+    String token = await SharedPref.getToken();
+    Map<String, String> headers = {"authorization": "Bearer $token"};
+    Response response = await dio.get(
+      ApisEndPoint.allPostDetails,
+      options: Options(headers: headers),
+    );
+    print(response.data);
+    if (response.data["success"]) {
+      AllPostDetailsModel allPostDetailsModel =
+          AllPostDetailsModel.fromJson(response.data);
+      return allPostDetailsModel;
     }
     return null;
   }

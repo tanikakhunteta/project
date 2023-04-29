@@ -1,6 +1,5 @@
 import 'dart:io';
 
-
 import 'package:blood_camp/model/profile_model.dart';
 import 'package:blood_camp/network_apis/api_servies.dart';
 import 'package:flutter/material.dart';
@@ -26,19 +25,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   UserProfileModel? userProfileModel;
   bool enabled = false;
+
+  bool apiLoading = false;
   @override
   void initState() {
     ApiService.getProfileDetails().then((value) {
       setState(() {
         userProfileModel = value;
-        nameController.text = userProfileModel?.userProfileData?.username ?? "";
-        phoneController.text = userProfileModel?.userProfileData?.phone ?? "";
-        emailController.text = userProfileModel?.userProfileData?.email ?? "";
+        nameController.text =
+            userProfileModel?.userProfileData?.userDetails?.username ?? "";
+        phoneController.text =
+            userProfileModel?.userProfileData?.userDetails?.phone ?? "";
+        emailController.text =
+            userProfileModel?.userProfileData?.userDetails?.email ?? "";
         bloodGroupController.text =
-            userProfileModel?.userProfileData?.bloodGroup ?? "";
+            userProfileModel?.userProfileData?.userDetails?.bloodGroup ?? "";
 
-        stateController.text = userProfileModel?.userProfileData?.state ?? "";
-        districtController.text = userProfileModel?.userProfileData?.city ?? "";
+        stateController.text =
+            userProfileModel?.userProfileData?.userDetails?.state ?? "";
+        districtController.text =
+            userProfileModel?.userProfileData?.userDetails?.city ?? "";
       });
     });
     super.initState();
@@ -192,7 +198,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 13,
                                 ),
                                 Text(
-                                  userProfileModel?.userProfileData?.username ??
+                                  userProfileModel?.userProfileData?.userDetails
+                                          ?.username ??
                                       "-",
                                   style: GoogleFonts.roboto(
                                       color: Color(0xff303030),
@@ -370,21 +377,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     width: MediaQuery.of(context).size.width),
                                 child: ElevatedButton(
                                   onPressed: () {
+                                    if (!enabled) {
+                                      return;
+                                    }
+                                    setState(() {
+                                      apiLoading = true;
+                                    });
                                     ApiService.updateProfileDetails(
-                                        name: nameController.text,
-                                        bloodgroup: bloodGroupController.text,
-                                        city: districtController.text,
-                                        email: emailController.text,
-                                        state: stateController.text);
+                                            name: nameController.text,
+                                            bloodgroup:
+                                                bloodGroupController.text,
+                                            city: districtController.text,
+                                            email: emailController.text,
+                                            state: stateController.text)
+                                        .then((value) {
+                                      setState(() {
+                                        apiLoading = false;
+                                        enabled = false;
+                                      });
+                                    });
                                   },
-                                  child: Text(
-                                    'SAVE',
-                                    style: GoogleFonts.roboto(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
+                                  child: apiLoading
+                                      ? SizedBox(
+                                          height: 20,
+                                          width: 20,
+                                          child: Center(
+                                            child: CircularProgressIndicator(),
+                                          ),
+                                        )
+                                      : Text(
+                                          'SAVE',
+                                          style: GoogleFonts.roboto(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400),
+                                        ),
                                   style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color(0xFFBF222B),
+                                      backgroundColor: enabled
+                                          ? Color(0xFFBF222B)
+                                          : Colors.grey,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(69))),

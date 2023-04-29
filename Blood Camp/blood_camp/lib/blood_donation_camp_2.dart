@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BloodDonationCamp2 extends StatefulWidget {
-  final BloodCampDetailsData bloodCampDetailsData;
+  final CampData bloodCampDetailsData;
   const BloodDonationCamp2({super.key, required this.bloodCampDetailsData});
 
   @override
