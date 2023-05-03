@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:regex_test/astrologer_profile.dart';
+import 'package:regex_test/chat_intake_from.dart';
 import 'package:regex_test/payment.dart';
+import 'package:regex_test/ui_utils.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -134,6 +136,62 @@ class _SearchScreenState extends State<ChatScreen> {
       "total_money": "₹60"
     }
   ];
+  List language = [
+    "English",
+    "Hindi",
+    "Marathi",
+    "Malayalam",
+    "Kannada",
+    "Tamil",
+    "Telegu"
+  ];
+  List speciality = [
+    "Love",
+    "Marriage",
+    "Carrer",
+    "Life",
+    "Health",
+  ];
+  List consultationMethod = [
+    "Call",
+    "Chat",
+    "Live",
+    "Video",
+    "Video\nReport",
+  ];
+  List skill = [
+    "Vedic Astrology",
+    "Tarot Card reading",
+    "Kundlii",
+    "Palmistry",
+    "Numerology",
+    "Match Making",
+    "Counsellor",
+    "Face reading",
+    "Lal Kitab",
+    "Vastu",
+    "Angel Card healing",
+    "Abroad settlement",
+  ];
+  List segment = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+  ];
+  List sortBy = [
+    "Popularity",
+    "Experience : High to Low",
+    "Experience : Low to High",
+    "Total orders : High to Low",
+    "Total orders : Low to High",
+    "Price : High to Low",
+    "Price : Low to High",
+    "Rating : Low to High"
+  ];
+  int groupValue = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -282,23 +340,37 @@ class _SearchScreenState extends State<ChatScreen> {
                         ],
                       ),
                     ),
-                    Container(
-                      height: 26,
-                      width: 26,
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [BoxShadow()]),
-                      child: const Icon(Icons.filter_alt_outlined),
+                    InkWell(
+                      onTap: () {
+                        UiUtilsScreen.menuBottomModel(
+                          context,
+                          sortBy,
+                        );
+                      },
+                      child: Container(
+                        height: 26,
+                        width: 26,
+                        decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [BoxShadow()]),
+                        child: const Icon(Icons.filter_alt_outlined),
+                      ),
                     ),
-                    Container(
-                      height: 26,
-                      width: 26,
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [BoxShadow()]),
-                      child: const Icon(Icons.menu),
+                    InkWell(
+                      onTap: () {
+                        UiUtilsScreen.filterBottomModal(context, language,
+                            speciality, consultationMethod, skill, segment);
+                      },
+                      child: Container(
+                        height: 26,
+                        width: 26,
+                        decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [BoxShadow()]),
+                        child: const Icon(Icons.menu),
+                      ),
                     )
                   ],
                 ),
@@ -441,24 +513,36 @@ class _SearchScreenState extends State<ChatScreen> {
                                     const SizedBox(
                                       height: 4,
                                     ),
-                                    Row(
-                                      children: const [
-                                        Icon(Icons.phone,
-                                            size: 12, color: Color(0xff848484)),
-                                        SizedBox(
-                                          width: 12,
-                                        ),
-                                        Icon(
-                                          Icons.video_camera_back,
-                                          size: 12,
-                                          color: Color(0xff848484),
-                                        ),
-                                        SizedBox(
-                                          width: 12,
-                                        ),
-                                        Icon(Icons.chat,
-                                            size: 12, color: Color(0xff848484))
-                                      ],
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ChatIntakeForm(),
+                                            ));
+                                      },
+                                      child: Row(
+                                        children: const [
+                                          Icon(Icons.phone,
+                                              size: 12,
+                                              color: Color(0xff848484)),
+                                          SizedBox(
+                                            width: 12,
+                                          ),
+                                          Icon(
+                                            Icons.video_camera_back,
+                                            size: 12,
+                                            color: Color(0xff848484),
+                                          ),
+                                          SizedBox(
+                                            width: 12,
+                                          ),
+                                          Icon(Icons.chat,
+                                              size: 12,
+                                              color: Color(0xff848484))
+                                        ],
+                                      ),
                                     )
                                   ],
                                 ),

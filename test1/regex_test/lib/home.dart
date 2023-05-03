@@ -1473,7 +1473,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             backgroundColor: Colors.transparent,
                             builder: (BuildContext context) {
                               return ClipRRect(
-                                borderRadius: BorderRadius.circular(24),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(24),
+                                    topRight: Radius.circular(24)),
                                 child: Container(
                                   color: Colors.white,
                                   height: 336,

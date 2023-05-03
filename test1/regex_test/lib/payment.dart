@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:regex_test/recharge_coupon.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -223,7 +224,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             fontSize: 17, fontWeight: FontWeight.w500),
                       ),
                       Spacer(),
-                      Icon(Icons.arrow_forward_ios_rounded)
+                      InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => RechargeCouponScreen(),
+                                ));
+                          },
+                          child: Icon(Icons.arrow_forward_ios_rounded))
                     ],
                   ),
                   SizedBox(
@@ -366,7 +375,156 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
                               backgroundColor: Color(0xff59B8BE)),
-                          onPressed: () {},
+                          onPressed: () {
+                            showModalBottomSheet(
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return ClipRRect(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(24),
+                                        topRight: Radius.circular(24)),
+                                    child: Container(
+                                      height: 334,
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Text(
+                                              "Payment Detail",
+                                              style: GoogleFonts.hind(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                            Divider(
+                                              thickness: 1,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "Subtotal",
+                                                  style: GoogleFonts.hind(
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                                Text(
+                                                  "₹200",
+                                                  style: GoogleFonts.hind(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 14,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "GST @ 18%",
+                                                  style: GoogleFonts.hind(
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                                Text(
+                                                  "₹36",
+                                                  style: GoogleFonts.hind(
+                                                      decoration: TextDecoration
+                                                          .lineThrough,
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              "Your first recharge is tax free now!",
+                                              style: GoogleFonts.hind(
+                                                  fontSize: 13,
+                                                  color: Color(0xff848484)),
+                                            ),
+                                            SizedBox(
+                                              height: 14,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "Total",
+                                                  style: GoogleFonts.hind(
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                                Text(
+                                                  "₹200",
+                                                  style: GoogleFonts.hind(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Divider(
+                                              thickness: 1,
+                                            ),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            ConstrainedBox(
+                                              constraints:
+                                                  BoxConstraints.tightFor(
+                                                      height: 50,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width),
+                                              child: ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10)),
+                                                      backgroundColor:
+                                                          const Color(
+                                                              0xff59B8BE)),
+                                                  onPressed: () {},
+                                                  child: Text(
+                                                    "Proceed to Pay",
+                                                    style: GoogleFonts.hind(
+                                                        fontSize: 17),
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ));
+                              },
+                            );
+                          },
                           child: Text(
                             "Proceed to Pay",
                             style: GoogleFonts.hind(fontSize: 16),

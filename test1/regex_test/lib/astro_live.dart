@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:video_player/video_player.dart';
 
 class AstroLiveScreen extends StatefulWidget {
   const AstroLiveScreen({super.key});
@@ -9,17 +12,34 @@ class AstroLiveScreen extends StatefulWidget {
 }
 
 class _AstroLiveScreenState extends State<AstroLiveScreen> {
+  late VideoPlayerController _controller;
+  @override
+  void initState() {
+    _controller = VideoPlayerController.asset(
+        "assets/pexels-stijn-dijkstra-13008655-2160x3240-25fps.mp4")
+      ..initialize().then((value) {
+        _controller.play();
+        _controller.setLooping(true);
+
+        setState(() {});
+      });
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          height: double.maxFinite,
-          width: double.maxFinite,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: AssetImage('assets/Group 1389@2x.png'))),
+        Center(
+          child: VideoPlayer(_controller),
+          // )
         ),
         Scaffold(
           backgroundColor: Colors.transparent,
@@ -256,15 +276,22 @@ class _AstroLiveScreenState extends State<AstroLiveScreen> {
                 ),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromARGB(255, 170, 170, 170)),
-                    child: Icon(
-                      Icons.hourglass_bottom,
-                      color: Colors.white,
+                  child: InkWell(
+                    onTap: () {
+                      _controller.value.isPlaying
+                          ? _controller.pause()
+                          : _controller.play();
+                    },
+                    child: Container(
+                      height: 32,
+                      width: 32,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 170, 170, 170)),
+                      child: Icon(
+                        Icons.hourglass_bottom,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
