@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:blood_camp/blood_availability.dart';
 import 'package:blood_camp/model/blood_avail_details_model.dart';
+import 'package:blood_camp/model/district_details_model.dart';
+import 'package:blood_camp/model/state_details_model.dart';
 import 'package:blood_camp/network_apis/api_servies.dart';
 import 'package:blood_camp/ui_utils.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
@@ -17,47 +19,19 @@ class BloodAvailabilitySearch extends StatefulWidget {
 }
 
 class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
+  StateDetailsModel? stateDetailsModel;
+  DistrictDetailsModel? districtDetailsModel;
+  @override
+  void initState() {
+    ApiService.getStateDetails().then((value) {
+      stateDetailsModel = value;
+      setState(() {});
+    });
+
+    super.initState();
+  }
+
   bool apiLoading = false;
-  final List<DropDownValueModel> state = <DropDownValueModel>[
-    DropDownValueModel(
-        name: 'Andaman and Nicobar', value: 'Andaman and Nicobar'),
-    DropDownValueModel(name: "Andhra Pradesh", value: "Andhra Pradesh"),
-    DropDownValueModel(name: "Arunachal Pradesh", value: "Arunachal Pradesh"),
-    DropDownValueModel(name: "Assam", value: "Assam"),
-    DropDownValueModel(name: "Bihar", value: "Bihar"),
-    DropDownValueModel(name: "Chandigarh", value: "Chandigarh"),
-    DropDownValueModel(name: "Chhattisgarh", value: "Chhattisgarh"),
-    DropDownValueModel(
-        name: "Dadra and Nagar Haveli", value: "Dadra and Nagar Haveli"),
-    DropDownValueModel(name: "Daman and Diu", value: "Daman and Diu"),
-    DropDownValueModel(name: "Delhi", value: "Delhi"),
-    DropDownValueModel(name: "Goa", value: "Goa"),
-    DropDownValueModel(name: "Gujrat", value: "Gujrat"),
-    DropDownValueModel(name: "Haryana", value: "Haryana"),
-    DropDownValueModel(name: "Himachal Pradesh", value: "Himachal Pradesh"),
-    DropDownValueModel(name: "Jammu and Kashmir", value: "Jammu and Kashmir"),
-    DropDownValueModel(name: "Jharkhand", value: "Jharkhand"),
-    DropDownValueModel(name: "Karnataka", value: "Karnataka"),
-    DropDownValueModel(name: "Kerela", value: "Kerela"),
-    DropDownValueModel(name: "Ladakh", value: "Ladakh"),
-    DropDownValueModel(name: "Lakshadweep", value: "Lakshadweep"),
-    DropDownValueModel(name: "Madhya Pradesh", value: "Madhya Pradesh"),
-    DropDownValueModel(name: "Maharashtra", value: "Maharashtra"),
-    DropDownValueModel(name: "Manipur", value: "Manipur"),
-    DropDownValueModel(name: "Meghalaya", value: "Meghalaya"),
-    DropDownValueModel(name: "Mizoram", value: "Mizoram"),
-    DropDownValueModel(name: "Nagaland", value: "Nagaland"),
-    DropDownValueModel(name: "Odisha", value: "Odisha"),
-    DropDownValueModel(name: "Pondicherry", value: "Pondicherry"),
-    DropDownValueModel(name: "Punjab", value: "Punjab"),
-    DropDownValueModel(name: "Rajasthan", value: "Rajasthan"),
-    DropDownValueModel(name: "Sikkim", value: "Sikkim"),
-    DropDownValueModel(name: "Tamil Nadu", value: "Tamil Nadu"),
-    DropDownValueModel(name: "Telangana", value: "Telangana"),
-    DropDownValueModel(name: "Tripura", value: "Tripura"),
-    DropDownValueModel(name: "Uttar Pradesh", value: "Uttar Pradesh"),
-    DropDownValueModel(name: "West Bengal", value: "West Bengal"),
-  ];
 
   final List<DropDownValueModel> bloodGroup = <DropDownValueModel>[
     DropDownValueModel(name: 'A+', value: 'A+'),
@@ -70,41 +44,13 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
     DropDownValueModel(name: "O-", value: "O-")
   ];
 
-  final List<DropDownValueModel> bloodComponent = <DropDownValueModel>[
-    DropDownValueModel(name: 'Whole Blood', value: 'Whole Blood'),
-    DropDownValueModel(
-        name: "Single Donor Platelet", value: "Single Donor Platelet"),
-    DropDownValueModel(
-        name: "Single Donor Plasma", value: "Single Donor Plasma"),
-    DropDownValueModel(
-        name: "Sagm Packed Red Blood Cells",
-        value: "Sagm Packed Red Blood Cells"),
-    DropDownValueModel(
-        name: "Platelet Rich Plasma", value: "Platelet Rich Plasma"),
-    DropDownValueModel(
-        name: "Platelet Poor Plasma", value: "Platelet Poor Plasma"),
-    DropDownValueModel(
-        name: "Platelet Concentrate", value: "Platelet Concentrate"),
-    DropDownValueModel(name: "Plasma", value: "Plasma"),
-    DropDownValueModel(
-        name: "Packed Red Blood Cells", value: "Packed Red Blood Cells"),
-    DropDownValueModel(name: "Leukoreduced RBC", value: "Leukoreduced RBC"),
-    DropDownValueModel(name: "Irradiated RBC", value: "Irradiated RBC"),
-    DropDownValueModel(
-        name: "Fresh Frozen Plasma", value: "Fresh Frozen Plasma"),
-    DropDownValueModel(name: "Cryoprecipitate", value: "Cryoprecipitate"),
-    DropDownValueModel(name: "Cryo Poor Plasma", value: "Cryo Poor Plasma"),
-  ];
-
   SingleValueDropDownController bloodGroupController =
       SingleValueDropDownController();
   SingleValueDropDownController stateController =
       SingleValueDropDownController();
-  SingleValueDropDownController bloodComponentController =
-      SingleValueDropDownController();
   TextEditingController pinCodeController = TextEditingController();
-
-  TextEditingController districtController = TextEditingController();
+  SingleValueDropDownController districtController =
+      SingleValueDropDownController();
 
   @override
   Widget build(BuildContext context) {
@@ -133,78 +79,93 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                   child: Column(
                 children: [
                   UiUtilsScreen.commonDropdown(
-                    styleLabel: GoogleFonts.roboto(
-                        color: Color(0xFF706464),
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Select State";
-                      }
-                      return null;
-                    },
-                    controller: stateController,
-                    dataList: state,
-                    lableValue: "Select State",
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  TextFormField(
-                    controller: districtController,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(16),
-                      hintStyle: GoogleFonts.roboto(
+                      styleLabel: GoogleFonts.roboto(
                           color: Color(0xFF706464),
                           fontSize: 13,
                           fontWeight: FontWeight.w400),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF706464)),
-                          borderRadius: BorderRadius.circular(41)),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF706464)),
-                          borderRadius: BorderRadius.circular(41)),
-                      hintText: "Select District",
-                    ),
-                  ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Select State";
+                        }
+                        return null;
+                      },
+                      controller: stateController,
+                      dataList:
+                          stateDetailsModel?.stateDetailsData?.dropDownState ??
+                              [],
+                      lableValue: "Select State",
+                      onChangedFN: (v) async {
+                        log(v.value);
+                        districtDetailsModel =
+                            await ApiService.getDistrictDetails(v.value);
+                        setState(() {});
+                      }),
                   SizedBox(
                     height: 16,
                   ),
-                  TextFormField(
-                    controller: pinCodeController,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(16),
-                      hintStyle: GoogleFonts.roboto(
-                          color: Color(0xFF706464),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF706464)),
-                          borderRadius: BorderRadius.circular(41)),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF706464)),
-                          borderRadius: BorderRadius.circular(41)),
-                      hintText: "Enter Pin Code",
-                    ),
+
+                  if (stateController.dropDownValue != null)
+                    UiUtilsScreen.commonDropdown(
+                        styleLabel: GoogleFonts.roboto(
+                            color: Color(0xFF706464),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Select District";
+                          }
+                          return null;
+                        },
+                        controller: districtController,
+                        dataList: districtDetailsModel == null
+                            ? []
+                            : districtDetailsModel!
+                                .districtDetailsData!.dropDownDistrict,
+                        lableValue: "Select District",
+                        onChangedFN: (v) {
+                          setState(() {});
+                        }),
+                  SizedBox(
+                    height: 16,
                   ),
+                  if (districtController.dropDownValue != null)
+                    TextFormField(
+                      controller: pinCodeController,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(16),
+                        labelStyle: GoogleFonts.roboto(
+                            color: Color(0xFF706464),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFF706464)),
+                            borderRadius: BorderRadius.circular(41)),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFF706464)),
+                            borderRadius: BorderRadius.circular(41)),
+                        labelText: "Enter Pin Code (Not Mandatory)",
+                      ),
+                    ),
                   SizedBox(
                     height: 16,
                   ),
                   UiUtilsScreen.commonDropdown(
-                    styleLabel: GoogleFonts.roboto(
-                        color: Color(0xFF706464),
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400),
-                    controller: bloodGroupController,
-                    dataList: bloodGroup,
-                    lableValue: "Select Blood Groups",
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Select Blood Groups";
-                      }
-                      return null;
-                    },
-                  ),
+                      styleLabel: GoogleFonts.roboto(
+                          color: Color(0xFF706464),
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400),
+                      controller: bloodGroupController,
+                      dataList: bloodGroup,
+                      lableValue: "Select Blood Groups",
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Select Blood Groups";
+                        }
+                        return null;
+                      },
+                      onChangedFN: (v) {
+                        setState(() {});
+                      }),
                   SizedBox(
                     height: 16,
                   ),
@@ -237,7 +198,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
             onPressed: () async {
               if (stateController.dropDownValue != null &&
                   bloodGroupController.dropDownValue != null &&
-                  districtController.text.isNotEmpty) {
+                  districtController.dropDownValue != null) {
                 setState(() {
                   apiLoading = true;
                 });
@@ -246,7 +207,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                     await ApiService.getBloodAvailDetails(
                         state: stateController.dropDownValue!.name,
                         bloodGroup: bloodGroupController.dropDownValue!.name,
-                        district: districtController.text,
+                        district: districtController.dropDownValue!.name,
                         pincode: pinCodeController.text);
                 setState(() {
                   apiLoading = false;
@@ -285,7 +246,31 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                       );
                     },
                   );
-              }
+              } else
+                return showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      actions: [
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xffBF222B)),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("OK"))
+                      ],
+                      content: Text(
+                        "Enter Required Fields",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.roboto(
+                            color: Color(0xffBF222B),
+                            fontSize: 23,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    );
+                  },
+                );
             },
             child: apiLoading
                 ? SizedBox(
@@ -301,7 +286,11 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
             style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFBF222B),
+                backgroundColor: stateController.dropDownValue != null &&
+                        bloodGroupController.dropDownValue != null &&
+                        districtController.dropDownValue != null
+                    ? Color(0xFFBF222B)
+                    : Colors.grey,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(69))),
           ),

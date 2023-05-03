@@ -1,6 +1,7 @@
 import 'package:blood_camp/loginpage.dart';
 
 import 'package:blood_camp/profile.dart';
+import 'package:blood_camp/shared_pref.dart';
 
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
@@ -18,42 +19,45 @@ class UiUtilsScreen {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Row(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 26,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          name,
-                          style: GoogleFonts.roboto(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff303030)),
+                        SizedBox(
+                          width: 140,
+                          child: Text(
+                            name,
+                            style: GoogleFonts.roboto(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: const Color(0xff303030)),
+                          ),
                         ),
                         Text(
                           mobileNo,
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xff303030)),
+                              color: const Color(0xff303030)),
                         )
                       ],
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
-                SizedBox(
+                const SizedBox(
                     width: 170,
                     child: Divider(
                       color: Colors.black,
@@ -63,10 +67,10 @@ class UiUtilsScreen {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProfileScreen(),
+                            builder: (context) => const ProfileScreen(),
                           ));
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.manage_accounts_outlined,
                       color: Color(0xffBF222B),
                     ),
@@ -75,7 +79,7 @@ class UiUtilsScreen {
                       style: GoogleFonts.roboto(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff303030)),
+                          color: const Color(0xff303030)),
                     )),
                 // TextButton.icon(
                 //     onPressed: () {},
@@ -105,7 +109,7 @@ class UiUtilsScreen {
                 //     )),
                 TextButton.icon(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.home_work_outlined,
                       color: Color(0xffBF222B),
                     ),
@@ -116,17 +120,17 @@ class UiUtilsScreen {
                           fontWeight: FontWeight.w400,
                           color: Colors.black),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
-                SizedBox(
+                const SizedBox(
                     width: 170,
                     child: Divider(
                       color: Colors.black,
                     )),
                 TextButton.icon(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.group_add_outlined,
                       color: Color(0xffBF222B),
                     ),
@@ -135,11 +139,11 @@ class UiUtilsScreen {
                       style: GoogleFonts.roboto(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff303030)),
+                          color: const Color(0xff303030)),
                     )),
                 TextButton.icon(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.policy,
                       color: Color(0xffBF222B),
                     ),
@@ -148,11 +152,11 @@ class UiUtilsScreen {
                       style: GoogleFonts.roboto(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff303030)),
+                          color: const Color(0xff303030)),
                     )),
                 TextButton.icon(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.filter_1_outlined,
                       color: Color(0xffBF222B),
                     ),
@@ -165,13 +169,14 @@ class UiUtilsScreen {
                     )),
                 TextButton.icon(
                     onPressed: () {
+                      SharedPref.clearToken();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginPage(),
+                            builder: (context) => const LoginPage(),
                           ));
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.settings_power_outlined,
                       color: Color(0xffBF222B),
                     ),
@@ -197,7 +202,7 @@ class UiUtilsScreen {
         'Hello, $name',
         style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
       ),
-      backgroundColor: Color(0xffBF222B),
+      backgroundColor: const Color(0xffBF222B),
       // actions: [
       //   IconButton(
       //       onPressed: () {
@@ -217,6 +222,7 @@ class UiUtilsScreen {
       required FormFieldValidator validator,
       required String lableValue,
       required TextStyle styleLabel,
+      required onChangedFN,
       required List<DropDownValueModel> dataList}) {
     return DropDownTextField(
       validator: validator,
@@ -224,20 +230,21 @@ class UiUtilsScreen {
       controller: controller,
       // stateController,
       textFieldDecoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(16),
         labelStyle: styleLabel,
         labelText: lableValue,
         // "State",
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(41),
-            borderSide: BorderSide(color: Color(0xFF667685))),
+            borderSide: const BorderSide(color: Color(0xFF667685))),
         errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF667685)),
+            borderSide: const BorderSide(color: Color(0xFF667685)),
             borderRadius: BorderRadius.circular(41)),
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF667685)),
+            borderSide: const BorderSide(color: Color(0xFF667685)),
             borderRadius: BorderRadius.circular(41)),
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xFF667685)),
+            borderSide: const BorderSide(color: Color(0xFF667685)),
             borderRadius: BorderRadius.circular(41)),
       ),
 
@@ -251,12 +258,13 @@ class UiUtilsScreen {
       searchKeyboardType: TextInputType.name,
       dropDownList: dataList,
       //  state,
-      onChanged: (val) {},
+      onChanged: (v) {
+        onChangedFN(v);
+      },
     );
   }
 
   static String listConversion(List data) {
     return data.toString().split("[").last.split("]").first;
-   
   }
 }

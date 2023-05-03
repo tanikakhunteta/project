@@ -11,4 +11,7 @@ class ApisEndPoint {
   static String bloodAvailDetails = "$baseUrl/ngoProgram/blood-avail-details";
   static String bloodCampDetails = "$baseUrl/ngoProgram/blood-camp-details";
   static String allPostDetails = "$baseUrl/ngoActivity/all-posts";
+  static String stateDetails = "$baseUrl/admin/states/all";
+  static String districtDetails = "$baseUrl/admin/districts/all";
+  static String getImageUploadUrl = "$baseUrl/user/pre-signed-url";
 }

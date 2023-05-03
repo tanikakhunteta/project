@@ -1,5 +1,5 @@
 import 'package:blood_camp/model/blood_avail_details_model.dart';
-import 'package:blood_camp/ui_utils.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';

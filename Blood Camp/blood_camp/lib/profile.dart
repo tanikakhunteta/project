@@ -111,12 +111,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 24,
                                 ),
                                 Stack(children: [
-                                  InkWell(
-                                    onTap: () {
-                                      showModalBottomSheet(
+                                  image != null
+                                      ? CircleAvatar(
+                                          radius: 70,
+                                          backgroundImage:
+                                              FileImage(File(image!.path)),
+                                        )
+                                      : CircleAvatar(
+                                          radius: 70,
+                                          backgroundImage: const AssetImage(
+                                              'assets/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg'),
+                                        ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 100, top: 100),
+                                    child: InkWell(
+                                      onTap: () {
+                                        showModalBottomSheet(
                                           backgroundColor: Colors.white,
                                           context: context,
-                                          builder: (BuildContext context) {
+                                          builder: (context) {
                                             return SizedBox(
                                               height: 70,
                                               width: double.infinity,
@@ -167,29 +181,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 ],
                                               ),
                                             );
-                                          });
-                                    },
-                                    child: image != null
-                                        ? CircleAvatar(
-                                            radius: 70,
-                                            backgroundImage:
-                                                FileImage(File(image!.path)),
-                                          )
-                                        : CircleAvatar(
-                                            radius: 70,
-                                            backgroundImage: const AssetImage(
-                                                'assets/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg'),
-                                          ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 100, top: 100),
-                                    child: CircleAvatar(
-                                      radius: 20,
-                                      backgroundColor: Colors.white,
-                                      child: Icon(
-                                        Icons.camera_alt_outlined,
-                                        color: Color(0xffBF222B),
+                                          },
+                                        );
+                                      },
+                                      child: CircleAvatar(
+                                        radius: 20,
+                                        backgroundColor: Colors.white,
+                                        child: Icon(
+                                          Icons.camera_alt_outlined,
+                                          color: Color(0xffBF222B),
+                                        ),
                                       ),
                                     ),
                                   )

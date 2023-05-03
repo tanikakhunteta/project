@@ -1,9 +1,11 @@
 import 'package:blood_camp/blood_donation_camp1.dart';
 import 'package:blood_camp/model/blood_camp_details_model.dart';
+import 'package:blood_camp/model/district_details_model.dart';
+import 'package:blood_camp/model/state_details_model.dart';
 import 'package:blood_camp/network_apis/api_servies.dart';
 import 'package:blood_camp/ui_utils.dart';
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:custom_date_range_picker/custom_date_range_picker.dart';
+
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,6 +20,18 @@ class BloodDonationCampScreen extends StatefulWidget {
 }
 
 class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
+  StateDetailsModel? stateDetailsModel;
+  DistrictDetailsModel? districtDetailsModel;
+  @override
+  void initState() {
+    ApiService.getStateDetails().then((value) {
+      stateDetailsModel = value;
+      setState(() {});
+    });
+   
+    super.initState();
+  }
+
   String? startDate;
   String? lastDate;
   bool apiLoading = false;
@@ -27,52 +41,12 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
   List<DateTime?> _startDate = [
     DateTime.now(),
   ];
-  final List<DropDownValueModel> state = <DropDownValueModel>[
-    DropDownValueModel(
-        name: 'Andaman and Nicobar', value: 'Andaman and Nicobar'),
-    DropDownValueModel(name: "Andhra Pradesh", value: "Andhra Pradesh"),
-    DropDownValueModel(name: "Arunachal Pradesh", value: "Arunachal Pradesh"),
-    DropDownValueModel(name: "Assam", value: "Assam"),
-    DropDownValueModel(name: "Bihar", value: "Bihar"),
-    DropDownValueModel(name: "Chandigarh", value: "Chandigarh"),
-    DropDownValueModel(name: "Chhattisgarh", value: "Chhattisgarh"),
-    DropDownValueModel(
-        name: "Dadra and Nagar Haveli", value: "Dadra and Nagar Haveli"),
-    DropDownValueModel(name: "Daman and Diu", value: "Daman and Diu"),
-    DropDownValueModel(name: "Delhi", value: "Delhi"),
-    DropDownValueModel(name: "Goa", value: "Goa"),
-    DropDownValueModel(name: "Gujrat", value: "Gujrat"),
-    DropDownValueModel(name: "Haryana", value: "Haryana"),
-    DropDownValueModel(name: "Himachal Pradesh", value: "Himachal Pradesh"),
-    DropDownValueModel(name: "Jammu and Kashmir", value: "Jammu and Kashmir"),
-    DropDownValueModel(name: "Jharkhand", value: "Jharkhand"),
-    DropDownValueModel(name: "Karnataka", value: "Karnataka"),
-    DropDownValueModel(name: "Kerela", value: "Kerela"),
-    DropDownValueModel(name: "Ladakh", value: "Ladakh"),
-    DropDownValueModel(name: "Lakshadweep", value: "Lakshadweep"),
-    DropDownValueModel(name: "Madhya Pradesh", value: "Madhya Pradesh"),
-    DropDownValueModel(name: "Maharashtra", value: "Maharashtra"),
-    DropDownValueModel(name: "Manipur", value: "Manipur"),
-    DropDownValueModel(name: "Meghalaya", value: "Meghalaya"),
-    DropDownValueModel(name: "Mizoram", value: "Mizoram"),
-    DropDownValueModel(name: "Nagaland", value: "Nagaland"),
-    DropDownValueModel(name: "Odisha", value: "Odisha"),
-    DropDownValueModel(name: "Pondicherry", value: "Pondicherry"),
-    DropDownValueModel(name: "Punjab", value: "Punjab"),
-    DropDownValueModel(name: "Rajasthan", value: "Rajasthan"),
-    DropDownValueModel(name: "Sikkim", value: "Sikkim"),
-    DropDownValueModel(name: "Tamil Nadu", value: "Tamil Nadu"),
-    DropDownValueModel(name: "Telangana", value: "Telangana"),
-    DropDownValueModel(name: "Tripura", value: "Tripura"),
-    DropDownValueModel(name: "Uttar Pradesh", value: "Uttar Pradesh"),
-    DropDownValueModel(name: "West Bengal", value: "West Bengal"),
-  ];
+
   SingleValueDropDownController stateController =
       SingleValueDropDownController();
-  TextEditingController districtController = TextEditingController();
+  SingleValueDropDownController districtController =
+      SingleValueDropDownController();
   TextEditingController pinCodeController = TextEditingController();
-
-  TextEditingController townController = TextEditingController();
 
   TextEditingController dateController = TextEditingController();
   @override
@@ -99,60 +73,70 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                 height: 16,
               ),
               UiUtilsScreen.commonDropdown(
-                styleLabel: GoogleFonts.roboto(
-                    color: Color(0xFF706464),
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400),
-                controller: stateController,
-                dataList: state,
-                lableValue: "Select State",
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Select State";
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              TextFormField(
-                controller: districtController,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(16),
-                  labelStyle: GoogleFonts.roboto(
+                  styleLabel: GoogleFonts.roboto(
                       color: Color(0xFF706464),
                       fontSize: 13,
                       fontWeight: FontWeight.w400),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF706464)),
-                      borderRadius: BorderRadius.circular(41)),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF706464)),
-                      borderRadius: BorderRadius.circular(41)),
-                  labelText: "Select District",
-                ),
-              ),
+                  controller: stateController,
+                  dataList:
+                      stateDetailsModel?.stateDetailsData?.dropDownState ?? [],
+                  lableValue: "Select State",
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Select State";
+                    }
+                    return null;
+                  },
+                  onChangedFN: (v) async {
+                    districtDetailsModel =
+                        await ApiService.getDistrictDetails(v.value);
+                    setState(() {});
+                  }),
               SizedBox(
                 height: 16,
               ),
-              TextFormField(
-                controller: pinCodeController,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(16),
-                  labelStyle: GoogleFonts.roboto(
-                      color: Color(0xFF706464),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF706464)),
-                      borderRadius: BorderRadius.circular(41)),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF706464)),
-                      borderRadius: BorderRadius.circular(41)),
-                  labelText: "Enter Pin Code",
-                ),
+              if (stateController.dropDownValue != null)
+                UiUtilsScreen.commonDropdown(
+                    styleLabel: GoogleFonts.roboto(
+                        color: Color(0xFF706464),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400),
+                    controller: districtController,
+                    dataList: districtDetailsModel
+                            ?.districtDetailsData?.dropDownDistrict ??
+                        [],
+                    lableValue: "Select District",
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Select District";
+                      }
+                      return null;
+                    },
+                    onChangedFN: (v) {
+                      setState(() {});
+                    }),
+
+              SizedBox(
+                height: 16,
               ),
+              if (districtController.dropDownValue != null)
+                TextFormField(
+                  controller: pinCodeController,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(16),
+                    labelStyle: GoogleFonts.roboto(
+                        color: Color(0xFF706464),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF706464)),
+                        borderRadius: BorderRadius.circular(41)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF706464)),
+                        borderRadius: BorderRadius.circular(41)),
+                    labelText: "Enter Pin Code (Not Mandatory)",
+                  ),
+                ),
               // SizedBox(
               //   height: 16,
               // ),
@@ -256,7 +240,9 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 15, top: 15),
                     child: Text(
-                      lastDate != null ? lastDate! : "Select Last Date",
+                      lastDate != null
+                          ? lastDate!
+                          : "Select Last Date (Not Mandatory)",
                       style: GoogleFonts.roboto(
                           color: Color(0xFF706464),
                           fontSize: 13,
@@ -277,7 +263,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
           child: ElevatedButton(
             onPressed: () async {
               if (stateController.dropDownValue != null &&
-                  districtController.text.isNotEmpty &&
+                  districtController.dropDownValue != null &&
                   startDate != null) {
                 setState(() {
                   apiLoading = true;
@@ -289,7 +275,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                         startDate: _startDate[0].toString(),
                         endDate:
                             lastDate != null ? _endDate[0].toString() : null,
-                        district: districtController.text);
+                        district: districtController.dropDownValue!.name);
                 setState(() {
                   apiLoading = false;
                 });
@@ -325,7 +311,31 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                       );
                     },
                   );
-              }
+              } else
+                return showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      actions: [
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xffBF222B)),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("OK"))
+                      ],
+                      content: Text(
+                        "Enter Required Fields",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.roboto(
+                            color: Color(0xffBF222B),
+                            fontSize: 23,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    );
+                  },
+                );
             },
             child: apiLoading
                 ? SizedBox(
@@ -341,7 +351,11 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
             style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFBF222B),
+                backgroundColor: stateController.dropDownValue != null &&
+                        districtController.dropDownValue != null &&
+                        startDate != null
+                    ? Color(0xFFBF222B)
+                    : Colors.grey,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(69))),
           ),

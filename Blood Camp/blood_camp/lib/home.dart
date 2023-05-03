@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:blood_camp/become_a_volunteer.dart';
 import 'package:blood_camp/blood_availability_search.dart';
 import 'package:blood_camp/model/profile_model.dart';
@@ -32,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         userProfileModel = value;
       });
     });
-    // TODO: implement initState
+
     super.initState();
   }
 

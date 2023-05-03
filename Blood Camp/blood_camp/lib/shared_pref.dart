@@ -12,4 +12,9 @@ class SharedPref {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.setString(tokenKey, token);
   }
+
+  static Future<bool> clearToken() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.clear();
+  }
 }

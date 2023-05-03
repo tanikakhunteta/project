@@ -21,7 +21,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
       appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: BackButton(
+          leading: const BackButton(
             color: Color(0xff303030),
           )),
       body: SingleChildScrollView(
@@ -29,7 +29,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
           padding: const EdgeInsets.all(16.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
@@ -37,9 +37,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
               style: GoogleFonts.roboto(
                   fontSize: 34,
                   fontWeight: FontWeight.w700,
-                  color: Color(0xff303030)),
+                  color: const Color(0xff303030)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 56,
             ),
             Text(
@@ -47,23 +47,23 @@ class _VerificationScreenState extends State<VerificationScreen> {
               style: GoogleFonts.roboto(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
-                  color: Color(0xff303030)),
+                  color: const Color(0xff303030)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
             PinCodeFields(
               fieldHeight: 48,
               fieldWidth: 40,
               keyboardType: TextInputType.number,
-              activeBackgroundColor: Color(0xffC2B8B8),
-              fieldBackgroundColor: Color(0xffC2B8B8),
+              activeBackgroundColor: const Color(0xffC2B8B8),
+              fieldBackgroundColor: const Color(0xffC2B8B8),
               length: 6,
               onComplete: (String value) {
                 setState(() {});
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             Row(
@@ -74,7 +74,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   style: GoogleFonts.roboto(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF667685)),
+                      color: const Color(0xFF667685)),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 7),
@@ -83,7 +83,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CreateAccountScreen(),
+                            builder: (context) => const CreateAccountScreen(),
                           ));
                     },
                     child: Text(
@@ -91,13 +91,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       style: GoogleFonts.roboto(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFFFF0202)),
+                          color: const Color(0xFFFF0202)),
                     ),
                   ),
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Text(
@@ -105,9 +105,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
               style: GoogleFonts.roboto(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
-                  color: Color(0xff303030)),
+                  color: const Color(0xff303030)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
             Form(
@@ -116,39 +116,39 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 TextFormField(
                   decoration: InputDecoration(
                     hintStyle: GoogleFonts.roboto(
-                        color: Color(0xFF303030),
+                        color: const Color(0xFF303030),
                         fontSize: 14,
                         fontWeight: FontWeight.w500),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF667685)),
+                        borderSide: const BorderSide(color: Color(0xFF667685)),
                         borderRadius: BorderRadius.circular(41)),
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF667685)),
+                        borderSide: const BorderSide(color: Color(0xFF667685)),
                         borderRadius: BorderRadius.circular(41)),
                     hintText: "Enter New Password",
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 TextFormField(
                   decoration: InputDecoration(
                     hintStyle: GoogleFonts.roboto(
-                        color: Color(0xFF303030),
+                        color: const Color(0xFF303030),
                         fontSize: 14,
                         fontWeight: FontWeight.w500),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF667685)),
+                        borderSide: const BorderSide(color: Color(0xFF667685)),
                         borderRadius: BorderRadius.circular(41)),
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF667685)),
+                        borderSide: const BorderSide(color: Color(0xFF667685)),
                         borderRadius: BorderRadius.circular(41)),
                     hintText: "Confirm Password",
                   ),
                 ),
               ],
             )),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
           ]),
@@ -164,18 +164,18 @@ class _VerificationScreenState extends State<VerificationScreen> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LoginPage(),
+                    builder: (context) => const LoginPage(),
                   ));
             },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 175, 15, 4),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(69))),
             child: Text(
               'SUBMIT',
               style:
                   GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
             ),
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 175, 15, 4),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(69))),
           ),
         ),
       ),

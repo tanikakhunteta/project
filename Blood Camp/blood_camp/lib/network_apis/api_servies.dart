@@ -1,9 +1,13 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:blood_camp/model/all_post_details_model.dart';
 import 'package:blood_camp/model/blood_avail_details_model.dart';
 import 'package:blood_camp/model/blood_camp_details_model.dart';
+import 'package:blood_camp/model/district_details_model.dart';
 import 'package:blood_camp/model/profile_model.dart';
+import 'package:blood_camp/model/state_details_model.dart';
+import 'package:blood_camp/model/upload_image_model.dart';
 import 'package:blood_camp/network_apis/api_end_points.dart';
 import 'package:blood_camp/shared_pref.dart';
 import 'package:dio/dio.dart';
@@ -158,5 +162,53 @@ class ApiService {
       return allPostDetailsModel;
     }
     return null;
+  }
+
+  static Future<StateDetailsModel?> getStateDetails() async {
+    Dio dio = Dio();
+    String token = await SharedPref.getToken();
+    Map<String, String> headers = {"authorization": "Bearer $token"};
+    Response response = await dio.get(ApisEndPoint.stateDetails,
+        options: Options(headers: headers));
+    print(response.data);
+    if (response.data["success"]) {
+      StateDetailsModel stateDetailsModel =
+          StateDetailsModel.fromJson(response.data);
+      return stateDetailsModel;
+    }
+    return null;
+  }
+
+  static Future<DistrictDetailsModel?> getDistrictDetails(String state) async {
+    Dio dio = Dio();
+    String api = "${ApisEndPoint.districtDetails}?state=$state";
+    log(api);
+    String token = await SharedPref.getToken();
+    Map<String, String> headers = {"authorization": "Bearer $token"};
+    Response response = await dio.get(api, options: Options(headers: headers));
+    print(response.data);
+    if (response.data["success"]) {
+      DistrictDetailsModel districtDetailsModel =
+          DistrictDetailsModel.fromJson(response.data);
+      return districtDetailsModel;
+    }
+    return null;
+  }
+
+  static Future<String?> getUploadUrl(String format, File file) async {
+    Dio dio = Dio();
+    String token = await SharedPref.getToken();
+    Map<String, String> headers = {"authorization": "Bearer $token"};
+    Response response = await dio.post(ApisEndPoint.getImageUploadUrl,
+        options: Options(headers: headers),
+        data: {"fileFormat": format, "type": "user"});
+    print(response.data);
+    if (response.data["success"]) {
+      UploadImageModel uploadImageModel =
+          UploadImageModel.fromJson(response.data);
+      return uploadImageModel.data.toString();
+     
+    } else
+      return null;
   }
 }

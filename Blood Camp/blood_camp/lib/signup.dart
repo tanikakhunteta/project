@@ -98,7 +98,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool? ischecked = false;
   final _formKey = GlobalKey<FormState>();
   String? _password;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -356,7 +355,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           controller: stateController,
                           lableValue: 'State',
-                          dataList: state),
+                          dataList: state,
+                          onChangedFN: (v) {
+                            setState(() {});
+                          }),
                       SizedBox(
                         height: 16,
                       ),
@@ -373,7 +375,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           controller: bloodGroupController,
                           dataList: bloodGroup,
-                          lableValue: "Blood Group"),
+                          lableValue: "Blood Group",
+                          onChangedFN: (v) {
+                            setState(() {});
+                          }),
                       SizedBox(
                         height: 16,
                       ),

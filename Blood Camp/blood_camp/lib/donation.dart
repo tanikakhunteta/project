@@ -225,20 +225,22 @@ class _DonationScreenState extends State<DonationScreen>
                                 height: 16,
                               ),
                               UiUtilsScreen.commonDropdown(
-                                styleLabel: GoogleFonts.roboto(
-                                    color: Color(0xFF706464),
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w400),
-                                controller: stateController,
-                                dataList: state,
-                                lableValue: "Select State",
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Select State";
-                                  }
-                                  return null;
-                                },
-                              ),
+                                  styleLabel: GoogleFonts.roboto(
+                                      color: Color(0xFF706464),
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400),
+                                  controller: stateController,
+                                  dataList: state,
+                                  lableValue: "Select State",
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Select State";
+                                    }
+                                    return null;
+                                  },
+                                  onChangedFN: (v) {
+                                    setState(() {});
+                                  }),
                               SizedBox(
                                 height: 16,
                               ),
@@ -452,20 +454,22 @@ class _DonationScreenState extends State<DonationScreen>
                                 height: 16,
                               ),
                               UiUtilsScreen.commonDropdown(
-                                styleLabel: GoogleFonts.roboto(
-                                    color: Color(0xFF706464),
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w400),
-                                controller: state2Controller,
-                                dataList: state,
-                                lableValue: "Select State",
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Select State";
-                                  }
-                                  return null;
-                                },
-                              ),
+                                  styleLabel: GoogleFonts.roboto(
+                                      color: Color(0xFF706464),
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w400),
+                                  controller: state2Controller,
+                                  dataList: state,
+                                  lableValue: "Select State",
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Select State";
+                                    }
+                                    return null;
+                                  },
+                                  onChangedFN: (v) {
+                                    setState(() {});
+                                  }),
                               SizedBox(
                                 height: 16,
                               ),
