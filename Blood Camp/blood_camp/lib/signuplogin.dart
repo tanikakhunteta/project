@@ -26,9 +26,9 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
               style: GoogleFonts.roboto(
                   fontWeight: FontWeight.w700,
                   fontSize: 59,
-                  color: Color(0xffBF222B)),
+                  color: const Color(0xffBF222B)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 27,
             ),
             ConstrainedBox(
@@ -39,22 +39,22 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CreateAccountScreen(),
+                          builder: (context) => const CreateAccountScreen(),
                         ));
                   },
+                  style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      shadowColor: Colors.transparent,
+                      backgroundColor: const Color(0xffBF222B),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30))),
                   child: Text(
                     'SIGN UP',
                     style: GoogleFonts.roboto(
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      elevation: 0,
-                      shadowColor: Colors.transparent,
-                      backgroundColor: Color(0xffBF222B),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 18,
             ),
             ConstrainedBox(
@@ -65,24 +65,24 @@ class _SignUpLoginScreenState extends State<SignUpLoginScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => LoginPage(),
+                          builder: (context) => const LoginPage(),
                         ));
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        side: const BorderSide(color: Colors.black),
+                        borderRadius: BorderRadius.circular(
+                          30,
+                        )),
+                    shadowColor: Colors.black,
+                  ),
                   child: Text(
                     ' LOGIN',
                     style: GoogleFonts.roboto(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFF473D3D)),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        side: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.circular(
-                          30,
-                        )),
-                    shadowColor: Colors.black,
+                        color: const Color(0xFF473D3D)),
                   ),
                 )),
           ],

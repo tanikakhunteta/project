@@ -34,14 +34,14 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
   bool apiLoading = false;
 
   final List<DropDownValueModel> bloodGroup = <DropDownValueModel>[
-    DropDownValueModel(name: 'A+', value: 'A+'),
-    DropDownValueModel(name: "A-", value: "A-"),
-    DropDownValueModel(name: "B+", value: "B+"),
-    DropDownValueModel(name: "B-", value: "B-"),
-    DropDownValueModel(name: "AB+", value: "AB+"),
-    DropDownValueModel(name: "AB-", value: "AB-"),
-    DropDownValueModel(name: "O+", value: "O+"),
-    DropDownValueModel(name: "O-", value: "O-")
+    const DropDownValueModel(name: 'A+', value: 'A+'),
+    const DropDownValueModel(name: "A-", value: "A-"),
+    const DropDownValueModel(name: "B+", value: "B+"),
+    const DropDownValueModel(name: "B-", value: "B-"),
+    const DropDownValueModel(name: "AB+", value: "AB+"),
+    const DropDownValueModel(name: "AB-", value: "AB-"),
+    const DropDownValueModel(name: "O+", value: "O+"),
+    const DropDownValueModel(name: "O-", value: "O-")
   ];
 
   SingleValueDropDownController bloodGroupController =
@@ -62,7 +62,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
               fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         elevation: 0,
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
         // ],
@@ -72,7 +72,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Form(
@@ -80,7 +80,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                 children: [
                   UiUtilsScreen.commonDropdown(
                       styleLabel: GoogleFonts.roboto(
-                          color: Color(0xFF706464),
+                          color: const Color(0xFF706464),
                           fontSize: 13,
                           fontWeight: FontWeight.w400),
                       validator: (value) {
@@ -100,14 +100,14 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                             await ApiService.getDistrictDetails(v.value);
                         setState(() {});
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
 
                   if (stateController.dropDownValue != null)
                     UiUtilsScreen.commonDropdown(
                         styleLabel: GoogleFonts.roboto(
-                            color: Color(0xFF706464),
+                            color: const Color(0xFF706464),
                             fontSize: 13,
                             fontWeight: FontWeight.w400),
                         validator: (value) {
@@ -125,33 +125,35 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                         onChangedFN: (v) {
                           setState(() {});
                         }),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   if (districtController.dropDownValue != null)
                     TextFormField(
                       controller: pinCodeController,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(16),
+                        contentPadding: const EdgeInsets.all(16),
                         labelStyle: GoogleFonts.roboto(
-                            color: Color(0xFF706464),
+                            color: const Color(0xFF706464),
                             fontSize: 13,
                             fontWeight: FontWeight.w400),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFF706464)),
+                            borderSide:
+                                const BorderSide(color: Color(0xFF706464)),
                             borderRadius: BorderRadius.circular(41)),
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFF706464)),
+                            borderSide:
+                                const BorderSide(color: Color(0xFF706464)),
                             borderRadius: BorderRadius.circular(41)),
                         labelText: "Enter Pin Code (Not Mandatory)",
                       ),
                     ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   UiUtilsScreen.commonDropdown(
                       styleLabel: GoogleFonts.roboto(
-                          color: Color(0xFF706464),
+                          color: const Color(0xFF706464),
                           fontSize: 13,
                           fontWeight: FontWeight.w400),
                       controller: bloodGroupController,
@@ -166,7 +168,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                       onChangedFN: (v) {
                         setState(() {});
                       }),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   // UiUtilsScreen.commonDropdown(
@@ -221,7 +223,7 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                           bloodAvailDetailsModel: bloodAvailDetailsModel,
                         ),
                       ));
-                } else
+                } else {
                   return showDialog(
                     context: context,
                     builder: (context) {
@@ -229,24 +231,25 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                         actions: [
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffBF222B)),
+                                  backgroundColor: const Color(0xffBF222B)),
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: Text("OK"))
+                              child: const Text("OK"))
                         ],
                         content: Text(
                           "Blood Not Available",
                           textAlign: TextAlign.center,
                           style: GoogleFonts.roboto(
-                              color: Color(0xffBF222B),
+                              color: const Color(0xffBF222B),
                               fontSize: 23,
                               fontWeight: FontWeight.w600),
                         ),
                       );
                     },
                   );
-              } else
+                }
+              } else {
                 return showDialog(
                   context: context,
                   builder: (context) {
@@ -254,26 +257,35 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                       actions: [
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xffBF222B)),
+                                backgroundColor: const Color(0xffBF222B)),
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text("OK"))
+                            child: const Text("OK"))
                       ],
                       content: Text(
                         "Enter Required Fields",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.roboto(
-                            color: Color(0xffBF222B),
+                            color: const Color(0xffBF222B),
                             fontSize: 23,
                             fontWeight: FontWeight.w600),
                       ),
                     );
                   },
                 );
+              }
             },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: stateController.dropDownValue != null &&
+                        bloodGroupController.dropDownValue != null &&
+                        districtController.dropDownValue != null
+                    ? const Color(0xFFBF222B)
+                    : Colors.grey,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(69))),
             child: apiLoading
-                ? SizedBox(
+                ? const SizedBox(
                     height: 20,
                     width: 20,
                     child: Center(
@@ -285,14 +297,6 @@ class _BloodAvailabilitySearchState extends State<BloodAvailabilitySearch> {
                     style: GoogleFonts.roboto(
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
-            style: ElevatedButton.styleFrom(
-                backgroundColor: stateController.dropDownValue != null &&
-                        bloodGroupController.dropDownValue != null &&
-                        districtController.dropDownValue != null
-                    ? Color(0xFFBF222B)
-                    : Colors.grey,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(69))),
           ),
         ),
       ),

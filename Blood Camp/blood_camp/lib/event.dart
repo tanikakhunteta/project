@@ -19,9 +19,9 @@ class _EventScreenState extends State<EventScreen> {
           "Event",
           style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_outlined))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_outlined))
         ],
       ),
       body: Padding(
@@ -29,7 +29,7 @@ class _EventScreenState extends State<EventScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Container(
@@ -37,10 +37,10 @@ class _EventScreenState extends State<EventScreen> {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       image: AssetImage("assets/Rectangle 129.png"))),
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
             Text(
@@ -48,7 +48,7 @@ class _EventScreenState extends State<EventScreen> {
               style:
                   GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w700),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
@@ -57,7 +57,7 @@ class _EventScreenState extends State<EventScreen> {
               style: GoogleFonts.roboto(
                   fontSize: 13,
                   fontWeight: FontWeight.w400,
-                  color: Color(0xff5C5050)),
+                  color: const Color(0xff5C5050)),
             )
           ],
         ),

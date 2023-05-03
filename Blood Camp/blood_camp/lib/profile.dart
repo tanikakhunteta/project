@@ -63,16 +63,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           "Profile",
           style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         leading: IconButton(
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AllScreen(),
+                    builder: (context) => const AllScreen(),
                   ));
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back)),
         actions: [
           IconButton(
               onPressed: () {
@@ -80,11 +80,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   enabled = true;
                 });
               },
-              icon: Icon(Icons.edit_outlined))
+              icon: const Icon(Icons.edit_outlined))
         ],
       ),
       body: userProfileModel == null
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : NestedScrollView(
@@ -94,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SliverAppBar(
                     automaticallyImplyLeading: false,
                     elevation: 0,
-                    backgroundColor: Color(0xffEDEDED),
+                    backgroundColor: const Color(0xffEDEDED),
                     collapsedHeight: 221,
                     pinned: true,
                     floating: true,
@@ -107,7 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 24,
                                 ),
                                 Stack(children: [
@@ -117,9 +117,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           backgroundImage:
                                               FileImage(File(image!.path)),
                                         )
-                                      : CircleAvatar(
+                                      : const CircleAvatar(
                                           radius: 70,
-                                          backgroundImage: const AssetImage(
+                                          backgroundImage: AssetImage(
                                               'assets/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg'),
                                         ),
                                   Padding(
@@ -150,13 +150,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           setState(() {});
                                                         });
                                                       },
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                         Icons.camera_outlined,
                                                         color:
                                                             Color(0xffBF222B),
                                                         size: 30,
                                                       )),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 100,
                                                   ),
                                                   IconButton(
@@ -171,7 +171,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           setState(() {});
                                                         });
                                                       },
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                         Icons
                                                             .photo_library_outlined,
                                                         color:
@@ -184,7 +184,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           },
                                         );
                                       },
-                                      child: CircleAvatar(
+                                      child: const CircleAvatar(
                                         radius: 20,
                                         backgroundColor: Colors.white,
                                         child: Icon(
@@ -195,7 +195,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                   )
                                 ]),
-                                SizedBox(
+                                const SizedBox(
                                   height: 13,
                                 ),
                                 Text(
@@ -203,7 +203,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ?.username ??
                                       "-",
                                   style: GoogleFonts.roboto(
-                                      color: Color(0xff303030),
+                                      color: const Color(0xff303030),
                                       fontSize: 20,
                                       fontWeight: FontWeight.w700),
                                 )
@@ -219,7 +219,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               body: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Form(
@@ -231,144 +231,150 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               enabled: enabled,
                               controller: nameController,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 15),
                                 label: Text(
                                   "Name",
                                   style: GoogleFonts.roboto(
-                                      fontSize: 16, color: Color(0xff5C5050)),
+                                      fontSize: 16,
+                                      color: const Color(0xff5C5050)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffBF222B)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xffBF222B)),
                                     borderRadius: BorderRadius.circular(41)),
                                 border: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xff706464)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xff706464)),
                                     borderRadius: BorderRadius.circular(41)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 23,
                             ),
                             TextFormField(
                               enabled: enabled,
                               controller: phoneController,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 15),
                                 label: Text(
                                   "Mobile Number",
                                   style: GoogleFonts.roboto(
-                                      fontSize: 16, color: Color(0xff5C5050)),
+                                      fontSize: 16,
+                                      color: const Color(0xff5C5050)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffBF222B)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xffBF222B)),
                                     borderRadius: BorderRadius.circular(41)),
                                 border: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xff706464)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xff706464)),
                                     borderRadius: BorderRadius.circular(41)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 23,
                             ),
                             TextFormField(
                               enabled: enabled,
                               controller: emailController,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 15),
                                 label: Text(
                                   "Email",
                                   style: GoogleFonts.roboto(
-                                      fontSize: 16, color: Color(0xff5C5050)),
+                                      fontSize: 16,
+                                      color: const Color(0xff5C5050)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffBF222B)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xffBF222B)),
                                     borderRadius: BorderRadius.circular(41)),
                                 border: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xff706464)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xff706464)),
                                     borderRadius: BorderRadius.circular(41)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 23,
                             ),
                             TextFormField(
                               enabled: enabled,
                               controller: bloodGroupController,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 15),
                                 label: Text(
                                   "Blood Group",
                                   style: GoogleFonts.roboto(
-                                      fontSize: 16, color: Color(0xff5C5050)),
+                                      fontSize: 16,
+                                      color: const Color(0xff5C5050)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffBF222B)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xffBF222B)),
                                     borderRadius: BorderRadius.circular(41)),
                                 border: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xff706464)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xff706464)),
                                     borderRadius: BorderRadius.circular(41)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 23,
                             ),
                             TextFormField(
                               enabled: enabled,
                               controller: stateController,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 15),
                                 label: Text(
                                   "State",
                                   style: GoogleFonts.roboto(
-                                      fontSize: 16, color: Color(0xff5C5050)),
+                                      fontSize: 16,
+                                      color: const Color(0xff5C5050)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffBF222B)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xffBF222B)),
                                     borderRadius: BorderRadius.circular(41)),
                                 border: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xff706464)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xff706464)),
                                     borderRadius: BorderRadius.circular(41)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 23,
                             ),
                             TextFormField(
                               enabled: enabled,
                               controller: districtController,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 15),
                                 label: Text(
                                   "District",
                                   style: GoogleFonts.roboto(
-                                      fontSize: 16, color: Color(0xff5C5050)),
+                                      fontSize: 16,
+                                      color: const Color(0xff5C5050)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xffBF222B)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xffBF222B)),
                                     borderRadius: BorderRadius.circular(41)),
                                 border: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xff706464)),
+                                    borderSide: const BorderSide(
+                                        color: Color(0xff706464)),
                                     borderRadius: BorderRadius.circular(41)),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 23,
                             ),
                             Center(
@@ -398,8 +404,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       });
                                     });
                                   },
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: enabled
+                                          ? Color(0xFFBF222B)
+                                          : Colors.grey,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(69))),
                                   child: apiLoading
-                                      ? SizedBox(
+                                      ? const SizedBox(
                                           height: 20,
                                           width: 20,
                                           child: Center(
@@ -412,13 +425,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               fontSize: 16,
                                               fontWeight: FontWeight.w400),
                                         ),
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: enabled
-                                          ? Color(0xFFBF222B)
-                                          : Colors.grey,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(69))),
                                 ),
                               ),
                             ),

@@ -208,7 +208,8 @@ class ApiService {
           UploadImageModel.fromJson(response.data);
       return uploadImageModel.data.toString();
      
-    } else
+    } else {
       return null;
+    }
   }
 }

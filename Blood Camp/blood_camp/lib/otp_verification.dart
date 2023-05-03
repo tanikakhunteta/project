@@ -25,7 +25,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: BackButton(
+          leading: const BackButton(
             color: Color(0xff303030),
           )),
       body: SingleChildScrollView(
@@ -33,7 +33,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           padding: const EdgeInsets.all(16.0),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
@@ -43,7 +43,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   fontWeight: FontWeight.w700,
                   color: Color(0xff303030)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
@@ -51,9 +51,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               style: GoogleFonts.roboto(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
-                  color: Color(0xff667685)),
+                  color: const Color(0xff667685)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 87,
             ),
             Center(
@@ -62,10 +62,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 style: GoogleFonts.roboto(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xff303030)),
+                    color: const Color(0xff303030)),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
             PinCodeFields(
@@ -73,14 +73,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               fieldHeight: 48,
               fieldWidth: 40,
               keyboardType: TextInputType.number,
-              activeBackgroundColor: Color(0xffC2B8B8),
-              fieldBackgroundColor: Color(0xffC2B8B8),
+              activeBackgroundColor: const Color(0xffC2B8B8),
+              fieldBackgroundColor: const Color(0xffC2B8B8),
               length: 6,
               onComplete: (String value) {
                 setState(() {});
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Center(
@@ -92,22 +92,22 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignUpScreen(),
+                          builder: (context) => const SignUpScreen(),
                         ));
                   },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 175, 15, 4),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(69))),
                   child: Text(
                     'CONFIRM',
                     style: GoogleFonts.roboto(
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 175, 15, 4),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(69))),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 18,
             ),
             Center(
@@ -116,7 +116,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 style: GoogleFonts.roboto(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xff667685)),
+                    color: const Color(0xff667685)),
               ),
             )
           ]),

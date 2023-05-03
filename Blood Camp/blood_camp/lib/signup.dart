@@ -1,4 +1,7 @@
 import 'package:blood_camp/all_sreen.dart';
+import 'package:blood_camp/model/district_details_model.dart';
+import 'package:blood_camp/model/state_details_model.dart';
+import 'package:blood_camp/network_apis/api_servies.dart';
 import 'package:blood_camp/ui_utils.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 
@@ -29,56 +32,27 @@ extension EmailValidator on String {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final List<DropDownValueModel> state = <DropDownValueModel>[
-    DropDownValueModel(
-        name: 'Andaman and Nicobar', value: 'Andaman and Nicobar'),
-    DropDownValueModel(name: "Andhra Pradesh", value: "Andhra Pradesh"),
-    DropDownValueModel(name: "Arunachal Pradesh", value: "Arunachal Pradesh"),
-    DropDownValueModel(name: "Assam", value: "Assam"),
-    DropDownValueModel(name: "Bihar", value: "Bihar"),
-    DropDownValueModel(name: "Chandigarh", value: "Chandigarh"),
-    DropDownValueModel(name: "Chhattisgarh", value: "Chhattisgarh"),
-    DropDownValueModel(
-        name: "Dadra and Nagar Haveli", value: "Dadra and Nagar Haveli"),
-    DropDownValueModel(name: "Daman and Diu", value: "Daman and Diu"),
-    DropDownValueModel(name: "Delhi", value: "Delhi"),
-    DropDownValueModel(name: "Goa", value: "Goa"),
-    DropDownValueModel(name: "Gujrat", value: "Gujrat"),
-    DropDownValueModel(name: "Haryana", value: "Haryana"),
-    DropDownValueModel(name: "Himachal Pradesh", value: "Himachal Pradesh"),
-    DropDownValueModel(name: "Jammu and Kashmir", value: "Jammu and Kashmir"),
-    DropDownValueModel(name: "Jharkhand", value: "Jharkhand"),
-    DropDownValueModel(name: "Karnataka", value: "Karnataka"),
-    DropDownValueModel(name: "Kerela", value: "Kerela"),
-    DropDownValueModel(name: "Ladakh", value: "Ladakh"),
-    DropDownValueModel(name: "Lakshadweep", value: "Lakshadweep"),
-    DropDownValueModel(name: "Madhya Pradesh", value: "Madhya Pradesh"),
-    DropDownValueModel(name: "Maharashtra", value: "Maharashtra"),
-    DropDownValueModel(name: "Manipur", value: "Manipur"),
-    DropDownValueModel(name: "Meghalaya", value: "Meghalaya"),
-    DropDownValueModel(name: "Mizoram", value: "Mizoram"),
-    DropDownValueModel(name: "Nagaland", value: "Nagaland"),
-    DropDownValueModel(name: "Odisha", value: "Odisha"),
-    DropDownValueModel(name: "Pondicherry", value: "Pondicherry"),
-    DropDownValueModel(name: "Punjab", value: "Punjab"),
-    DropDownValueModel(name: "Rajasthan", value: "Rajasthan"),
-    DropDownValueModel(name: "Sikkim", value: "Sikkim"),
-    DropDownValueModel(name: "Tamil Nadu", value: "Tamil Nadu"),
-    DropDownValueModel(name: "Telangana", value: "Telangana"),
-    DropDownValueModel(name: "Tripura", value: "Tripura"),
-    DropDownValueModel(name: "Uttar Pradesh", value: "Uttar Pradesh"),
-    DropDownValueModel(name: "West Bengal", value: "West Bengal"),
-  ];
+  StateDetailsModel? stateDetailsModel;
+  DistrictDetailsModel? districtDetailsModel;
+  @override
+  void initState() {
+    ApiService.getStateDetails().then((value) {
+      stateDetailsModel = value;
+      setState(() {});
+    });
+
+    super.initState();
+  }
 
   final List<DropDownValueModel> bloodGroup = <DropDownValueModel>[
-    DropDownValueModel(name: 'A+', value: 'A+'),
-    DropDownValueModel(name: "A-", value: "A-"),
-    DropDownValueModel(name: "B+", value: "B+"),
-    DropDownValueModel(name: "B-", value: "B-"),
-    DropDownValueModel(name: "AB+", value: "AB+"),
-    DropDownValueModel(name: "AB-", value: "AB-"),
-    DropDownValueModel(name: "O+", value: "O+"),
-    DropDownValueModel(name: "O-", value: "O-")
+    const DropDownValueModel(name: 'A+', value: 'A+'),
+    const DropDownValueModel(name: "A-", value: "A-"),
+    const DropDownValueModel(name: "B+", value: "B+"),
+    const DropDownValueModel(name: "B-", value: "B-"),
+    const DropDownValueModel(name: "AB+", value: "AB+"),
+    const DropDownValueModel(name: "AB-", value: "AB-"),
+    const DropDownValueModel(name: "O+", value: "O+"),
+    const DropDownValueModel(name: "O-", value: "O-")
   ];
 
   bool isPasswordvisible = false;
@@ -88,7 +62,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmController = TextEditingController();
-  TextEditingController cityController = TextEditingController();
+  SingleValueDropDownController cityController =
+      SingleValueDropDownController();
   SingleValueDropDownController stateController =
       SingleValueDropDownController();
   SingleValueDropDownController bloodGroupController =
@@ -112,34 +87,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
                 'Complete your profile',
                 style: GoogleFonts.roboto(
-                    color: Color(0xFF303030),
+                    color: const Color(0xFF303030),
                     fontSize: 34,
                     fontWeight: FontWeight.w700),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
                 'Please provide us your details below.',
                 style: GoogleFonts.roboto(
-                    color: Color(0xFF667685),
+                    color: const Color(0xFF667685),
                     fontSize: 16,
                     fontWeight: FontWeight.w400),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Form(
                   key: _formKey,
                   child: Column(
                     children: [
-                      TextFormField(
+                      UiUtilsScreen.commonTextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter Name";
@@ -147,32 +122,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           return null;
                         },
                         controller: nameController,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(16),
-                          labelStyle: GoogleFonts.roboto(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(41),
-                              borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          labelText: "Name",
-                        ),
+                        labelValue: "Name",
+                        styleLabel: GoogleFonts.roboto(
+                            color: const Color(0xFF303030),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
-                      TextFormField(
-                        controller: emailController,
+                      UiUtilsScreen.commonTextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter Email";
@@ -181,32 +140,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(16),
-                          labelStyle: GoogleFonts.roboto(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(41),
-                              borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          labelText: "Email address",
-                        ),
+                        controller: emailController,
+                        labelValue: "Email Address",
+                        styleLabel: GoogleFonts.roboto(
+                            color: const Color(0xFF303030),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
-                      TextFormField(
-                        controller: passwordController,
+                      UiUtilsScreen.commonTextFormField(
+                        //  obscureText: !isPasswordvisible,
+
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter Password";
@@ -217,49 +163,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                           return null;
                         },
-                        obscureText: !isPasswordvisible,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(16),
-                          suffixIcon: InkWell(
-                            onTap: () {
-                              setState(() {
-                                isPasswordvisible = !isPasswordvisible;
-                              });
-                            },
-                            child: !isPasswordvisible
-                                ? Icon(
-                                    Icons.visibility_outlined,
-                                    color: Color(0xFF323232),
-                                  )
-                                : Icon(
-                                    Icons.visibility_off_outlined,
-                                    color: Color(0xFF323232),
-                                  ),
-                          ),
-                          labelStyle: GoogleFonts.roboto(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(41),
-                              borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          labelText: "Password",
+                        controller: passwordController,
+                        labelValue: "Password",
+                        styleLabel: GoogleFonts.roboto(
+                            color: const Color(0xFF303030),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              isPasswordvisible = !isPasswordvisible;
+                            });
+                          },
+                          child: !isPasswordvisible
+                              ? const Icon(
+                                  Icons.visibility_outlined,
+                                  color: Color(0xFF323232),
+                                )
+                              : const Icon(
+                                  Icons.visibility_off_outlined,
+                                  color: Color(0xFF323232),
+                                ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
-                      TextFormField(
-                        controller: confirmController,
+                      UiUtilsScreen.commonTextFormField(
+                        // obscureText: !isConfirmPasswordvisible,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter Confirm Password";
@@ -268,83 +199,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           }
                           return null;
                         },
-                        obscureText: !isConfirmPasswordvisible,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(16),
-                          suffixIcon: InkWell(
-                            onTap: () {
-                              setState(() {
-                                isConfirmPasswordvisible =
-                                    !isConfirmPasswordvisible;
-                              });
-                            },
-                            child: !isConfirmPasswordvisible
-                                ? Icon(
-                                    Icons.visibility_outlined,
-                                    color: Color(0xFF323232),
-                                  )
-                                : Icon(
-                                    Icons.visibility_off_outlined,
-                                    color: Color(0xFF323232),
-                                  ),
-                          ),
-                          labelStyle: GoogleFonts.roboto(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(41),
-                              borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          labelText: "Confirm Password",
+                        controller: confirmController,
+                        labelValue: "Confirm Password",
+                        styleLabel: GoogleFonts.roboto(
+                            color: const Color(0xFF303030),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              isConfirmPasswordvisible =
+                                  !isConfirmPasswordvisible;
+                            });
+                          },
+                          child: !isConfirmPasswordvisible
+                              ? const Icon(
+                                  Icons.visibility_outlined,
+                                  color: Color(0xFF323232),
+                                )
+                              : const Icon(
+                                  Icons.visibility_off_outlined,
+                                  color: Color(0xFF323232),
+                                ),
                         ),
                       ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter City";
-                          }
-                          return null;
-                        },
-                        controller: cityController,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(16),
-                          labelStyle: GoogleFonts.roboto(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(41),
-                              borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          labelText: "City",
-                        ),
-                      ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       UiUtilsScreen.commonDropdown(
                           styleLabel: GoogleFonts.roboto(
-                              color: Color(0xFF303030),
+                              color: const Color(0xFF303030),
                               fontSize: 14,
                               fontWeight: FontWeight.w500),
                           validator: (value) {
@@ -355,16 +239,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           controller: stateController,
                           lableValue: 'State',
-                          dataList: state,
-                          onChangedFN: (v) {
+                          dataList: stateDetailsModel
+                                  ?.stateDetailsData?.dropDownState ??
+                              [],
+                          onChangedFN: (v) async {
+                            districtDetailsModel =
+                                await ApiService.getDistrictDetails(v.value);
                             setState(() {});
                           }),
-                      SizedBox(
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      if (stateController.dropDownValue != null)
+                        UiUtilsScreen.commonDropdown(
+                            styleLabel: GoogleFonts.roboto(
+                                color: const Color(0xFF303030),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Select City";
+                              }
+                              return null;
+                            },
+                            controller: cityController,
+                            lableValue: 'City',
+                            dataList: districtDetailsModel
+                                    ?.districtDetailsData?.dropDownDistrict ??
+                                [],
+                            onChangedFN: (v) {
+                              setState(() {});
+                            }),
+                      const SizedBox(
                         height: 16,
                       ),
                       UiUtilsScreen.commonDropdown(
                           styleLabel: GoogleFonts.roboto(
-                              color: Color(0xFF303030),
+                              color: const Color(0xFF303030),
                               fontSize: 14,
                               fontWeight: FontWeight.w500),
                           validator: (value) {
@@ -379,44 +290,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           onChangedFN: (v) {
                             setState(() {});
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
-                      TextFormField(
-                        controller: addressController,
+                      UiUtilsScreen.commonTextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter Address";
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(16),
-                          labelStyle: GoogleFonts.roboto(
-                              color: Color(0xFF303030),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(41),
-                              borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          labelText: "Address",
-                        ),
+                        controller: addressController,
+                        labelValue: "Address",
+                        styleLabel: GoogleFonts.roboto(
+                            color: const Color(0xFF303030),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   )),
               Row(
                 children: [
                   Checkbox(
-                      shape: RoundedRectangleBorder(
+                      shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(2))),
                       value: ischecked,
                       activeColor: Colors.red,
@@ -427,13 +323,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         });
                       }),
                   Text(
-                    'I agree the Terms & Conditions',
+                    'I agree to the Terms & Conditions',
                     style: GoogleFonts.roboto(
                         fontSize: 12, fontWeight: FontWeight.w400),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Center(
@@ -447,23 +343,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllScreen(),
+                              builder: (context) => const AllScreen(),
                             ));
                       }
                     },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFBF222B),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(69))),
                     child: Text(
                       'CONTINUE',
                       style: GoogleFonts.roboto(
                           fontSize: 16, fontWeight: FontWeight.w400),
                     ),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFBF222B),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(69))),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 31,
               )
             ]),

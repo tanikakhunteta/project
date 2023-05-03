@@ -20,44 +20,47 @@ class _DonationScreenState extends State<DonationScreen>
   TabController? _tabController;
 
   final List<DropDownValueModel> state = <DropDownValueModel>[
-    DropDownValueModel(
+    const DropDownValueModel(
         name: 'Andaman and Nicobar', value: 'Andaman and Nicobar'),
-    DropDownValueModel(name: "Andhra Pradesh", value: "Andhra Pradesh"),
-    DropDownValueModel(name: "Arunachal Pradesh", value: "Arunachal Pradesh"),
-    DropDownValueModel(name: "Assam", value: "Assam"),
-    DropDownValueModel(name: "Bihar", value: "Bihar"),
-    DropDownValueModel(name: "Chandigarh", value: "Chandigarh"),
-    DropDownValueModel(name: "Chhattisgarh", value: "Chhattisgarh"),
-    DropDownValueModel(
+    const DropDownValueModel(name: "Andhra Pradesh", value: "Andhra Pradesh"),
+    const DropDownValueModel(
+        name: "Arunachal Pradesh", value: "Arunachal Pradesh"),
+    const DropDownValueModel(name: "Assam", value: "Assam"),
+    const DropDownValueModel(name: "Bihar", value: "Bihar"),
+    const DropDownValueModel(name: "Chandigarh", value: "Chandigarh"),
+    const DropDownValueModel(name: "Chhattisgarh", value: "Chhattisgarh"),
+    const DropDownValueModel(
         name: "Dadra and Nagar Haveli", value: "Dadra and Nagar Haveli"),
-    DropDownValueModel(name: "Daman and Diu", value: "Daman and Diu"),
-    DropDownValueModel(name: "Delhi", value: "Delhi"),
-    DropDownValueModel(name: "Goa", value: "Goa"),
-    DropDownValueModel(name: "Gujrat", value: "Gujrat"),
-    DropDownValueModel(name: "Haryana", value: "Haryana"),
-    DropDownValueModel(name: "Himachal Pradesh", value: "Himachal Pradesh"),
-    DropDownValueModel(name: "Jammu and Kashmir", value: "Jammu and Kashmir"),
-    DropDownValueModel(name: "Jharkhand", value: "Jharkhand"),
-    DropDownValueModel(name: "Karnataka", value: "Karnataka"),
-    DropDownValueModel(name: "Kerela", value: "Kerela"),
-    DropDownValueModel(name: "Ladakh", value: "Ladakh"),
-    DropDownValueModel(name: "Lakshadweep", value: "Lakshadweep"),
-    DropDownValueModel(name: "Madhya Pradesh", value: "Madhya Pradesh"),
-    DropDownValueModel(name: "Maharashtra", value: "Maharashtra"),
-    DropDownValueModel(name: "Manipur", value: "Manipur"),
-    DropDownValueModel(name: "Meghalaya", value: "Meghalaya"),
-    DropDownValueModel(name: "Mizoram", value: "Mizoram"),
-    DropDownValueModel(name: "Nagaland", value: "Nagaland"),
-    DropDownValueModel(name: "Odisha", value: "Odisha"),
-    DropDownValueModel(name: "Pondicherry", value: "Pondicherry"),
-    DropDownValueModel(name: "Punjab", value: "Punjab"),
-    DropDownValueModel(name: "Rajasthan", value: "Rajasthan"),
-    DropDownValueModel(name: "Sikkim", value: "Sikkim"),
-    DropDownValueModel(name: "Tamil Nadu", value: "Tamil Nadu"),
-    DropDownValueModel(name: "Telangana", value: "Telangana"),
-    DropDownValueModel(name: "Tripura", value: "Tripura"),
-    DropDownValueModel(name: "Uttar Pradesh", value: "Uttar Pradesh"),
-    DropDownValueModel(name: "West Bengal", value: "West Bengal"),
+    const DropDownValueModel(name: "Daman and Diu", value: "Daman and Diu"),
+    const DropDownValueModel(name: "Delhi", value: "Delhi"),
+    const DropDownValueModel(name: "Goa", value: "Goa"),
+    const DropDownValueModel(name: "Gujrat", value: "Gujrat"),
+    const DropDownValueModel(name: "Haryana", value: "Haryana"),
+    const DropDownValueModel(
+        name: "Himachal Pradesh", value: "Himachal Pradesh"),
+    const DropDownValueModel(
+        name: "Jammu and Kashmir", value: "Jammu and Kashmir"),
+    const DropDownValueModel(name: "Jharkhand", value: "Jharkhand"),
+    const DropDownValueModel(name: "Karnataka", value: "Karnataka"),
+    const DropDownValueModel(name: "Kerela", value: "Kerela"),
+    const DropDownValueModel(name: "Ladakh", value: "Ladakh"),
+    const DropDownValueModel(name: "Lakshadweep", value: "Lakshadweep"),
+    const DropDownValueModel(name: "Madhya Pradesh", value: "Madhya Pradesh"),
+    const DropDownValueModel(name: "Maharashtra", value: "Maharashtra"),
+    const DropDownValueModel(name: "Manipur", value: "Manipur"),
+    const DropDownValueModel(name: "Meghalaya", value: "Meghalaya"),
+    const DropDownValueModel(name: "Mizoram", value: "Mizoram"),
+    const DropDownValueModel(name: "Nagaland", value: "Nagaland"),
+    const DropDownValueModel(name: "Odisha", value: "Odisha"),
+    const DropDownValueModel(name: "Pondicherry", value: "Pondicherry"),
+    const DropDownValueModel(name: "Punjab", value: "Punjab"),
+    const DropDownValueModel(name: "Rajasthan", value: "Rajasthan"),
+    const DropDownValueModel(name: "Sikkim", value: "Sikkim"),
+    const DropDownValueModel(name: "Tamil Nadu", value: "Tamil Nadu"),
+    const DropDownValueModel(name: "Telangana", value: "Telangana"),
+    const DropDownValueModel(name: "Tripura", value: "Tripura"),
+    const DropDownValueModel(name: "Uttar Pradesh", value: "Uttar Pradesh"),
+    const DropDownValueModel(name: "West Bengal", value: "West Bengal"),
   ];
 
   TextEditingController nameController = TextEditingController();
@@ -97,18 +100,19 @@ class _DonationScreenState extends State<DonationScreen>
             style:
                 GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
           ),
-          backgroundColor: Color(0xffBF222B),
+          backgroundColor: const Color(0xffBF222B),
           leading: IconButton(
               onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AllScreen(),
+                      builder: (context) => const AllScreen(),
                     ));
               },
-              icon: Icon(Icons.arrow_back)),
+              icon: const Icon(Icons.arrow_back)),
           actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.notifications_none))
           ],
         ),
         body: SingleChildScrollView(
@@ -116,13 +120,13 @@ class _DonationScreenState extends State<DonationScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TabBar(
-                  indicatorColor: Color(0xffBF222B),
-                  dividerColor: Color(0xffEDEDED),
+                  indicatorColor: const Color(0xffBF222B),
+                  dividerColor: const Color(0xffEDEDED),
                   controller: _tabController,
                   labelStyle: GoogleFonts.roboto(
                       fontSize: 16, fontWeight: FontWeight.w700),
-                  labelColor: Color(0xff473D3D),
-                  tabs: [
+                  labelColor: const Color(0xff473D3D),
+                  tabs: const [
                     Tab(
                       text: "Looking For Blood",
                     ),
@@ -130,7 +134,7 @@ class _DonationScreenState extends State<DonationScreen>
                       text: "Donate Blood",
                     )
                   ]),
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: double.maxFinite,
                 child: TabBarView(
@@ -141,7 +145,7 @@ class _DonationScreenState extends State<DonationScreen>
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 17,
                           ),
                           Text(
@@ -149,10 +153,10 @@ class _DonationScreenState extends State<DonationScreen>
                             style: GoogleFonts.roboto(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff857878)),
+                                color: const Color(0xff857878)),
                             textAlign: TextAlign.left,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Form(
@@ -161,72 +165,72 @@ class _DonationScreenState extends State<DonationScreen>
                               TextFormField(
                                 controller: nameController,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Name",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: mobileController,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Mobile Number",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: emailController,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Email Address (Optional)",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               UiUtilsScreen.commonDropdown(
                                   styleLabel: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   controller: stateController,
@@ -241,97 +245,97 @@ class _DonationScreenState extends State<DonationScreen>
                                   onChangedFN: (v) {
                                     setState(() {});
                                   }),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: districtController,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Select District",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: pinCodeController,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Pin Code",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: townController,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Town Name",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: dateController,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Select Date",
                                 ),
                               ),
                             ],
                           )),
-                          SizedBox(
+                          const SizedBox(
                             height: 24,
                           ),
                           Center(
@@ -348,17 +352,17 @@ class _DonationScreenState extends State<DonationScreen>
                                   //           BloodAvailabilityScreen(),
                                   //     ));
                                 },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFFBF222B),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(69))),
                                 child: Text(
                                   'CONTINUE',
                                   style: GoogleFonts.roboto(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFFBF222B),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(69))),
                               ),
                             ),
                           ),
@@ -370,7 +374,7 @@ class _DonationScreenState extends State<DonationScreen>
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 17,
                           ),
                           Text(
@@ -378,10 +382,10 @@ class _DonationScreenState extends State<DonationScreen>
                             style: GoogleFonts.roboto(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff857878)),
+                                color: const Color(0xff857878)),
                             textAlign: TextAlign.left,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Form(
@@ -390,72 +394,72 @@ class _DonationScreenState extends State<DonationScreen>
                               TextFormField(
                                 controller: name2Controller,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Name",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: mobile2Controller,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Mobile Number",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: email2Controller,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Email Address (Optional)",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               UiUtilsScreen.commonDropdown(
                                   styleLabel: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   controller: state2Controller,
@@ -470,97 +474,97 @@ class _DonationScreenState extends State<DonationScreen>
                                   onChangedFN: (v) {
                                     setState(() {});
                                   }),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: district2Controller,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Select District",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: pinCode2Controller,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Pin Code",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: town2Controller,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Enter Town Name",
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               TextFormField(
                                 controller: date2Controller,
                                 decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(16),
+                                  contentPadding: const EdgeInsets.all(16),
                                   hintStyle: GoogleFonts.roboto(
-                                      color: Color(0xFF706464),
+                                      color: const Color(0xFF706464),
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xFF706464)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF706464)),
                                       borderRadius: BorderRadius.circular(41)),
                                   hintText: "Select Date",
                                 ),
                               ),
                             ],
                           )),
-                          SizedBox(
+                          const SizedBox(
                             height: 24,
                           ),
                           Center(
@@ -574,20 +578,20 @@ class _DonationScreenState extends State<DonationScreen>
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            BloodDonationScreen(),
+                                            const BloodDonationScreen(),
                                       ));
                                 },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFFBF222B),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(69))),
                                 child: Text(
                                   'SEARCH',
                                   style: GoogleFonts.roboto(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFFBF222B),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(69))),
                               ),
                             ),
                           ),

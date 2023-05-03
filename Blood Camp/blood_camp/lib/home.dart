@@ -26,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
     log('initState');
 
     ApiService.getProfileDetails().then((value) {
-      print(value);
       setState(() {
         userProfileModel = value;
       });
@@ -35,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  List screens = [
+  List screens = const [
     BloodAvailabilitySearch(),
 
     BecomeVolunteerScreen(),
@@ -49,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg",
     "assets/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg"
   ];
-  List text_icon = [
+  List textIcon = [
     {"icon": Icons.search, "text": "Blood Availability Search"},
     {"icon": Icons.manage_accounts_outlined, "text": "Become a\nVolunteer"},
     {"icon": Icons.video_library_outlined, "text": "NGO Activity"},
@@ -64,9 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           elevation: 0,
-          backgroundColor: Color(0xffBF222B),
+          backgroundColor: const Color(0xffBF222B),
           onPressed: () {},
-          child: Icon(
+          child: const Icon(
             Icons.phone_in_talk_outlined,
           ),
         ),
@@ -83,17 +82,17 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 168,
-              decoration:
-                  BoxDecoration(color: Color.fromARGB(255, 228, 228, 228)),
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 228, 228, 228)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Image.asset("assets/Rectangle 31.png"),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                   ],
@@ -103,14 +102,14 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: 123,
               width: double.infinity,
-              decoration:
-                  BoxDecoration(color: Color.fromARGB(255, 241, 238, 238)),
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 241, 238, 238)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Text(
@@ -118,14 +117,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: GoogleFonts.roboto(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xff473D3D)),
+                          color: const Color(0xff473D3D)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Container(
                       height: 67,
                       width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          color: const Color(0xffBF222B),
+                          borderRadius: BorderRadius.circular(10)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -134,10 +136,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xffFFFFFF),
+                              color: const Color(0xffFFFFFF),
                             ),
                           ),
-                          Text(
+                          const Text(
                             '10,000',
                             style: TextStyle(
                                 fontSize: 28,
@@ -146,9 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           )
                         ],
                       ),
-                      decoration: BoxDecoration(
-                          color: Color(0xffBF222B),
-                          borderRadius: BorderRadius.circular(10)),
                     )
                   ],
                 ),
@@ -161,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 17,
                     ),
                     Row(
@@ -172,14 +171,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff473D3D)),
+                              color: const Color(0xff473D3D)),
                         ),
                         InkWell(
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => NgoProgramScreen(),
+                                  builder: (context) =>
+                                      const NgoProgramScreen(),
                                 ));
                           },
                           child: Text(
@@ -187,19 +187,19 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: GoogleFonts.roboto(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff0E4EAE)),
+                                color: const Color(0xff0E4EAE)),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 11,
                     ),
                     Expanded(
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
-                        itemCount: text_icon.length,
+                        itemCount: textIcon.length,
                         itemBuilder: (context, index) {
                           return InkWell(
                             onTap: () {
@@ -215,7 +215,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Container(
                               height: 100,
                               width: 128,
-                              decoration: BoxDecoration(color: Colors.white),
+                              decoration:
+                                  const BoxDecoration(color: Colors.white),
                               child: Stack(
                                 children: [
                                   Align(
@@ -224,10 +225,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Icon(text_icon[index]["icon"],
-                                            color: Color(0xffBF222B)),
+                                        Icon(textIcon[index]["icon"],
+                                            color: const Color(0xffBF222B)),
                                         Text(
-                                          text_icon[index]["text"],
+                                          textIcon[index]["text"],
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.roboto(
                                               height: 1.2,
@@ -243,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: CornerBanner(
                                         bannerPosition:
                                             CornerBannerPosition.topLeft,
-                                        bannerColor: Color(0xffBF222B),
+                                        bannerColor: const Color(0xffBF222B),
                                         child: Text(
                                           "Coming Soon",
                                           style: GoogleFonts.roboto(
@@ -258,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     SizedBox(
@@ -277,12 +278,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     )
                   ]),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Container(
@@ -293,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Row(
@@ -304,32 +305,32 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff473D3D)),
+                              color: const Color(0xff473D3D)),
                         ),
                         Text(
                           "See All",
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff0E4EAE)),
+                              color: const Color(0xff0E4EAE)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Container(
                       height: 58,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: Color(0xffEBE7E7),
+                          color: const Color(0xffEBE7E7),
                           borderRadius: BorderRadius.circular(10)),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 7),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 7),
                             child: CircleAvatar(
                                 radius: 21,
                                 backgroundImage:
@@ -342,7 +343,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.roboto(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff473D3D)),
+                                  color: const Color(0xff473D3D)),
                             ),
                           )
                         ],
@@ -352,10 +353,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            Container(
+            SizedBox(
               height: 343,
               width: MediaQuery.of(context).size.width,
               child: Padding(
@@ -363,7 +364,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Text(
@@ -371,22 +372,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: GoogleFonts.roboto(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xff473D3D)),
+                          color: const Color(0xff473D3D)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                          color: Color(0xffFFFFFF),
+                          color: const Color(0xffFFFFFF),
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Text(
@@ -394,9 +395,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.roboto(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff473D3D)),
+                                  color: const Color(0xff473D3D)),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 9,
                             ),
                             SmoothStarRating(
@@ -413,7 +414,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.amber,
                                 borderColor: Colors.amber,
                                 spacing: 0.0),
-                            SizedBox(
+                            const SizedBox(
                               height: 9,
                             ),
                             Text(
@@ -421,21 +422,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: GoogleFonts.roboto(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff998D8D)),
+                                  color: const Color(0xff998D8D)),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             TextFormField(
                                 maxLines: 4,
                                 decoration: InputDecoration(
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Color(0xff998D8D)),
+                                      borderSide: const BorderSide(
+                                          color: Color(0xff998D8D)),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                             color: Color(0xff998D8D)),
                                         borderRadius:
                                             BorderRadius.circular(10)),
@@ -443,15 +444,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                     hintStyle: GoogleFonts.roboto(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff998D8D)))),
-                            SizedBox(
+                                        color: const Color(0xff998D8D)))),
+                            const SizedBox(
                               height: 12,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ConstrainedBox(
-                                  constraints: BoxConstraints.tightFor(
+                                  constraints: const BoxConstraints.tightFor(
                                       height: 46, width: 81),
                                   child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
@@ -465,21 +466,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                         style: GoogleFonts.roboto(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xff473D3D)),
+                                            color: const Color(0xff473D3D)),
                                       )),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 16,
                                 ),
                                 ConstrainedBox(
-                                  constraints: BoxConstraints.tightFor(
+                                  constraints: const BoxConstraints.tightFor(
                                       height: 46, width: 156),
                                   child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10)),
-                                          backgroundColor: Color(0xffADA2A2)),
+                                          backgroundColor:
+                                              const Color(0xffADA2A2)),
                                       onPressed: () {},
                                       child: Text(
                                         "Submit Feedback",

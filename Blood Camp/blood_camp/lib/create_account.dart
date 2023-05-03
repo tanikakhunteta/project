@@ -1,8 +1,5 @@
-
-
 import 'package:blood_camp/loginpage.dart';
 import 'package:blood_camp/otp_verification.dart';
-
 
 import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
@@ -16,8 +13,6 @@ class CreateAccountScreen extends StatefulWidget {
 }
 
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
-
-
   bool otpsent = false;
   TextEditingController mobileController = TextEditingController();
   @override
@@ -27,7 +22,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: BackButton(color: Color(0xff303030)),
+        leading: const BackButton(color: Color(0xff303030)),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -36,7 +31,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
@@ -44,9 +39,9 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 style: GoogleFonts.roboto(
                     fontSize: 34,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xff303030)),
+                    color: const Color(0xff303030)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
@@ -54,18 +49,21 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 style: GoogleFonts.roboto(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xff667685)),
+                    color: const Color(0xff667685)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 56,
               ),
               Center(
                 child: Container(
                   height: 46,
                   width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.circular(41)),
                   child: Row(
                     children: [
-                      CountryCodePicker(
+                      const CountryCodePicker(
                         initialSelection: 'IN',
                         favorite: ['+91', 'IN'],
                         // countryFilter: ['IN', 'IN'],
@@ -85,17 +83,14 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                               labelStyle: GoogleFonts.roboto(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff303030))),
+                                  color: const Color(0xff303030))),
                         ),
                       )
                     ],
                   ),
-                  decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(41)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 132,
               ),
               Center(
@@ -107,23 +102,23 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => OtpVerificationScreen(),
+                            builder: (context) => const OtpVerificationScreen(),
                           ));
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(69)),
+                      backgroundColor: const Color.fromARGB(255, 204, 18, 4),
+                    ),
                     child: Text(
                       'SEND OTP',
                       style: GoogleFonts.roboto(
                           fontSize: 16, fontWeight: FontWeight.w400),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(69)),
-                      backgroundColor: Color.fromARGB(255, 204, 18, 4),
-                    ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 18,
               ),
               Row(
@@ -134,14 +129,14 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     style: GoogleFonts.roboto(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff667685)),
+                        color: const Color(0xff667685)),
                   ),
                   InkWell(
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginPage(),
+                            builder: (context) => const LoginPage(),
                           ));
                     },
                     child: Padding(
@@ -151,7 +146,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         style: GoogleFonts.roboto(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xffFF0202)),
+                            color: const Color(0xffFF0202)),
                       ),
                     ),
                   ),

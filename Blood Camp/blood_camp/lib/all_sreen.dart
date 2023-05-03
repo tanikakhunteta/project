@@ -28,7 +28,7 @@ class _AllScreenState extends State<AllScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem> [
           // BottomNavigationBarItem(
           //   backgroundColor: Color.fromARGB(255, 252, 243, 246),
           //   icon: Icon(

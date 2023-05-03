@@ -14,7 +14,7 @@ class NgoProgramScreen extends StatefulWidget {
 }
 
 class _NgoProgramScreenState extends State<NgoProgramScreen> {
-  List screens = [
+  List screens = const [
     BloodAvailabilitySearch(),
     BecomeVolunteerScreen(),
     NgoActivityScreen(),
@@ -33,7 +33,7 @@ class _NgoProgramScreenState extends State<NgoProgramScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xffEDEDED),
+        backgroundColor: const Color(0xffEDEDED),
         appBar: AppBar(
           title: Text(
             "NGO Program",
@@ -41,9 +41,10 @@ class _NgoProgramScreenState extends State<NgoProgramScreen> {
                 fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
           ),
           elevation: 0,
-          backgroundColor: Color(0xffBF222B),
+          backgroundColor: const Color(0xffBF222B),
           actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.notifications_none))
           ],
         ),
         body: Padding(
@@ -51,18 +52,18 @@ class _NgoProgramScreenState extends State<NgoProgramScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Image.asset("assets/Rectangle 31.png"),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 GridView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: texticon.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisSpacing: 8,
                       mainAxisSpacing: 8,
                       childAspectRatio: 1.6494,
@@ -88,7 +89,7 @@ class _NgoProgramScreenState extends State<NgoProgramScreen> {
                           children: [
                             Icon(
                               texticon[index]["icon"],
-                              color: Color(0xffBF222B),
+                              color: const Color(0xffBF222B),
                             ),
                             Text(
                               texticon[index]["text"],
@@ -96,7 +97,7 @@ class _NgoProgramScreenState extends State<NgoProgramScreen> {
                               style: GoogleFonts.roboto(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xff473D3D)),
+                                  color: const Color(0xff473D3D)),
                             )
                           ],
                         ),

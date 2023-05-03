@@ -50,7 +50,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           "Notification",
           style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -81,7 +81,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                     image: AssetImage(
                                         notification[index]["image"]))),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 13,
                           ),
                           Column(
@@ -93,20 +93,20 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                 style: GoogleFonts.roboto(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w700,
-                                    color: Color(0xff473D3D)),
+                                    color: const Color(0xff473D3D)),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 7,
                               ),
-                              Container(
+                              SizedBox(
                                 width: 290,
                                 child: Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.arrow_outward,
                                       color: Color(0xff706464),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 8,
                                     ),
                                     Text(
@@ -114,15 +114,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                       style: GoogleFonts.roboto(
                                           fontSize: 11,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff706464)),
+                                          color: const Color(0xff706464)),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Text(
                                       notification[index]["time"],
                                       style: GoogleFonts.roboto(
                                           fontSize: 11,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff706464)),
+                                          color: const Color(0xff706464)),
                                     ),
                                   ],
                                 ),

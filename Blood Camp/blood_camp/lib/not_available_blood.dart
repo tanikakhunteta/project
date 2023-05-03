@@ -20,9 +20,10 @@ class _NotAvailableBloodScreenState extends State<NotAvailableBloodScreen> {
               fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         elevation: 0,
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.notifications_none))
         ],
       ),
       body: Padding(
@@ -30,17 +31,17 @@ class _NotAvailableBloodScreenState extends State<NotAvailableBloodScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
               "Whole Blood Not Available Search for another\nComponent",
               style: GoogleFonts.roboto(
-                  color: Color(0xff706464),
+                  color: const Color(0xff706464),
                   fontSize: 13,
                   fontWeight: FontWeight.w400),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Container(
@@ -53,7 +54,7 @@ class _NotAvailableBloodScreenState extends State<NotAvailableBloodScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Row(
@@ -64,18 +65,18 @@ class _NotAvailableBloodScreenState extends State<NotAvailableBloodScreen> {
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff473D3D)),
+                              color: const Color(0xff473D3D)),
                         ),
                         Text(
                           "Not Available",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xffBF1D42)),
+                              color: const Color(0xffBF1D42)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Row(
@@ -86,62 +87,62 @@ class _NotAvailableBloodScreenState extends State<NotAvailableBloodScreen> {
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xff706464)),
+                              color: const Color(0xff706464)),
                         ),
                         Text(
                           "Blood Group O+",
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xff706464)),
+                              color: const Color(0xff706464)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.location_on_outlined,
+                        const Icon(Icons.location_on_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           "Village -Khichan, Phalodi, Jodhpur, Rajasthan",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8.33,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.phone_outlined,
+                        const Icon(Icons.phone_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           "+91 91667120102",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8.33,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.mail_outline,
+                        const Icon(Icons.mail_outline,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           "trustblood@gmail.com",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         ),
                       ],
                     ),
@@ -159,15 +160,15 @@ class _NotAvailableBloodScreenState extends State<NotAvailableBloodScreen> {
               height: 54, width: MediaQuery.of(context).size.width),
           child: ElevatedButton(
             onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFBF222B),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(69))),
             child: Text(
               'CALL NOW',
               style:
                   GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
             ),
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFBF222B),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(69))),
           ),
         ),
       ),

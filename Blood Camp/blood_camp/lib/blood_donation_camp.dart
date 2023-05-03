@@ -59,9 +59,9 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
               fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         elevation: 0,
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none))
         ],
       ),
       body: SingleChildScrollView(
@@ -69,12 +69,12 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               UiUtilsScreen.commonDropdown(
                   styleLabel: GoogleFonts.roboto(
-                      color: Color(0xFF706464),
+                      color: const Color(0xFF706464),
                       fontSize: 13,
                       fontWeight: FontWeight.w400),
                   controller: stateController,
@@ -92,13 +92,13 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                         await ApiService.getDistrictDetails(v.value);
                     setState(() {});
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               if (stateController.dropDownValue != null)
                 UiUtilsScreen.commonDropdown(
                     styleLabel: GoogleFonts.roboto(
-                        color: Color(0xFF706464),
+                        color: const Color(0xFF706464),
                         fontSize: 13,
                         fontWeight: FontWeight.w400),
                     controller: districtController,
@@ -116,23 +116,23 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                       setState(() {});
                     }),
 
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               if (districtController.dropDownValue != null)
                 TextFormField(
                   controller: pinCodeController,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.all(16),
+                    contentPadding: const EdgeInsets.all(16),
                     labelStyle: GoogleFonts.roboto(
-                        color: Color(0xFF706464),
+                        color: const Color(0xFF706464),
                         fontSize: 13,
                         fontWeight: FontWeight.w400),
                     focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF706464)),
+                        borderSide: const BorderSide(color: Color(0xFF706464)),
                         borderRadius: BorderRadius.circular(41)),
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF706464)),
+                        borderSide: const BorderSide(color: Color(0xFF706464)),
                         borderRadius: BorderRadius.circular(41)),
                     labelText: "Enter Pin Code (Not Mandatory)",
                   ),
@@ -157,7 +157,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
               //     hintText: "Enter Town Name",
               //   ),
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               InkWell(
@@ -167,10 +167,10 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                     config: CalendarDatePicker2WithActionButtonsConfig(
                         okButtonTextStyle: GoogleFonts.roboto(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xffBF222B)),
+                            color: const Color(0xffBF222B)),
                         cancelButtonTextStyle: GoogleFonts.roboto(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xffBF222B))),
+                            color: const Color(0xffBF222B))),
                     dialogSize: const Size(325, 400),
                     value: _startDate,
                     borderRadius: BorderRadius.circular(15),
@@ -189,21 +189,21 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                   width: MediaQuery.of(context).size.width,
                   height: 50,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF706464)),
+                      border: Border.all(color: const Color(0xFF706464)),
                       borderRadius: BorderRadius.circular(41)),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 15, top: 15),
                     child: Text(
                       startDate != null ? startDate! : "Select Start Date",
                       style: GoogleFonts.roboto(
-                          color: Color(0xFF706464),
+                          color: const Color(0xFF706464),
                           fontSize: 13,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               InkWell(
@@ -213,17 +213,17 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                     config: CalendarDatePicker2WithActionButtonsConfig(
                         okButtonTextStyle: GoogleFonts.roboto(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xffBF222B)),
+                            color: const Color(0xffBF222B)),
                         cancelButtonTextStyle: GoogleFonts.roboto(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xffBF222B))),
+                            color: const Color(0xffBF222B))),
                     dialogSize: const Size(325, 400),
                     value: _endDate,
                     borderRadius: BorderRadius.circular(15),
                   ).then((value) {
                     setState(() {
                       if (value != null) {
-                        print(value);
+                        
                         _endDate = value;
                         lastDate =
                             DateFormat('MMMM dd, yyyy').format(_endDate[0]!);
@@ -235,7 +235,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                   width: MediaQuery.of(context).size.width,
                   height: 50,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF706464)),
+                      border: Border.all(color: const Color(0xFF706464)),
                       borderRadius: BorderRadius.circular(41)),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 15, top: 15),
@@ -244,7 +244,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                           ? lastDate!
                           : "Select Last Date (Not Mandatory)",
                       style: GoogleFonts.roboto(
-                          color: Color(0xFF706464),
+                          color: const Color(0xFF706464),
                           fontSize: 13,
                           fontWeight: FontWeight.w400),
                     ),
@@ -286,7 +286,7 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                         builder: (context) => BloodDonationCamp1(
                             bloodCampDetailsModel: bloodCampDetailsModel),
                       ));
-                } else
+                } else {
                   return showDialog(
                     context: context,
                     builder: (context) {
@@ -294,24 +294,25 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                         actions: [
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffBF222B)),
+                                  backgroundColor: const Color(0xffBF222B)),
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: Text("OK"))
+                              child: const Text("OK"))
                         ],
                         content: Text(
                           "Blood Camp Not Available",
                           textAlign: TextAlign.center,
                           style: GoogleFonts.roboto(
-                              color: Color(0xffBF222B),
+                              color: const Color(0xffBF222B),
                               fontSize: 23,
                               fontWeight: FontWeight.w600),
                         ),
                       );
                     },
                   );
-              } else
+                }
+              } else {
                 return showDialog(
                   context: context,
                   builder: (context) {
@@ -319,26 +320,35 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                       actions: [
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xffBF222B)),
+                                backgroundColor: const Color(0xffBF222B)),
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text("OK"))
+                            child: const Text("OK"))
                       ],
                       content: Text(
                         "Enter Required Fields",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.roboto(
-                            color: Color(0xffBF222B),
+                            color: const Color(0xffBF222B),
                             fontSize: 23,
                             fontWeight: FontWeight.w600),
                       ),
                     );
                   },
                 );
+              }
             },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: stateController.dropDownValue != null &&
+                        districtController.dropDownValue != null &&
+                        startDate != null
+                    ? const Color(0xFFBF222B)
+                    : Colors.grey,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(69))),
             child: apiLoading
-                ? SizedBox(
+                ? const SizedBox(
                     height: 20,
                     width: 20,
                     child: Center(
@@ -350,14 +360,6 @@ class _BloodDonationCampScreenState extends State<BloodDonationCampScreen> {
                     style: GoogleFonts.roboto(
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
-            style: ElevatedButton.styleFrom(
-                backgroundColor: stateController.dropDownValue != null &&
-                        districtController.dropDownValue != null &&
-                        startDate != null
-                    ? Color(0xFFBF222B)
-                    : Colors.grey,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(69))),
           ),
         ),
       ),

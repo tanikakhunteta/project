@@ -29,7 +29,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
               fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         elevation: 0,
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
         // ],
@@ -38,7 +38,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Container(
@@ -51,7 +51,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Row(
@@ -62,18 +62,18 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff473D3D)),
+                              color: const Color(0xff473D3D)),
                         ),
                         Text(
                           "Available",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff76AF3E)),
+                              color: const Color(0xff76AF3E)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Row(
@@ -84,62 +84,62 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xff706464)),
+                              color: const Color(0xff706464)),
                         ),
                         Text(
                           widget.bloodGroup,
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xff706464)),
+                              color: const Color(0xff706464)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.location_on_outlined,
+                        const Icon(Icons.location_on_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           widget.bloodAvailDetailsData.address ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8.33,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.phone_outlined,
+                        const Icon(Icons.phone_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           "+91 ${widget.bloodAvailDetailsData.srcContact ?? ''}",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8.33,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.mail_outline,
+                        const Icon(Icons.mail_outline,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           widget.bloodAvailDetailsData.srcEmail ?? "",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         ),
                       ],
                     ),
@@ -161,15 +161,15 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                   Uri.parse("tel: ${widget.bloodAvailDetailsData.srcContact}"));
               print("for testing");
             },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFBF222B),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(69))),
             child: Text(
               'CALL NOW',
               style:
                   GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w400),
             ),
-            style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFBF222B),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(69))),
           ),
         ),
       ),

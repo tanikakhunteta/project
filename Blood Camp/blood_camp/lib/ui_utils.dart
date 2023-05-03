@@ -1,7 +1,10 @@
+import 'dart:ffi';
+
 import 'package:blood_camp/loginpage.dart';
 
 import 'package:blood_camp/profile.dart';
 import 'package:blood_camp/shared_pref.dart';
+import 'package:blood_camp/signuplogin.dart';
 
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
@@ -170,11 +173,12 @@ class UiUtilsScreen {
                 TextButton.icon(
                     onPressed: () {
                       SharedPref.clearToken();
-                      Navigator.push(
+                      Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginPage(),
-                          ));
+                            builder: (context) => const SignUpLoginScreen(),
+                          ),
+                          (route) => false);
                     },
                     icon: const Icon(
                       Icons.settings_power_outlined,
@@ -214,6 +218,37 @@ class UiUtilsScreen {
       //       },
       //       icon: Icon(Icons.notifications_none))
       // ],
+    );
+  }
+
+  static Widget commonTextFormField({
+    required TextEditingController controller,
+    required FormFieldValidator validator,
+    required String labelValue,
+    required TextStyle styleLabel,
+    Widget? suffixIcon,
+  }) {
+    return TextFormField(
+      validator: validator,
+      controller: controller,
+      decoration: InputDecoration(
+        suffixIcon: suffixIcon,
+        labelText: labelValue,
+        labelStyle: styleLabel,
+        contentPadding: const EdgeInsets.all(16),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(41),
+            borderSide: const BorderSide(color: Color(0xFF667685))),
+        errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0xFF667685)),
+            borderRadius: BorderRadius.circular(41)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0xFF667685)),
+            borderRadius: BorderRadius.circular(41)),
+        enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0xFF667685)),
+            borderRadius: BorderRadius.circular(41)),
+      ),
     );
   }
 

@@ -22,7 +22,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(Icons.arrow_back, color: Color(0xFF303030))),
+            child: const Icon(Icons.arrow_back, color: Color(0xFF303030))),
       ),
       body: Center(
         child: Padding(
@@ -30,7 +30,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
@@ -38,7 +38,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 style: GoogleFonts.roboto(
                     fontSize: 34, fontWeight: FontWeight.w700),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 56,
               ),
               Form(
@@ -47,21 +47,23 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   TextFormField(
                     decoration: InputDecoration(
                       hintStyle: GoogleFonts.roboto(
-                          color: Color(0xFF303030),
+                          color: const Color(0xFF303030),
                           fontSize: 14,
                           fontWeight: FontWeight.w500),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF667685)),
+                          borderSide:
+                              const BorderSide(color: Color(0xFF667685)),
                           borderRadius: BorderRadius.circular(41)),
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF667685)),
+                          borderSide:
+                              const BorderSide(color: Color(0xFF667685)),
                           borderRadius: BorderRadius.circular(41)),
                       hintText: "Enter Mobile Number",
                     ),
                   ),
                 ],
               )),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Row(
@@ -72,7 +74,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     style: GoogleFonts.roboto(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF667685)),
+                        color: const Color(0xFF667685)),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 7),
@@ -81,7 +83,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => CreateAccountScreen(),
+                              builder: (context) => const CreateAccountScreen(),
                             ));
                       },
                       child: Text(
@@ -95,7 +97,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Center(
@@ -107,23 +109,24 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => VerificationScreen()));
+                                builder: (context) =>
+                                    const VerificationScreen()));
                       },
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(69)),
+                          backgroundColor: const Color(0xFFBF222B)),
                       child: Text(
                         "SEND",
                         style: GoogleFonts.roboto(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(69)),
-                          backgroundColor: Color(0xFFBF222B))),
+                      )),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
             ],

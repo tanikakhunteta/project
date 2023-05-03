@@ -59,7 +59,7 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
                 style: GoogleFonts.roboto(
                     fontSize: 19, fontWeight: FontWeight.w700),
               ),
-              backgroundColor: Color(0xffBF222B),
+              backgroundColor: const Color(0xffBF222B),
               bottom: PreferredSize(
                 preferredSize: Size(MediaQuery.of(context).size.width, 50),
                 child: Container(
@@ -69,8 +69,8 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
                       indicatorColor: Colors.red,
                       labelStyle: GoogleFonts.roboto(
                           fontSize: 16, fontWeight: FontWeight.w700),
-                      labelColor: Color(0xff473D3D),
-                      tabs: [
+                      labelColor: const Color(0xff473D3D),
+                      tabs: const [
                         Tab(
                           text: "All Post",
                         ),
@@ -82,10 +82,11 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
               ),
               actions: [
                 IconButton(
-                    onPressed: () {}, icon: Icon(Icons.notifications_outlined))
+                    onPressed: () {},
+                    icon: const Icon(Icons.notifications_outlined))
               ]),
           body: allPostDetailsModel == null
-              ? Center(
+              ? const Center(
                   child: CircularProgressIndicator(),
                 )
               : TabBarView(children: [
@@ -98,7 +99,8 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
                             child: Container(
                                 height: 300,
                                 width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(color: Colors.white),
+                                decoration:
+                                    const BoxDecoration(color: Colors.white),
                                 child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 16),
@@ -106,12 +108,12 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
                                           Row(children: [
-                                            CircleAvatar(),
-                                            SizedBox(
+                                            const CircleAvatar(),
+                                            const SizedBox(
                                               width: 8,
                                             ),
                                             Column(
@@ -125,8 +127,8 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
                                                         fontSize: 13,
                                                         fontWeight:
                                                             FontWeight.w700,
-                                                        color:
-                                                            Color(0xff473D3D)),
+                                                        color: const Color(
+                                                            0xff473D3D)),
                                                   ),
                                                   Text(
                                                     allPostDetailsModel
@@ -138,12 +140,12 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
                                                         fontSize: 11,
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        color:
-                                                            Color(0xff706464)),
+                                                        color: const Color(
+                                                            0xff706464)),
                                                   )
                                                 ])
                                           ]),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 16,
                                           ),
                                           Text(
@@ -157,7 +159,7 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
                                                 fontWeight: FontWeight.w400,
                                                 color: Color(0xff5C5050)),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 8,
                                           ),
                                           Container(
@@ -178,7 +180,7 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
                                                             ""),
                                                     fit: BoxFit.cover)),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 24,
                                           ),
                                           // Row(

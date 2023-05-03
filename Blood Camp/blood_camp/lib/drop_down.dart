@@ -34,7 +34,7 @@ class _DropdownState extends State<Dropdown> {
                 return InputDecorator(
                   decoration: InputDecoration(
                       errorStyle:
-                          TextStyle(color: Colors.redAccent, fontSize: 16.0),
+                    const      TextStyle(color: Colors.redAccent, fontSize: 16.0),
                       hintText: 'Please select expense',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5.0))),

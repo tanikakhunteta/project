@@ -21,7 +21,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: Color(0xFF303030)),
+        leading: const Icon(Icons.arrow_back, color: Color(0xFF303030)),
       ),
       body: Center(
         child: Padding(
@@ -29,7 +29,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
@@ -37,7 +37,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                 style: GoogleFonts.roboto(
                     fontSize: 34, fontWeight: FontWeight.w700),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 56,
               ),
               Form(
@@ -46,39 +46,39 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                   TextFormField(
                     decoration: InputDecoration(
                       hintStyle: GoogleFonts.roboto(
-                          color: Color(0xFF303030),
+                          color: const Color(0xFF303030),
                           fontSize: 14,
                           fontWeight: FontWeight.w500),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF667685)),
+                          borderSide: const BorderSide(color: Color(0xFF667685)),
                           borderRadius: BorderRadius.circular(41)),
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF667685)),
+                          borderSide: const BorderSide(color: Color(0xFF667685)),
                           borderRadius: BorderRadius.circular(41)),
                       hintText: "Enter New Password",
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
                       hintStyle: GoogleFonts.roboto(
-                          color: Color(0xFF303030),
+                          color: const Color(0xFF303030),
                           fontSize: 14,
                           fontWeight: FontWeight.w500),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF667685)),
+                          borderSide: const BorderSide(color: Color(0xFF667685)),
                           borderRadius: BorderRadius.circular(41)),
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFF667685)),
+                          borderSide: const BorderSide(color: Color(0xFF667685)),
                           borderRadius: BorderRadius.circular(41)),
                       hintText: "Confirm Password",
                     ),
                   ),
                 ],
               )),
-              SizedBox(
+              const SizedBox(
                 height: 164,
               ),
               Center(
@@ -90,20 +90,20 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()));
+                                builder: (context) => const LoginPage()));
                       },
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(69)),
+                          backgroundColor: const Color(0xFFBF222B)),
                       child: Text(
                         "VERIFY",
                         style: GoogleFonts.roboto(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(69)),
-                          backgroundColor: Color(0xFFBF222B))),
+                      )),
                 ),
               ),
             ],

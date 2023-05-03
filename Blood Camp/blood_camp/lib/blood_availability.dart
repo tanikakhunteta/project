@@ -22,7 +22,7 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEDEDED),
+      backgroundColor: const Color(0xffEDEDED),
       appBar: AppBar(
         title: Text(
           "Blood Availability Search",
@@ -30,7 +30,7 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
               fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         elevation: 0,
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
         // ],
@@ -39,7 +39,7 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             ListView.builder(
@@ -81,14 +81,14 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
                                   style: GoogleFonts.roboto(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff473D3D)),
+                                      color: const Color(0xff473D3D)),
                                 ),
                                 Text(
                                   "Available",
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff76AF3E)),
+                                      color: const Color(0xff76AF3E)),
                                 ),
                               ],
                             ),
@@ -100,14 +100,14 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff706464)),
+                                      color: const Color(0xff706464)),
                                 ),
                                 Text(
                                   widget.bloodGroup,
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff706464)),
+                                      color: const Color(0xff706464)),
                                 )
                               ],
                             ),

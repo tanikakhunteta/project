@@ -22,9 +22,9 @@ class _BloodDonationCamp1State extends State<BloodDonationCamp1> {
               fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
         ),
         elevation: 0,
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none))
         ],
       ),
       body: Padding(
@@ -32,7 +32,7 @@ class _BloodDonationCamp1State extends State<BloodDonationCamp1> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             ListView.builder(
@@ -72,14 +72,14 @@ class _BloodDonationCamp1State extends State<BloodDonationCamp1> {
                                   style: GoogleFonts.roboto(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff473D3D)),
+                                      color: const Color(0xff473D3D)),
                                 ),
                                 Text(
                                   bloodCampDetailsData.campAddress ?? "",
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff76AF3E)),
+                                      color: const Color(0xff76AF3E)),
                                 ),
                               ],
                             ),
@@ -91,14 +91,14 @@ class _BloodDonationCamp1State extends State<BloodDonationCamp1> {
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff706464)),
+                                      color: const Color(0xff706464)),
                                 ),
                                 Text(
                                   bloodCampDetailsData.time ?? "",
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff706464)),
+                                      color: const Color(0xff706464)),
                                 )
                               ],
                             ),

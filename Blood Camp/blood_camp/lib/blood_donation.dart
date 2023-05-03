@@ -10,7 +10,7 @@ class BloodDonationScreen extends StatefulWidget {
 }
 
 class _BloodDonationScreenState extends State<BloodDonationScreen> {
-  List blood_donation = [
+  List bloodDonation = [
     {
       "title": "Blood Donation Center",
       "place": "Jodhpur",
@@ -33,9 +33,10 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
           "Blood Donation",
           style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_outlined))
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.notifications_outlined))
         ],
       ),
       body: Padding(
@@ -43,21 +44,21 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
               "Nearest blood centre",
               style: GoogleFonts.roboto(
-                  color: Color(0xff706464),
+                  color: const Color(0xff706464),
                   fontSize: 16,
                   fontWeight: FontWeight.w400),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ListView.builder(
-              itemCount: blood_donation.length,
+              itemCount: bloodDonation.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return Padding(
@@ -67,7 +68,7 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => BloodDonation1(),
+                            builder: (context) => const BloodDonation1(),
                           ));
                     },
                     child: Container(
@@ -85,18 +86,18 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  blood_donation[index]["title"],
+                                  bloodDonation[index]["title"],
                                   style: GoogleFonts.roboto(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff473D3D)),
+                                      color: const Color(0xff473D3D)),
                                 ),
                                 Text(
-                                  blood_donation[index]["place"],
+                                  bloodDonation[index]["place"],
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff473D3D)),
+                                      color: const Color(0xff473D3D)),
                                 )
                               ],
                             ),
@@ -104,18 +105,18 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  blood_donation[index]["Hospital"],
+                                  bloodDonation[index]["Hospital"],
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff706464)),
+                                      color: const Color(0xff706464)),
                                 ),
                                 Text(
-                                  blood_donation[index]["Time"],
+                                  bloodDonation[index]["Time"],
                                   style: GoogleFonts.roboto(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff706464)),
+                                      color: const Color(0xff706464)),
                                 )
                               ],
                             )

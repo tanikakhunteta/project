@@ -20,9 +20,9 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
           "Volunteer Request Form",
           style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor: const Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_outlined))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_outlined))
         ],
       ),
       body: SingleChildScrollView(
@@ -33,13 +33,13 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Text(
                     "Please fill the remaining details",
                     style: GoogleFonts.roboto(
-                        color: Color(
+                        color: const Color(
                           0xff857878,
                         ),
                         fontSize: 16,
@@ -50,10 +50,10 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       Container(
                         width: double.infinity,
                         height: 46,
-                        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                         decoration: BoxDecoration(
                           border:
-                              Border.all(color: Color(0xFF667685), width: 1),
+                              Border.all(color: const Color(0xFF667685), width: 1),
                           borderRadius: BorderRadius.circular(41),
                           shape: BoxShape.rectangle,
                         ),
@@ -63,12 +63,12 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                         top: 12,
                         child: Container(
                           padding:
-                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                              const EdgeInsets.only(bottom: 10, left: 10, right: 10),
                           color: Colors.white,
                           child: Text(
                             'Name',
                             style: GoogleFonts.roboto(
-                                color: Color(0xFF303030),
+                                color: const Color(0xFF303030),
                                 fontSize: 11,
                                 fontWeight: FontWeight.w400),
                           ),
@@ -76,7 +76,7 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Stack(
@@ -84,10 +84,10 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       Container(
                         width: double.infinity,
                         height: 46,
-                        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                         decoration: BoxDecoration(
                           border:
-                              Border.all(color: Color(0xFF667685), width: 1),
+                              Border.all(color: const Color(0xFF667685), width: 1),
                           borderRadius: BorderRadius.circular(41),
                           shape: BoxShape.rectangle,
                         ),
@@ -97,12 +97,12 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                         top: 12,
                         child: Container(
                           padding:
-                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                              const EdgeInsets.only(bottom: 10, left: 10, right: 10),
                           color: Colors.white,
                           child: Text(
                             'Mobile Number',
                             style: GoogleFonts.roboto(
-                                color: Color(0xFF303030),
+                                color: const Color(0xFF303030),
                                 fontSize: 11,
                                 fontWeight: FontWeight.w400),
                           ),
@@ -110,7 +110,7 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Stack(
@@ -118,10 +118,10 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       Container(
                         width: double.infinity,
                         height: 46,
-                        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                         decoration: BoxDecoration(
                           border:
-                              Border.all(color: Color(0xFF667685), width: 1),
+                              Border.all(color: const Color(0xFF667685), width: 1),
                           borderRadius: BorderRadius.circular(41),
                           shape: BoxShape.rectangle,
                         ),
@@ -131,12 +131,12 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                         top: 12,
                         child: Container(
                           padding:
-                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                              const EdgeInsets.only(bottom: 10, left: 10, right: 10),
                           color: Colors.white,
                           child: Text(
                             'Email',
                             style: GoogleFonts.roboto(
-                                color: Color(0xFF303030),
+                                color: const Color(0xFF303030),
                                 fontSize: 11,
                                 fontWeight: FontWeight.w400),
                           ),
@@ -144,7 +144,7 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Stack(
@@ -152,10 +152,10 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       Container(
                         width: double.infinity,
                         height: 46,
-                        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                         decoration: BoxDecoration(
                           border:
-                              Border.all(color: Color(0xFF667685), width: 1),
+                              Border.all(color: const Color(0xFF667685), width: 1),
                           borderRadius: BorderRadius.circular(41),
                           shape: BoxShape.rectangle,
                         ),
@@ -165,12 +165,12 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                         top: 12,
                         child: Container(
                           padding:
-                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                              const EdgeInsets.only(bottom: 10, left: 10, right: 10),
                           color: Colors.white,
                           child: Text(
                             'State',
                             style: GoogleFonts.roboto(
-                                color: Color(0xFF303030),
+                                color: const Color(0xFF303030),
                                 fontSize: 11,
                                 fontWeight: FontWeight.w400),
                           ),
@@ -178,7 +178,7 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Stack(
@@ -186,10 +186,10 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       Container(
                         width: double.infinity,
                         height: 46,
-                        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                         decoration: BoxDecoration(
                           border:
-                              Border.all(color: Color(0xFF667685), width: 1),
+                              Border.all(color: const Color(0xFF667685), width: 1),
                           borderRadius: BorderRadius.circular(41),
                           shape: BoxShape.rectangle,
                         ),
@@ -199,12 +199,12 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                         top: 12,
                         child: Container(
                           padding:
-                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                              const EdgeInsets.only(bottom: 10, left: 10, right: 10),
                           color: Colors.white,
                           child: Text(
                             'District',
                             style: GoogleFonts.roboto(
-                                color: Color(0xFF303030),
+                                color: const Color(0xFF303030),
                                 fontSize: 11,
                                 fontWeight: FontWeight.w400),
                           ),
@@ -212,26 +212,26 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Text(
                     "Please Attached required documents",
                     style: GoogleFonts.roboto(
-                        color: Color(
+                        color: const Color(
                           0xff857878,
                         ),
                         fontSize: 16,
                         fontWeight: FontWeight.w400),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 2,
                   ),
                   Container(
                     width: double.infinity,
                     height: 46,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF667685), width: 1),
+                      border: Border.all(color: const Color(0xFF667685), width: 1),
                       borderRadius: BorderRadius.circular(41),
                       shape: BoxShape.rectangle,
                     ),
@@ -241,17 +241,17 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff5C5050))),
+                              color: const Color(0xff5C5050))),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Container(
                     width: double.infinity,
                     height: 46,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF667685), width: 1),
+                      border: Border.all(color: const Color(0xFF667685), width: 1),
                       borderRadius: BorderRadius.circular(41),
                       shape: BoxShape.rectangle,
                     ),
@@ -261,17 +261,17 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff5C5050))),
+                              color: const Color(0xff5C5050))),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Container(
                     width: double.infinity,
                     height: 46,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF667685), width: 1),
+                      border: Border.all(color: const Color(0xFF667685), width: 1),
                       borderRadius: BorderRadius.circular(41),
                       shape: BoxShape.rectangle,
                     ),
@@ -282,18 +282,18 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                         style: GoogleFonts.roboto(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff5C5050)),
+                            color: const Color(0xff5C5050)),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Container(
                     width: double.infinity,
                     height: 46,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF667685), width: 1),
+                      border: Border.all(color: const Color(0xFF667685), width: 1),
                       borderRadius: BorderRadius.circular(41),
                       shape: BoxShape.rectangle,
                     ),
@@ -304,11 +304,11 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                         style: GoogleFonts.roboto(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff5C5050)),
+                            color: const Color(0xff5C5050)),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 23,
                   ),
                   Center(
@@ -323,19 +323,19 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                           //       builder: (context) => BloodAvailabilityScreen(),
                           //     ));
                         },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFFBF222B),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(69))),
                         child: Text(
                           'SUBMIT',
                           style: GoogleFonts.roboto(
                               fontSize: 16, fontWeight: FontWeight.w400),
                         ),
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFFBF222B),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(69))),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   )
                 ],

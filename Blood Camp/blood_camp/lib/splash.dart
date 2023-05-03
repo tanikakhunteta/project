@@ -4,7 +4,6 @@ import 'package:blood_camp/signuplogin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -16,18 +15,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     SharedPref.getToken().then((value) {
-      Future.delayed(Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 3), () {
         if (value.isNotEmpty) {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => AllScreen(),
+                builder: (context) => const AllScreen(),
               ));
         } else {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => SignUpLoginScreen(),
+                builder: (context) => const SignUpLoginScreen(),
               ));
         }
       });
@@ -45,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
           style: GoogleFonts.roboto(
               fontSize: 60,
               fontWeight: FontWeight.w500,
-              color: Color(0xffBF222B)),
+              color: const Color(0xffBF222B)),
         ),
       ),
     );
