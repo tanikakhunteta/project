@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:test_project/flash_screen.dart';
+import 'package:test_project/gracy.dart';
+import 'package:test_project/resume.dart';
+import 'package:test_project/search.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,9 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: gkmt(),
+      home: Home(),
     );
   }
 }
-
-
