@@ -226,7 +226,7 @@ class _SearchScreenState extends State<ChatScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => PaymentScreen(),
+                          builder: (context) => const PaymentScreen(),
                         ));
                   },
                   child: Container(
@@ -422,7 +422,7 @@ class _SearchScreenState extends State<ChatScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AstrologerProfile(),
+                              builder: (context) => const AstrologerProfile(),
                             ));
                       },
                       child: Container(
@@ -519,7 +519,7 @@ class _SearchScreenState extends State<ChatScreen> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  ChatIntakeForm(),
+                                                  const ChatIntakeForm(),
                                             ));
                                       },
                                       child: Row(

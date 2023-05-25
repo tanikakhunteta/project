@@ -103,7 +103,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back,
               color: Color(0xff111111),
             ),
@@ -116,13 +116,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     style: GoogleFonts.hind(
                         fontSize: 22,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff111111))),
+                        color: const Color(0xff111111))),
                 TextSpan(
                     text: "₹90",
                     style: GoogleFonts.hind(
                         fontSize: 22,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff59B8BE)))
+                        color: const Color(0xff59B8BE)))
               ],
             ),
           )),
@@ -136,10 +136,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 24),
                 child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: 8,
                   shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisSpacing: 12,
                       mainAxisSpacing: 15,
                       crossAxisCount: 3),
@@ -148,7 +148,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       height: 95,
                       width: 107,
                       decoration: BoxDecoration(
-                          color: Color(0xffF0FBFC),
+                          color: const Color(0xffF0FBFC),
                           borderRadius: BorderRadius.circular(6)),
                       child: Stack(
                         children: [
@@ -159,7 +159,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   height: 20,
                                   width: 84,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(6),
                                         bottomRight: Radius.circular(6)),
                                     color: wallet[index]['color'],
@@ -200,7 +200,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                 ),
               )),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Container(
@@ -214,8 +214,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.money),
-                      SizedBox(
+                      const Icon(Icons.money),
+                      const SizedBox(
                         width: 12,
                       ),
                       Text(
@@ -223,27 +223,28 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         style: GoogleFonts.hind(
                             fontSize: 17, fontWeight: FontWeight.w500),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       InkWell(
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => RechargeCouponScreen(),
+                                  builder: (context) =>
+                                      const RechargeCouponScreen(),
                                 ));
                           },
-                          child: Icon(Icons.arrow_forward_ios_rounded))
+                          child: const Icon(Icons.arrow_forward_ios_rounded))
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 9,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 8),
                         hintStyle: GoogleFonts.hind(
-                            fontSize: 13, color: Color(0xff848484)),
+                            fontSize: 13, color: const Color(0xff848484)),
                         hintText: "Please enter a valid code",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(6),
@@ -253,7 +254,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Container(
@@ -267,8 +268,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.money),
-                      SizedBox(
+                      const Icon(Icons.money),
+                      const SizedBox(
                         width: 12,
                       ),
                       Text(
@@ -278,15 +279,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 9,
                   ),
                   TextFormField(
                     decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 33),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 33),
                         hintStyle: GoogleFonts.hind(
-                            fontSize: 13, color: Color(0xff848484)),
+                            fontSize: 13, color: const Color(0xff848484)),
                         hintText: "Enter Amount",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(6),
@@ -296,7 +297,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Container(
@@ -306,20 +307,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
             child: Column(
               children: [
                 ListView.separated(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Container(
+                      return SizedBox(
                         height: 80,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
                           child: Row(
                             children: [
-                              Container(
+                              SizedBox(
                                   height: 39,
                                   width: 27,
                                   child: Image.asset(payment[index]["type"])),
-                              SizedBox(
+                              const SizedBox(
                                 width: 7,
                               ),
                               Column(
@@ -329,7 +330,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   Text(
                                     payment[index]["name"],
                                     style: GoogleFonts.hind(
-                                        fontSize: 18, color: Color(0xff848484)),
+                                        fontSize: 18,
+                                        color: const Color(0xff848484)),
                                   ),
                                   SizedBox(
                                     height: 18,
@@ -359,10 +361,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return Divider();
+                      return const Divider();
                     },
                     itemCount: 4),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Padding(
@@ -374,14 +376,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              backgroundColor: Color(0xff59B8BE)),
+                              backgroundColor: const Color(0xff59B8BE)),
                           onPressed: () {
                             showModalBottomSheet(
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (context) {
                                 return ClipRRect(
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(24),
                                         topRight: Radius.circular(24)),
                                     child: Container(
@@ -394,7 +396,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 15,
                                             ),
                                             Text(
@@ -403,7 +405,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                   fontSize: 22,
                                                   fontWeight: FontWeight.w500),
                                             ),
-                                            Divider(
+                                            const Divider(
                                               thickness: 1,
                                             ),
                                             Row(
@@ -427,7 +429,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 14,
                                             ),
                                             Row(
@@ -457,9 +459,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                               "Your first recharge is tax free now!",
                                               style: GoogleFonts.hind(
                                                   fontSize: 13,
-                                                  color: Color(0xff848484)),
+                                                  color:
+                                                      const Color(0xff848484)),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 14,
                                             ),
                                             Row(
@@ -483,13 +486,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 15,
                                             ),
-                                            Divider(
+                                            const Divider(
                                               thickness: 1,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 15,
                                             ),
                                             ConstrainedBox(
@@ -533,7 +536,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 19,
           )
         ],

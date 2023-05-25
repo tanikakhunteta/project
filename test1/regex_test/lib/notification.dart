@@ -61,7 +61,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(
+          child:const Icon(
             Icons.arrow_back,
             color: Color(0xff111111),
           ),
@@ -72,7 +72,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           style: GoogleFonts.hind(
               fontSize: 22,
               fontWeight: FontWeight.w500,
-              color: Color(0xff111111)),
+              color:const Color(0xff111111)),
         ),
         elevation: 1,
         backgroundColor: Colors.white,
@@ -83,7 +83,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             return ListTile(
               subtitle: Text(
                 notification[index]["subtitle"],
-                style: GoogleFonts.hind(fontSize: 11, color: Color(0xff818181)),
+                style: GoogleFonts.hind(fontSize: 11, color:const Color(0xff818181)),
               ),
               title: Text(
                 notification[index]["title"],

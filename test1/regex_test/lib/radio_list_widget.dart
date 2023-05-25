@@ -43,20 +43,20 @@ class _RadioListWidgetState extends State<RadioListWidget> {
               thickness: 1,
             ),
             ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: widget.sortBy.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return Column(
                   children: [
                     RadioListTile(
-                      activeColor: Color(0xff59B8BE),
+                      activeColor: const Color(0xff59B8BE),
                       title: Text(
                         widget.sortBy[index],
                         style: GoogleFonts.hind(
                             fontSize: 17,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xff333333)),
+                            color: const Color(0xff333333)),
                       ),
                       value: index,
                       groupValue: groupValue,
@@ -70,7 +70,7 @@ class _RadioListWidgetState extends State<RadioListWidget> {
                 );
               },
             ),
-            Divider(
+            const Divider(
               thickness: 1,
             ),
             Padding(
@@ -87,12 +87,12 @@ class _RadioListWidgetState extends State<RadioListWidget> {
                   ),
                   ConstrainedBox(
                     constraints:
-                        BoxConstraints.tightFor(height: 43, width: 173),
+                        const BoxConstraints.tightFor(height: 43, width: 173),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            backgroundColor: Color(0xff59B8BE)),
+                            backgroundColor: const Color(0xff59B8BE)),
                         onPressed: () {},
                         child: Text("Apply",
                             style: GoogleFonts.hind(
@@ -103,7 +103,7 @@ class _RadioListWidgetState extends State<RadioListWidget> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             )
           ],

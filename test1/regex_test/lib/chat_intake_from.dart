@@ -19,12 +19,12 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
         ),
-        actions: [
+        actions: const [
           Icon(
             Icons.more_vert,
             color: Colors.black,
@@ -41,7 +41,7 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
@@ -51,25 +51,25 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   fontWeight: FontWeight.w500,
                   color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 9,
             ),
             TextFormField(
               decoration: InputDecoration(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 11, horizontal: 11),
-                hintStyle:
-                    GoogleFonts.hind(fontSize: 16, color: Color(0xff898989)),
+                    const EdgeInsets.symmetric(vertical: 11, horizontal: 11),
+                hintStyle: GoogleFonts.hind(
+                    fontSize: 16, color: const Color(0xff898989)),
                 hintText: "Enter your name",
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -79,7 +79,7 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   fontWeight: FontWeight.w500,
                   color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 9,
             ),
             Row(
@@ -90,7 +90,7 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   width: 150,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Color(0xffDBDBDB))),
+                      border: Border.all(color: const Color(0xffDBDBDB))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -101,7 +101,7 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                             fontWeight: FontWeight.w400,
                             color: Colors.black),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.female,
                         size: 29,
                       )
@@ -113,7 +113,7 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   width: 150,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Color(0xffDBDBDB))),
+                      border: Border.all(color:const  Color(0xffDBDBDB))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -124,7 +124,7 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                             fontWeight: FontWeight.w400,
                             color: Colors.black),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.male,
                         size: 29,
                       )
@@ -133,7 +133,7 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -149,24 +149,26 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 9,
                     ),
                     SizedBox(
                       width: 150,
                       child: TextFormField(
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               vertical: 11, horizontal: 11),
                           hintStyle: GoogleFonts.hind(
-                              fontSize: 16, color: Color(0xff898989)),
+                              fontSize: 16, color: const Color(0xff898989)),
                           hintText: "DD/MM/YY",
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                              borderSide:
+                                  const BorderSide(color: Color(0xffDBDBDB))),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                              borderSide:
+                                  const BorderSide(color: Color(0xffDBDBDB))),
                         ),
                       ),
                     )
@@ -182,24 +184,26 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 9,
                     ),
                     SizedBox(
                       width: 150,
                       child: TextFormField(
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               vertical: 11, horizontal: 11),
                           hintStyle: GoogleFonts.hind(
-                              fontSize: 16, color: Color(0xff898989)),
+                              fontSize: 16, color: const Color(0xff898989)),
                           hintText: "12:30",
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                              borderSide:
+                                  const BorderSide(color: Color(0xffDBDBDB))),
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                              borderSide:
+                                  const BorderSide(color: Color(0xffDBDBDB))),
                         ),
                       ),
                     )
@@ -207,7 +211,7 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -217,25 +221,25 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   fontWeight: FontWeight.w500,
                   color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 9,
             ),
             TextFormField(
               decoration: InputDecoration(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 11, horizontal: 11),
-                hintStyle:
-                    GoogleFonts.hind(fontSize: 16, color: Color(0xff898989)),
+                    const EdgeInsets.symmetric(vertical: 11, horizontal: 11),
+                hintStyle: GoogleFonts.hind(
+                    fontSize: 16, color: const Color(0xff898989)),
                 hintText: "Search Cities",
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -245,25 +249,25 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   fontWeight: FontWeight.w500,
                   color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 9,
             ),
             TextFormField(
               decoration: InputDecoration(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 11, horizontal: 11),
-                hintStyle:
-                    GoogleFonts.hind(fontSize: 16, color: Color(0xff898989)),
+                    const EdgeInsets.symmetric(vertical: 11, horizontal: 11),
+                hintStyle: GoogleFonts.hind(
+                    fontSize: 16, color: const Color(0xff898989)),
                 hintText: "Occupation",
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -273,25 +277,25 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   fontWeight: FontWeight.w500,
                   color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 9,
             ),
             TextFormField(
               decoration: InputDecoration(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 11, horizontal: 11),
-                hintStyle:
-                    GoogleFonts.hind(fontSize: 16, color: Color(0xff898989)),
+                    const EdgeInsets.symmetric(vertical: 11, horizontal: 11),
+                hintStyle: GoogleFonts.hind(
+                    fontSize: 16, color: const Color(0xff898989)),
                 hintText: "Marriage",
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -301,25 +305,25 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   fontWeight: FontWeight.w500,
                   color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 9,
             ),
             TextFormField(
               decoration: InputDecoration(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 11, horizontal: 11),
-                hintStyle:
-                    GoogleFonts.hind(fontSize: 16, color: Color(0xff898989)),
+                    const EdgeInsets.symmetric(vertical: 11, horizontal: 11),
+                hintStyle: GoogleFonts.hind(
+                    fontSize: 16, color: const Color(0xff898989)),
                 hintText: "Area of concern",
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -329,25 +333,25 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                   fontWeight: FontWeight.w500,
                   color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 9,
             ),
             TextFormField(
               decoration: InputDecoration(
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 50, horizontal: 11),
-                hintStyle:
-                    GoogleFonts.hind(fontSize: 16, color: Color(0xff898989)),
+                    const EdgeInsets.symmetric(vertical: 50, horizontal: 11),
+                hintStyle: GoogleFonts.hind(
+                    fontSize: 16, color: const Color(0xff898989)),
                 hintText: "Upload File",
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Color(0xffDBDBDB))),
+                    borderSide: const BorderSide(color: Color(0xffDBDBDB))),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
             ConstrainedBox(
@@ -357,13 +361,13 @@ class _ChatIntakeFormState extends State<ChatIntakeForm> {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
-                        backgroundColor: Color(0xff59B8BE)),
+                        backgroundColor: const Color(0xff59B8BE)),
                     onPressed: () {},
                     child: Text(
                       "Consult Now",
                       style: GoogleFonts.hind(fontSize: 16),
                     ))),
-            SizedBox(
+            const SizedBox(
               height: 27,
             )
           ],

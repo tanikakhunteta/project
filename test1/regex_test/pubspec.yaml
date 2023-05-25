@@ -43,7 +43,10 @@ dependencies:
   dio: ^5.1.1
   provider: ^6.0.5
   video_player: ^2.6.1
-  
+  url_launcher: ^6.1.10
+  intl: ^0.18.1
+  scroll_to_index: ^3.0.1
+
   
 
 dev_dependencies:

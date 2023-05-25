@@ -21,7 +21,7 @@ class UiUtilsScreen {
             expand: true,
             builder: (context, scrollController) {
               return ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24)),
                 child: Container(
@@ -30,7 +30,7 @@ class UiUtilsScreen {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: ListView(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Row(
@@ -41,24 +41,24 @@ class UiUtilsScreen {
                               style: GoogleFonts.hind(
                                   fontSize: 22, fontWeight: FontWeight.w500),
                             ),
-                            Align(
+                            const Align(
                                 alignment: Alignment.centerRight,
                                 child: Icon(Icons.close))
                           ],
                         ),
-                        Divider(),
+                        const Divider(),
                         Text("Language",
                             style: GoogleFonts.hind(
                                 fontSize: 20, fontWeight: FontWeight.w500)),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         GridView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: language.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                   childAspectRatio: 110 / 54,
                                   mainAxisSpacing: 8,
                                   crossAxisSpacing: 8,
@@ -69,33 +69,34 @@ class UiUtilsScreen {
                               width: 110,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Color(0xff555555))),
+                                  border: Border.all(
+                                      color: const Color(0xff555555))),
                               child: Center(
                                   child: Text(
                                 language[index],
                                 style: GoogleFonts.hind(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff555555)),
+                                    color: const Color(0xff555555)),
                               )),
                             );
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text("Speciality",
                             style: GoogleFonts.hind(
                                 fontSize: 20, fontWeight: FontWeight.w500)),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         GridView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: speciality.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                   childAspectRatio: 110 / 54,
                                   mainAxisSpacing: 8,
                                   crossAxisSpacing: 8,
@@ -106,33 +107,34 @@ class UiUtilsScreen {
                               width: 110,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Color(0xff555555))),
+                                  border: Border.all(
+                                      color: const Color(0xff555555))),
                               child: Center(
                                   child: Text(
                                 speciality[index],
                                 style: GoogleFonts.hind(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff555555)),
+                                    color: const Color(0xff555555)),
                               )),
                             );
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text("Consultation Method",
                             style: GoogleFonts.hind(
                                 fontSize: 20, fontWeight: FontWeight.w500)),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         GridView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: consultationMethod.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                   childAspectRatio: 110 / 54,
                                   mainAxisSpacing: 8,
                                   crossAxisSpacing: 8,
@@ -143,45 +145,46 @@ class UiUtilsScreen {
                               width: 110,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Color(0xff555555))),
+                                  border: Border.all(
+                                      color: const Color(0xff555555))),
                               child: Center(
                                   child: Text(
                                 consultationMethod[index],
                                 style: GoogleFonts.hind(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff555555)),
+                                    color: const Color(0xff555555)),
                               )),
                             );
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text("Price",
                             style: GoogleFonts.hind(
                                 fontSize: 20, fontWeight: FontWeight.w500)),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         Text("₹8~₹99",
                             style: GoogleFonts.hind(
                                 fontSize: 20, fontWeight: FontWeight.w500)),
-                        SizedBox(
+                        const SizedBox(
                           height: 22,
                         ),
                         Text("Skill",
                             style: GoogleFonts.hind(
                                 fontSize: 20, fontWeight: FontWeight.w500)),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         GridView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: skill.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                   childAspectRatio: 110 / 54,
                                   mainAxisSpacing: 8,
                                   crossAxisSpacing: 8,
@@ -192,7 +195,8 @@ class UiUtilsScreen {
                               width: 110,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Color(0xff555555))),
+                                  border: Border.all(
+                                      color: const Color(0xff555555))),
                               child: Center(
                                   child: Text(
                                 skill[index],
@@ -200,26 +204,26 @@ class UiUtilsScreen {
                                 style: GoogleFonts.hind(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff555555)),
+                                    color: const Color(0xff555555)),
                               )),
                             );
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 22,
                         ),
                         Text("Segment",
                             style: GoogleFonts.hind(
                                 fontSize: 20, fontWeight: FontWeight.w500)),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         GridView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: segment.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                   childAspectRatio: 110 / 54,
                                   mainAxisSpacing: 8,
                                   crossAxisSpacing: 8,
@@ -230,7 +234,8 @@ class UiUtilsScreen {
                               width: 110,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Color(0xff555555))),
+                                  border: Border.all(
+                                      color: const Color(0xff555555))),
                               child: Center(
                                   child: Text(
                                 segment[index],
@@ -238,12 +243,12 @@ class UiUtilsScreen {
                                 style: GoogleFonts.hind(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff555555)),
+                                    color: const Color(0xff555555)),
                               )),
                             );
                           },
                         ),
-                        Divider(),
+                        const Divider(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -255,14 +260,14 @@ class UiUtilsScreen {
                               ),
                             ),
                             ConstrainedBox(
-                              constraints: BoxConstraints.tightFor(
+                              constraints: const BoxConstraints.tightFor(
                                   height: 43, width: 173),
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10)),
-                                      backgroundColor: Color(0xff59B8BE)),
+                                      backgroundColor: const Color(0xff59B8BE)),
                                   onPressed: () {},
                                   child: Text("Apply",
                                       style: GoogleFonts.hind(
@@ -272,7 +277,7 @@ class UiUtilsScreen {
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         )
                       ],

@@ -28,7 +28,7 @@ class _StarWidgetState extends State<StarWidget> {
                                               image: AssetImage(
                                                   widget.image))),
                                     ),
-                                    SizedBox(
+                                 const   SizedBox(
                                       width: 16,
                                     ),
                                     Column(
@@ -55,17 +55,17 @@ class _StarWidgetState extends State<StarWidget> {
                                             filledIconData: Icons.star,
                                             halfFilledIconData:
                                                 Icons.star_border,
-                                            color: Color(0xff59B8BE),
-                                            borderColor: Color(0xff59B8BE),
+                                            color:const Color(0xff59B8BE),
+                                            borderColor:const Color(0xff59B8BE),
                                             spacing: 0.0),
-                                        SizedBox(
+                                    const    SizedBox(
                                           height: 8,
                                         ),
                                         Text(widget.content,
                                             style: GoogleFonts.hind(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.normal,
-                                                color: Color(0xff848484)))
+                                                color:const Color(0xff848484)))
                                       ],
                                     )
                                   ],

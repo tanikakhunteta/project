@@ -339,7 +339,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           color: Colors.white),
                                       child: Icon(
                                         drawer[index]["icon"],
-                                        color: Color(0xff59B8BE),
+                                        color: const Color(0xff59B8BE),
                                       ),
                                     ),
                                     const SizedBox(
@@ -391,9 +391,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                   backgroundColor:
-                                                      Color(0xff59B8BE),
+                                                      const Color(0xff59B8BE),
                                                   shape:
-                                                      ContinuousRectangleBorder()),
+                                                      const ContinuousRectangleBorder()),
                                               onPressed: () {},
                                               child: Text(
                                                 "Yes",
@@ -408,9 +408,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                   backgroundColor:
-                                                      Color(0xff59B8BE),
+                                                      const Color(0xff59B8BE),
                                                   shape:
-                                                      ContinuousRectangleBorder()),
+                                                      const ContinuousRectangleBorder()),
                                               onPressed: () {
                                                 Navigator.pop(context);
                                               },
@@ -859,7 +859,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AstroLiveScreen(),
+                            builder: (context) => const AstroLiveScreen(),
                           ));
                     },
                     child: SizedBox(
@@ -1000,7 +1000,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ChatScreen(),
+                        builder: (context) => const ChatScreen(),
                       ));
                 },
                 child: SizedBox(
@@ -1140,7 +1140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                HoroscopeScreen(),
+                                                const HoroscopeScreen(),
                                           ));
                                     },
                                     child: Text("See All",
@@ -1314,7 +1314,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BlogScreen(),
+                                    builder: (context) => const BlogScreen(),
                                   ));
                             },
                             child: Text("View All",
@@ -1473,7 +1473,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             backgroundColor: Colors.transparent,
                             builder: (BuildContext context) {
                               return ClipRRect(
-                                borderRadius: BorderRadius.only(
+                                borderRadius:const BorderRadius.only(
                                     topLeft: Radius.circular(24),
                                     topRight: Radius.circular(24)),
                                 child: Container(
