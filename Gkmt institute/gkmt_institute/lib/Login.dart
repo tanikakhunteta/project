@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gkmt_institute/Signup.dart';
-import 'package:gkmt_institute/homescreen.dart';
+
 import 'package:gkmt_institute/login_with_phone_number.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:gkmt_institute/sharedpref.dart';
+
+import 'homescreen.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -145,18 +147,21 @@ class _LoginState extends State<Login> {
                                               emailController.text.toString(),
                                           password: passwordController.text
                                               .toString())
-                                      .then((value) {
+                                      .then((value) async {
                                     if (value.user != null) {
                                       if (value.user!.emailVerified) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HomeScreen(),
-                                            ));
-                                      }else{
-                                        
-                                      }
+                                        bool valueSet =
+                                            await SharedPref.setToken(
+                                                value.user!.uid);
+                                        if (valueSet) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomeScreen(),
+                                              ));
+                                        }
+                                      } else {}
                                     }
                                   });
                                 }

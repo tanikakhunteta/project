@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gkmt_institute/homescreen.dart';
+import 'package:gkmt_institute/imagescreen.dart';
+import 'package:gkmt_institute/sharedpref.dart';
 
 class Signedup extends StatefulWidget {
   final Map<String, dynamic> userInfo;
@@ -26,22 +27,27 @@ class _SignedupState extends State<Signedup> {
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
-        setState(() {
-          --totalTime;
-          FirebaseAuth.instance.currentUser?.reload();
-          final user = FirebaseAuth.instance.currentUser;
-          if (user?.emailVerified ?? false) {
-            collectionReference.add(widget.userInfo).then((value) {
+        --totalTime;
+        FirebaseAuth.instance.currentUser?.reload();
+        final user = FirebaseAuth.instance.currentUser;
+        if (user?.emailVerified ?? false) {
+          collectionReference
+              .doc(user!.uid)
+              .set(widget.userInfo)
+              .then((value) async {
+            bool valueSet = await SharedPref.setToken(user.uid);
+            if (valueSet) {
+              _timer.cancel();
               Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
+                    builder: (context) => ImageScreen(),
                   ),
                   (route) => false);
-              _timer.cancel();
-            });
-          }
-        });
+            }
+          });
+        }
+
         if (totalTime == 0) {
           FirebaseAuth.instance.currentUser?.delete();
           _timer.cancel();
