@@ -22,13 +22,13 @@ class _AllScreenState extends State<AllScreen> {
   static List<Widget> screens = const [
     // DonationScreen(),
     HomeScreen(),
-    ProfileScreen(),
+    ProfileScreen(), 
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-      items: <BottomNavigationBarItem> [
+      items: const <BottomNavigationBarItem> [
           // BottomNavigationBarItem(
           //   backgroundColor: Color.fromARGB(255, 252, 243, 246),
           //   icon: Icon(

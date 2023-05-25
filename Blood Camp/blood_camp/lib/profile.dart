@@ -22,10 +22,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController bloodGroupController = TextEditingController();
   TextEditingController stateController = TextEditingController();
   TextEditingController districtController = TextEditingController();
+  String? networkProfile;
 
   UserProfileModel? userProfileModel;
   bool enabled = false;
-
+  XFile? image;
   bool apiLoading = false;
   @override
   void initState() {
@@ -50,7 +51,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
   }
 
-  XFile? image;
   GlobalKey<ScaffoldState> key = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -111,17 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 24,
                                 ),
                                 Stack(children: [
-                                  image != null
-                                      ? CircleAvatar(
-                                          radius: 70,
-                                          backgroundImage:
-                                              FileImage(File(image!.path)),
-                                        )
-                                      : const CircleAvatar(
-                                          radius: 70,
-                                          backgroundImage: AssetImage(
-                                              'assets/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg'),
-                                        ),
+                                  getUserProfile(),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 100, top: 100),
@@ -139,15 +129,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   IconButton(
-                                                      onPressed: () {
+                                                      onPressed: () async {
                                                         ImagePicker()
                                                             .pickImage(
                                                                 source:
                                                                     ImageSource
                                                                         .camera)
-                                                            .then((value) {
+                                                            .then(
+                                                                (value) async {
                                                           image = value;
-                                                          setState(() {});
+
+                                                          if (value != null) {
+                                                            networkProfile = await ApiService
+                                                                .getUploadUrl(
+                                                                    image!.path
+                                                                        .split(
+                                                                            '.')
+                                                                        .last,
+                                                                    File(image!
+                                                                        .path));
+                                                            setState(() {});
+                                                          }
                                                         });
                                                       },
                                                       icon: const Icon(
@@ -166,8 +168,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                 source:
                                                                     ImageSource
                                                                         .gallery)
-                                                            .then((value) {
+                                                            .then(
+                                                                (value) async {
                                                           image = value;
+                                                          if (value != null) {
+                                                            networkProfile = await ApiService
+                                                                .getUploadUrl(
+                                                                    image!.path
+                                                                        .split(
+                                                                            ".")
+                                                                        .last,
+                                                                    File(image!
+                                                                        .path));
+                                                          }
                                                           setState(() {});
                                                         });
                                                       },
@@ -406,7 +419,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: enabled
-                                          ? Color(0xFFBF222B)
+                                          ? const Color(0xFFBF222B)
                                           : Colors.grey,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
@@ -436,5 +449,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               )),
     );
+  }
+
+  Widget getUserProfile() {
+    if (networkProfile != null) {
+      return CircleAvatar(
+          radius: 70, backgroundImage: NetworkImage(networkProfile!));
+    } else if (image != null) {
+      return CircleAvatar(
+          radius: 70, backgroundImage: FileImage(File(image!.path)));
+    } else {
+      return const CircleAvatar(
+          radius: 70,
+          backgroundImage: AssetImage(
+              'assets/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg'));
+    }
   }
 }

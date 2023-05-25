@@ -158,7 +158,8 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
           child: ElevatedButton(
             onPressed: () {
               launchUrl(
-                  Uri.parse("tel: ${widget.bloodAvailDetailsData.srcContact}"));
+                  Uri.parse(
+                    "tel: ${widget.bloodAvailDetailsData.srcContact}"));
               print("for testing");
             },
             style: ElevatedButton.styleFrom(

@@ -151,8 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 16,
                       ),
                       UiUtilsScreen.commonTextFormField(
-                        //  obscureText: !isPasswordvisible,
-
+                        obscureText: !isPasswordvisible,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter Password";
@@ -190,7 +189,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 16,
                       ),
                       UiUtilsScreen.commonTextFormField(
-                        // obscureText: !isConfirmPasswordvisible,
+                        obscureText: !isConfirmPasswordvisible,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter Confirm Password";

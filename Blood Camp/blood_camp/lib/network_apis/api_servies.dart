@@ -206,10 +206,32 @@ class ApiService {
     if (response.data["success"]) {
       UploadImageModel uploadImageModel =
           UploadImageModel.fromJson(response.data);
-      return uploadImageModel.data.toString();
-     
+
+      bool? fileUploaded =
+          await _uploadFile(format, file, uploadImageModel.data!);
+      if (fileUploaded) {
+        log('file upload ho gai hai');
+        return uploadImageModel.data!.split('?').first;
+      } else {
+        return null;
+      }
     } else {
       return null;
+    }
+  }
+
+  static Future<bool> _uploadFile(String format, File file, String url) async {
+    Dio dio = Dio();
+    int lengthOFFile = await file.length();
+    Response response = await dio.put(url,
+        options: Options(headers: {
+          Headers.contentLengthHeader: lengthOFFile,
+        }, contentType: format),
+        data: file.openRead());
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

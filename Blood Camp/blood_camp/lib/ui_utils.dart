@@ -221,14 +221,15 @@ class UiUtilsScreen {
     );
   }
 
-  static Widget commonTextFormField({
-    required TextEditingController controller,
-    required FormFieldValidator validator,
-    required String labelValue,
-    required TextStyle styleLabel,
-    Widget? suffixIcon,
-  }) {
+  static Widget commonTextFormField(
+      {required TextEditingController controller,
+      required FormFieldValidator validator,
+      required String labelValue,
+      required TextStyle styleLabel,
+      Widget? suffixIcon,
+      bool? obscureText}) {
     return TextFormField(
+      obscureText: obscureText ?? false,
       validator: validator,
       controller: controller,
       decoration: InputDecoration(
