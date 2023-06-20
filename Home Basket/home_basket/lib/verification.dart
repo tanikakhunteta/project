@@ -1,19 +1,37 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home_basket/api_services.dart';
 import 'package:home_basket/ui_utils.dart';
 
+class VerificationScreenArgumnet {
+  final String mobileno;
+
+  VerificationScreenArgumnet(
+    this.mobileno,
+  );
+}
+
 class VerificationScreen extends StatefulWidget {
-  const VerificationScreen({super.key});
+  final VerificationScreenArgumnet verificationScreenArgumnet;
+
+  const VerificationScreen({
+    super.key,
+    required this.verificationScreenArgumnet,
+  });
 
   @override
   State<VerificationScreen> createState() => _VerificationScreenState();
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
+  String otp = '';
   @override
   Widget build(BuildContext context) {
+    log(widget.verificationScreenArgumnet.mobileno);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -74,16 +92,17 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     OtpTextField(
                       focusedBorderColor: Color(0xffB5B5B5),
                       borderRadius: BorderRadius.circular(8),
-                      numberOfFields: 4,
+                      numberOfFields: 6,
                       borderColor: Color(0xFF512DA8),
                       //set to true to show as box or false to show as dash
                       showFieldAsBox: true,
                       //runs when a code is typed in
-                      onCodeChanged: (String code) {
-                        //handle validation or checks here
-                      },
+
                       //runs when every textfield is filled
                       onSubmit: (String verificationCode) {
+                        setState(() {
+                          otp = verificationCode;
+                        });
                         showDialog(
                             context: context,
                             builder: (context) {
@@ -100,7 +119,17 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     ),
                     InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, "/address_screen");
+                          ApiService.verifyOtpDetails(
+                                  widget.verificationScreenArgumnet.mobileno,
+                                  otp)
+                              .then((value) {
+                            if (value != null && value["result"] == "Success") {
+                              Navigator.pushNamed(
+                                context,
+                                "/address_screen",
+                              );
+                            }
+                          });
                         },
                         child: UiUtilsScreen.gradientContainer(context,
                             text: "Verify")),

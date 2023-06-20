@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_basket/address.dart';
+import 'package:home_basket/routes.dart';
 import 'package:home_basket/signup.dart';
 import 'package:home_basket/splash.dart';
 import 'package:home_basket/verification.dart';
@@ -15,12 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "/",
-      routes: {
-        "/signup_screen": (context) => SignUpScreen(),
-        "/verification_screen": (context) => VerificationScreen(),
-        "/address_screen": (context) => AddressScreen()
-      },
+      initialRoute: "/splash_screen",
+      onGenerateRoute: Routes.generateRoute,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,

@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:home_basket/api_services.dart';
 import 'package:home_basket/jploft_model.dart';
 import 'package:home_basket/ui_utils.dart';
+import 'package:home_basket/verification.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -13,6 +16,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController mobileController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       color: Colors.white,
                       elevation: 3,
                       child: TextFormField(
+                        controller: mobileController,
                         decoration: InputDecoration(
                             contentPadding:
                                 const EdgeInsets.symmetric(vertical: 5),
@@ -81,7 +86,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, "/verification_screen");
+                          log(mobileController.text.toString());
+                          ApiService.getOtpDetails(mobileController.text)
+                              .then((value) {
+                            if (value != null && value['result'] == 'Success') {
+                              Navigator.pushNamed(
+                                  context, "/verification_screen",
+                                  arguments: VerificationScreenArgumnet(
+                                      mobileController.text));
+                            }
+                          });
                         },
                         child: UiUtilsScreen.gradientContainer(context,
                             text: "Sign In/ Sign Up")),
@@ -96,32 +110,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(
                       height: 22,
                     ),
-                    Container(
-                      height: 44,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: const Color(0xff0453AE),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.facebook,
-                            color: Colors.white,
-                            size: 25,
-                          ),
-                          const SizedBox(
-                            width: 9,
-                          ),
-                          Text(
-                            "Continue with Facebook",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 15,
-                                color: Colors.white),
-                          ),
-                        ],
+                    InkWell(
+                      onTap: () {},
+                      child: Container(
+                        height: 44,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: const Color(0xff0453AE),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.facebook,
+                              color: Colors.white,
+                              size: 25,
+                            ),
+                            const SizedBox(
+                              width: 9,
+                            ),
+                            Text(
+                              "Continue with Facebook",
+                              style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 15,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -159,9 +176,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     InkWell(
                       onTap: () async {
-                        JpLoftModel? jpLoftModel =
-                            await ApiService.jpLoftDetails();
-                        print(jpLoftModel?.jpLoftData?.bookingId);
+                        // JpLoftModel? jpLoftModel =
+                        //     await ApiService.jpLoftDetails();
+                        // print(jpLoftModel?.jpLoftData?.bookingId);
                       },
                       child: Text(
                         "Skip >>",
